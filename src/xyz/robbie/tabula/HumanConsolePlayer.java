@@ -64,6 +64,7 @@ public class HumanConsolePlayer implements PlayerInterface
         // Loop through until diceValues() is empty
         do
         {
+            System.out.println("do loop called");
             // Ask user for their preferred dice value
             System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));
             System.out.println("Enter which die value you wish to use " + ordinalNumbers[moves.size()] + ":"); // when moves is empty, get ordinalNumbers[0] and so on
@@ -96,12 +97,31 @@ public class HumanConsolePlayer implements PlayerInterface
             {
                 System.out.println("e = " + e);
             }
+            catch (NullPointerException e)
+            {
+                e.printStackTrace();
+            }
 
             moves.add(calculatedMove);
-//            System.out.println("added calculatedMove to moves");
+            System.out.println("added calculatedMove to moves");
+            System.out.println("diceValues = " + Arrays.toString(diceValues.toArray()));
         } while(diceValues.size() > 0);
 
-        return null;
+        TurnInterface turn = new Turn();
+        for(MoveInterface move : moves)
+        {
+            try
+            {
+                turn.addMove(move);
+            }
+            catch(IllegalTurnException e)
+            {
+                // Will never be called
+                e.printStackTrace();
+            }
+        }
+
+        return turn;
     }
 
     /**
