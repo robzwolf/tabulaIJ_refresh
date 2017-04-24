@@ -29,6 +29,10 @@ public class HumanConsolePlayer implements PlayerInterface
     private String getPrettyNumbersList(List<Integer> diceValues)
     {
         String output = "";
+        if(diceValues.size() == 1)
+        {
+            return "" + diceValues.get(0);
+        }
         for (int i=0; i<diceValues.size()-2; i++)
         {
             output += diceValues.get(i) + ", ";
@@ -48,27 +52,29 @@ public class HumanConsolePlayer implements PlayerInterface
         System.out.println("Player " + Game.strToTitleCase(colour + ", it's your turn."));
         if(diceValues.size() == 4)
         {
-            System.out.println("You're lucky - you rolled a double! Your dice values are " + diceValues.get(0) + ", " + diceValues.get(1) + ", " + diceValues.get(2) + " and " + diceValues.get(3) + "!");
+            System.out.println("You're lucky - you rolled a double! Your die values are " + diceValues.get(0) + ", " + diceValues.get(1) + ", " + diceValues.get(2) + " and " + diceValues.get(3) + "!");
         }
         else
         {
-            System.out.println("Your dice values are " + diceValues.get(0) + " and " + diceValues.get(1) + ".");
+            System.out.println("Your die values are " + diceValues.get(0) + " and " + diceValues.get(1) + ".");
         }
 
         List<MoveInterface> moves = new ArrayList<MoveInterface>();
-        for(int dieValue : diceValues)
+
+        // Loop through until diceValues() is empty
+        do
         {
             // Ask user for their preferred dice value
-            System.out.println("The dice values available to you are: " + getPrettyNumbersList(diceValues));
+            System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));
             System.out.println("Enter which die value you wish to use " + ordinalNumbers[moves.size()] + ":"); // when moves is empty, get ordinalNumbers[0] and so on
             int chosenDie = askUserForNum(diceValues, "%s is not one of the values you rolled. Try again:");
 
             // Ask user for move source location
-            Integer sourceLocation = null;
-            System.out.println("Enter from which location you wish to move a counter " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + ":");
+            System.out.println("Enter from which location you wish to move a counter " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " (for the start location, enter 0):");
             List<Integer> locationNums = new ArrayList<Integer>();
-            for(int i=1; i<BoardInterface.NUMBER_OF_LOCATIONS; i++){
-                locationNums.add(i);
+            for(int j=0; j<BoardInterface.NUMBER_OF_LOCATIONS; j++)
+            {
+                locationNums.add(j);
             }
             int chosenSourceLocation = askUserForNum(locationNums, "%s is not a valid location. Try again:");
 
@@ -76,7 +82,15 @@ public class HumanConsolePlayer implements PlayerInterface
             try
             {
                 calculatedMove.setDiceValue(chosenDie);
+//                System.out.println("set dice value to " + chosenDie);
+//                List<Integer> tempList = new ArrayList<Integer>();
+//                tempList.add(chosenDie);
+//                diceValues.removeAll(tempList);
+                diceValues.remove(Integer.valueOf(chosenDie));
+//                System.out.println("removed " + Integer.valueOf(chosenDie));
+//                System.out.println("diceValues = " + Arrays.toString(diceValues.toArray()));
                 calculatedMove.setSourceLocation(chosenSourceLocation);
+                System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
             }
             catch (IllegalMoveException | NoSuchLocationException e)
             {
@@ -84,7 +98,8 @@ public class HumanConsolePlayer implements PlayerInterface
             }
 
             moves.add(calculatedMove);
-        }
+//            System.out.println("added calculatedMove to moves");
+        } while(diceValues.size() > 0);
 
         return null;
     }
