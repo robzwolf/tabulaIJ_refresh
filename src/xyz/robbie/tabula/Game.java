@@ -227,18 +227,4 @@ public class Game implements GameInterface
         } // end switch
     } // end main()
 
-    public static String strToTitleCase(String str)
-    {
-        if(str.length() == 0)
-        {
-            return "";
-        }
-        String[] strSplit = str.split("");
-        String output = "";
-        output += strSplit[0].toUpperCase();
-        for(int i=1;i<strSplit.length;i++){
-            output += strSplit[i].toLowerCase();
-        }
-        return output;
-    }
 } // end class

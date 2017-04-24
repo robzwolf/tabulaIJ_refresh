@@ -43,20 +43,38 @@ public class HumanConsolePlayer implements PlayerInterface
         }
 
         return output;
-//        return Arrays.toString(diceValues.toArray());
+    }
+
+    /** Takes a string and returns it in Title Case
+     * @param str The string to convert
+     * @return The Title Case form of the string
+     */
+    private static String strToTitleCase(String str)
+    {
+        if(str.length() == 0)
+        {
+            return "";
+        }
+        String[] strSplit = str.split("");
+        String output = "";
+        output += strSplit[0].toUpperCase();
+        for(int i=1;i<strSplit.length;i++){
+            output += strSplit[i].toLowerCase();
+        }
+        return output;
     }
 
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException
     {
         System.out.println(board);
-        System.out.println("Player " + Game.strToTitleCase(colour + ", it's your turn."));
+        System.out.println("Player " + strToTitleCase(colour + ", it's your turn."));
         if(diceValues.size() == 4)
         {
-            System.out.println("You're lucky - you rolled a double! Your die values are " + diceValues.get(0) + ", " + diceValues.get(1) + ", " + diceValues.get(2) + " and " + diceValues.get(3) + "!");
+            System.out.print("You're lucky - you rolled a double! ");
         }
         else
         {
-            System.out.println("Your die values are " + diceValues.get(0) + " and " + diceValues.get(1) + ".");
+            System.out.print("The dice have been rolled. ");
         }
 
         List<MoveInterface> moves = new ArrayList<MoveInterface>();
@@ -64,7 +82,6 @@ public class HumanConsolePlayer implements PlayerInterface
         // Loop through until diceValues() is empty
         do
         {
-            System.out.println("do loop called");
             // Ask user for their preferred dice value
             System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));
             System.out.println("Enter which die value you wish to use " + ordinalNumbers[moves.size()] + ":"); // when moves is empty, get ordinalNumbers[0] and so on
@@ -83,28 +100,31 @@ public class HumanConsolePlayer implements PlayerInterface
             try
             {
                 calculatedMove.setDiceValue(chosenDie);
-//                System.out.println("set dice value to " + chosenDie);
-//                List<Integer> tempList = new ArrayList<Integer>();
-//                tempList.add(chosenDie);
-//                diceValues.removeAll(tempList);
-                diceValues.remove(Integer.valueOf(chosenDie));
-//                System.out.println("removed " + Integer.valueOf(chosenDie));
-//                System.out.println("diceValues = " + Arrays.toString(diceValues.toArray()));
                 calculatedMove.setSourceLocation(chosenSourceLocation);
-                System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
+                if(board.canMakeMove(colour, calculatedMove))
+                {
+                    diceValues.remove(Integer.valueOf(chosenDie));
+                    moves.add(calculatedMove);
+                    System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
+                }
+                else
+                {
+                    System.out.println("That move is not valid. Try again.");
+                }
             }
-            catch (IllegalMoveException | NoSuchLocationException e)
+            catch (IllegalMoveException e)
             {
-                System.out.println("e = " + e);
+                System.out.println("Something went wrong. That die value is not valid.");
+            }
+            catch (NoSuchLocationException e)
+            {
+                System.out.println("Something went wrong. That location number is not valid.");
             }
             catch (NullPointerException e)
             {
+                System.out.println("Something went catastrophically wrong!");
                 e.printStackTrace();
             }
-
-            moves.add(calculatedMove);
-            System.out.println("added calculatedMove to moves");
-            System.out.println("diceValues = " + Arrays.toString(diceValues.toArray()));
         } while(diceValues.size() > 0);
 
         TurnInterface turn = new Turn();
@@ -151,7 +171,7 @@ public class HumanConsolePlayer implements PlayerInterface
             }
             catch (NumberFormatException e)
             {
-                System.out.println("'" + input + "' is not a valid number. Try again:");
+                System.out.println("Your input, '" + input + "', is not a valid number. Try again:");
             }
         } while(chosenNum == null);
 

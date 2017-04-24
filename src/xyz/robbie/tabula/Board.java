@@ -176,7 +176,61 @@ public class Board implements BoardInterface
 
     public boolean canMakeMove(Colour colour, MoveInterface move)
     {
-        return false;
+        // Move can be made if:
+        // - current space has available pieces of that colour
+        // - new space is empty
+        // - new space has counters of the same colour
+        // - new space has one counter of the opposite colour
+
+        // Check current space has at least one of this colour
+        try
+        {
+            LocationInterface sourceLocation;
+            if(move.getSourceLocation() == 0)
+            {
+                sourceLocation = getStartLocation();
+            }
+            else
+            {
+                sourceLocation = getBoardLocation(move.getSourceLocation());
+            }
+            if(sourceLocation.numberOfPieces(colour) == 0)
+            {
+                return false;
+            }
+        }
+        catch(NoSuchLocationException e)
+        {
+            System.out.println("Something went wrong.");
+            e.printStackTrace();
+            return false;
+        }
+
+        // Find the new space
+        LocationInterface targetLocation;
+        try
+        {
+            int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
+            if(targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the board
+            {
+                targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
+            }
+            targetLocation = getBoardLocation(targetLocIndex);
+            if(targetLocation.canAddPiece(colour))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        catch (NoSuchLocationException e)
+        {
+            // Should never be called
+            e.printStackTrace();
+            return false;
+        }
     }
 
     public void makeMove(Colour colour, MoveInterface move) throws IllegalMoveException
@@ -202,7 +256,7 @@ public class Board implements BoardInterface
         else
         {
             // try-catch on moveThing() instead?
-            //throw IllegalMoveException
+            // throw IllegalMoveException
         }
     }
 
