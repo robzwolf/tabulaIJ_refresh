@@ -16,4 +16,9 @@ public class ComputerPlayer implements PlayerInterface
     {
         return null;
     }
+
+    public String toString()
+    {
+        return "computer";
+    }
 }

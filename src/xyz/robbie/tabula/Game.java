@@ -64,14 +64,14 @@ public class Game implements GameInterface
         String input = "";
 
         // Variable initialisation
-        Board b = getBoard();
+        board = getBoard();
         Dice d = new Dice();
 
-        PlayerInterface humanConsolePlayerOne = new HumanConsolePlayer();
-        PlayerInterface humanConsolePlayerTwo = new HumanConsolePlayer();
+//        PlayerInterface humanConsolePlayerOne = new HumanConsolePlayer();
+//        PlayerInterface humanConsolePlayerTwo = new HumanConsolePlayer();
 
-        setPlayer(Colour.GREEN, humanConsolePlayerOne);
-        setPlayer(Colour.BLUE, humanConsolePlayerTwo);
+//        setPlayer(Colour.GREEN, humanConsolePlayerOne);
+//        setPlayer(Colour.BLUE, humanConsolePlayerTwo);
 
         boolean stillPlaying = true;
         TurnInterface t;
@@ -81,16 +81,17 @@ public class Game implements GameInterface
             d.roll();
             try
             {
-                t = humanConsolePlayerOne.getTurn(Colour.GREEN, b, d.getValues());
+                t = players.get(currentColour).getTurn(currentColour, board.clone(), d.getValues());
                 for(MoveInterface move : t.getMoves())
                 {
                     try
                     {
-                        b.makeMove(Colour.GREEN, move);
+                        board.makeMove(currentColour, move);
                     }
                     catch (IllegalMoveException e)
                     {
                         System.out.println(e);
+                        stillPlaying = false;
                     }
                 }
             }
@@ -98,7 +99,8 @@ public class Game implements GameInterface
             {
                 System.out.println(e);
             }
-            stillPlaying = false;
+//            stillPlaying = false;
+            currentColour = currentColour.otherColour();
         } while(stillPlaying);
 
         do {
@@ -110,26 +112,26 @@ public class Game implements GameInterface
             {
                 case "l": // print all locations
                 {
-                    System.out.println(b.getStartLocation());
+                    System.out.println(board.getStartLocation());
                     for(int i=1;i<BoardInterface.NUMBER_OF_LOCATIONS;i++)
                     {
                         try
                         {
-                            System.out.println(b.getBoardLocation(i));
+                            System.out.println(board.getBoardLocation(i));
                         }
                         catch (NoSuchLocationException e)
                         {
                             // Won't ever happen
                         }
                     }
-                    System.out.println(b.getEndLocation());
-                    System.out.println(b.getKnockedLocation());
+                    System.out.println(board.getEndLocation());
+                    System.out.println(board.getKnockedLocation());
                     break;
                 }
 
                 case "b": // print board
                 {
-                    System.out.println(b);
+                    System.out.println(board);
                     break;
                 }
 
@@ -160,11 +162,10 @@ public class Game implements GameInterface
 
                 case "c": // clone and print new board
                 {
-                    BoardInterface c = b.clone();
+                    BoardInterface c = board.clone();
                     System.out.println(c);
                 }
             }
-
 
         } while (!input.equals("e"));
 
@@ -194,17 +195,16 @@ public class Game implements GameInterface
     *      save the game;
     *      start a new game;
     *      exit the program.
-    * Run with -c for a command line game or -g for a GUI game ??? (look into how GUI is created)
     */
     public static void main(String[] args)
     {
         // Initialise variables for scope
         Scanner scanner = new Scanner(System.in);
         String input = "";
-        HumanConsolePlayer hcp1;
-        HumanConsolePlayer hcp2;
-        ComputerPlayer cp1;
-        ComputerPlayer cp2;
+//        HumanConsolePlayer hcp1;
+//        HumanConsolePlayer hcp2;
+//        ComputerPlayer cp1;
+//        ComputerPlayer cp2;
         Game g = new Game();
         System.out.println("Welcome to Tabula North-East.");
 
@@ -212,7 +212,7 @@ public class Game implements GameInterface
         do
         {
             System.out.println();
-            System.out.println("== MAIN MENU==");
+            System.out.println("== MAIN MENU ==");
             System.out.println("Please choose from the following options.");
             System.out.println(" 1) Load a game");
             System.out.println(" 2) Continue a paused game");
@@ -259,15 +259,15 @@ public class Game implements GameInterface
                         if(input.equals("1"))
                         {
                             // make first colour a human
-                            hcp1 = new HumanConsolePlayer();
-                            g.setPlayer(Colour.values()[0], hcp1);
+                            PlayerInterface hcp = new HumanConsolePlayer();
+                            g.setPlayer(Colour.values()[0], hcp);
                             System.out.println("You have set " + colours[0] + " to be a human player.");
                         }
                         else if(input.equals("2"))
                         {
                             // make second colour computer
-                            cp1 = new ComputerPlayer();
-                            g.setPlayer(Colour.values()[0], cp1);
+                            PlayerInterface cp = new ComputerPlayer();
+                            g.setPlayer(Colour.values()[0], cp);
                             System.out.println("You have set " + colours[0] + " to be a computer player.");
                         }
                         else if(input.equals("3"))
@@ -289,15 +289,15 @@ public class Game implements GameInterface
                         if(input.equals("1"))
                         {
                             // make first colour a human
-                            hcp2 = new HumanConsolePlayer();
-                            g.setPlayer(Colour.values()[1], hcp2);
+                            PlayerInterface hcp = new HumanConsolePlayer();
+                            g.setPlayer(Colour.values()[1], hcp);
                             System.out.println("You have set " + colours[1] + " to be a human player.");
                         }
                         else if(input.equals("2"))
                         {
                             // make second colour computer
-                            cp2 = new ComputerPlayer();
-                            g.setPlayer(Colour.values()[0], cp2);
+                            PlayerInterface cp = new ComputerPlayer();
+                            g.setPlayer(Colour.values()[1], cp);
                             System.out.println("You have set " + colours[1] + " to be a computer player.");
                         }
                         else if(input.equals("3"))
@@ -337,6 +337,38 @@ public class Game implements GameInterface
                 case "6": // Exit the program
                 {
                     break;
+                }
+                case "dev": // Dev options
+                {
+                    System.out.println();
+                    System.out.println("== DEVELOPER OPTIONS ==");
+                    do
+                    {
+                        System.out.println(" 1) Return to main menu");
+                        System.out.println(" 2) Print current players");
+                        input = scanner.nextLine();
+                        switch(input)
+                        {
+                            case "1": // Return to main menu
+                            {
+                                break;
+                            }
+                            case "2": // Print current players
+                            {
+                                System.out.println("No. of defined players = " + g.players.keySet().size());
+                                for(Colour c : g.players.keySet())
+                                {
+                                    System.out.println(c + " = " + g.players.get(c));
+                                }
+                                break;
+                            }
+                            default:
+                            {
+                                System.out.println("Your input was not valid. Try again.");
+                                break;
+                            }
+                        }
+                    } while(!input.equals("1"));
                 }
                 default:
                 {

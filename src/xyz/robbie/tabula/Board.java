@@ -173,7 +173,6 @@ public class Board implements BoardInterface
         }
     }
 
-
     public boolean canMakeMove(Colour colour, MoveInterface move)
     {
         // Move can be made if:
@@ -194,7 +193,11 @@ public class Board implements BoardInterface
             {
                 sourceLocation = getBoardLocation(move.getSourceLocation());
             }
-            if(sourceLocation.numberOfPieces(colour) == 0)
+//            if(sourceLocation.numberOfPieces(colour) == 0)
+//            {
+//                return false;
+//            }
+            if(!sourceLocation.canRemovePiece(colour))
             {
                 return false;
             }
@@ -238,26 +241,55 @@ public class Board implements BoardInterface
         if(canMakeMove(colour, move))
         {
             LocationInterface sourceLocation = locations.get(move.getSourceLocation());
-            if(sourceLocation.canRemovePiece(colour)){
+//            if(sourceLocation.canRemovePiece(colour)){
                 try
                 {
+
+                    // Find the new space
+                    LocationInterface targetLocation;
+                    try
+                    {
+                        int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
+                        if(targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the board
+                        {
+                            targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
+                        }
+                        targetLocation = getBoardLocation(targetLocIndex);
+                        if(targetLocation.canAddPiece(colour))
+                        {
+                            targetLocation.addPieceGetKnocked(colour);
+                        }
+                        else
+                        {
+                            throw new IllegalMoveException("That move is not allowed. Player forfeits.");
+                        }
+                    }
+                    catch (NoSuchLocationException e)
+                    {
+                        // Should never be called
+                        e.printStackTrace();
+                    }
+
                     sourceLocation.removePiece(colour);
+
                 }
                 catch(IllegalMoveException e)
                 {
                     throw new IllegalMoveException("Cannot remove a " + colour + " piece from location " + sourceLocation.getName());
                 }
-            }
-            else
-            {
-                throw new IllegalMoveException("Cannot remove a " + colour + " piece from location " + sourceLocation.getName());
-            }
+//            }
+//            else
+//            {
+//                throw new IllegalMoveException("Cannot remove a " + colour + " piece from location " + sourceLocation.getName());
+//            }
         }
         else
         {
             // addPieceGetKnocked(); ??
             // try-catch on moveThing() instead?
             // throw IllegalMoveException
+            // Can't make move
+            throw new IllegalMoveException("That move is not allowed. Player forfeits.");
         }
     }
 
@@ -313,17 +345,17 @@ public class Board implements BoardInterface
             LocationInterface cl = null;
             System.out.println("i = " + i);
 
-            if(i == 0)
+            if(i == 0) // Start location
             {
                 cl = cloneBoard.getStartLocation();
                 tl = this.getStartLocation();
             }
-            else if(i == NUMBER_OF_LOCATIONS+1)
+            else if(i == NUMBER_OF_LOCATIONS+1) // Finish location
             {
                 cl = cloneBoard.getEndLocation();
                 tl = this.getEndLocation();
             }
-            else if(i == NUMBER_OF_LOCATIONS+2)
+            else if(i == NUMBER_OF_LOCATIONS+2) // Knocked location
             {
                 cl = cloneBoard.getKnockedLocation();
                 tl = this.getKnockedLocation();

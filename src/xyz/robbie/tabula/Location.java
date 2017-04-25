@@ -122,33 +122,35 @@ public class Location implements LocationInterface
 
     public Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException
     {
+        incrementColour(colour);
+        return null;
         // Do we need to knock a piece?
         // First, check if the location is mixed
 
-        if(!isMixed())
-        {
-            Colour otherColour = colour.otherColour();//Board.getOtherColour(colour);
-            if(numberOfPieces(otherColour) == 0) // Simply add the piece
-            {
-//                pieces.put(colour,numberOfPieces(colour)+1);
-                incrementColour(colour);
-            }
-            else if(numberOfPieces(otherColour) == 1) // There is one piece of the other colour, so knock it
-            {
-                return otherColour;
-            }
-            else
-            {
-                throw new IllegalMoveException("Too many pieces of other colour in this location to knock.");
-            }
-            return null;
-        }
-        else
-        {
-//            pieces.put(colour,numberOfPieces(colour)+1);
-            incrementColour(colour);
-            return null;
-        }
+//        if(!isMixed())
+//        {
+//            Colour otherColour = colour.otherColour();//Board.getOtherColour(colour);
+//            if(numberOfPieces(otherColour) == 0) // Simply add the piece
+//            {
+////                pieces.put(colour,numberOfPieces(colour)+1);
+//                incrementColour(colour);
+//            }
+//            else if(numberOfPieces(otherColour) == 1) // There is one piece of the other colour, so knock it
+//            {
+//                return otherColour;
+//            }
+//            else
+//            {
+//                throw new IllegalMoveException("Too many pieces of other colour in this location to knock.");
+//            }
+//            return null;
+//        }
+//        else
+//        {
+////            pieces.put(colour,numberOfPieces(colour)+1);
+//            incrementColour(colour);
+//            return null;
+//        }
     }
 
     private void incrementColour(Colour c)

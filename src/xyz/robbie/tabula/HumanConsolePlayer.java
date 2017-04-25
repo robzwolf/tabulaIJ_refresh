@@ -178,4 +178,9 @@ public class HumanConsolePlayer implements PlayerInterface
         return chosenNum;
     }
 
+    public String toString()
+    {
+        return "human";
+    }
+
 }
