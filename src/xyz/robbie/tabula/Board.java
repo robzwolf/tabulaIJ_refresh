@@ -175,21 +175,15 @@ public class Board implements BoardInterface {
 
         // Find the new space
         LocationInterface targetLocation;
-        try {
-            int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
-            if (targetLocIndex > NUMBER_OF_LOCATIONS)       // if the move would take us off the board
-            {
-                targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
-            }
-            targetLocation = getBoardLocation(targetLocIndex);
-            if (targetLocation.canAddPiece(colour)) {
-                return true;
-            } else {
-                return false;
-            }
-        } catch (NoSuchLocationException e) {
-            // Should never be called
-            e.printStackTrace();
+        int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
+        if (targetLocIndex > NUMBER_OF_LOCATIONS)       // if the move would take us off the board
+        {
+            targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
+        }
+        targetLocation = locations.get(targetLocIndex);
+        if (targetLocation.canAddPiece(colour)) {
+            return true;
+        } else {
             return false;
         }
     }
@@ -204,28 +198,23 @@ public class Board implements BoardInterface {
             }
 
             try {
-                try {
-                    // Find the new space
-                    LocationInterface targetLocation;
-                    int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
-                    if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
-                    {
-                        targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
-                    }
-                    targetLocation = getBoardLocation(targetLocIndex);
+                // Find the new space
+                LocationInterface targetLocation;
+                int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
+                if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
+                {
+                    targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
+                }
+                targetLocation = locations.get(targetLocIndex);
 
-                    if (targetLocation.canAddPiece(colour)) {
-                        Colour knockedColour = targetLocation.addPieceGetKnocked(colour);
-                        if(knockedColour != null) {
-                            getKnockedLocation().addPieceGetKnocked(knockedColour);
-                            targetLocation.removePiece(knockedColour);
-                        }
-                    } else {
-                        throw new IllegalMoveException("That move is not allowed. Player forfeits.");
+                if (targetLocation.canAddPiece(colour)) {
+                    Colour knockedColour = targetLocation.addPieceGetKnocked(colour);
+                    if(knockedColour != null) {
+                        getKnockedLocation().addPieceGetKnocked(knockedColour);
+                        targetLocation.removePiece(knockedColour);
                     }
-                } catch (NoSuchLocationException e) {
-                    // Should never be called
-                    e.printStackTrace();
+                } else {
+                    throw new IllegalMoveException("That move is not allowed. Player forfeits.");
                 }
 
                 sourceLocation.removePiece(colour);
