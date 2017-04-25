@@ -1,7 +1,7 @@
 package xyz.robbie.tabula;
 
 public class IllegalMoveException extends Exception {
-    public IllegalMoveException(String message){
+    public IllegalMoveException(String message) {
         super(message);
     }
 }
