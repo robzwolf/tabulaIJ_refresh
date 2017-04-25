@@ -105,57 +105,53 @@ public class Location implements LocationInterface {
     }
 
     public Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException {
-//        System.out.println("This location currently has " + numberOfPieces(colour) + " " + colour + " pieces on it");
-        incrementColour(colour);
-//        System.out.println("This location now has " + numberOfPieces(colour) + " " + colour + " pieces on it");
-        return null;
         // Do we need to knock a piece?
         // First, check if the location is mixed
 
-//        if(!isMixed())
-//        {
-//            Colour otherColour = colour.otherColour();//Board.getOtherColour(colour);
-//            if(numberOfPieces(otherColour) == 0) // Simply add the piece
-//            {
-////                pieces.put(colour,numberOfPieces(colour)+1);
-//                incrementColour(colour);
-//            }
-//            else if(numberOfPieces(otherColour) == 1) // There is one piece of the other colour, so knock it
-//            {
-//                return otherColour;
-//            }
-//            else
-//            {
-//                throw new IllegalMoveException("Too many pieces of other colour in this location to knock.");
-//            }
-//            return null;
-//        }
-//        else
-//        {
-////            pieces.put(colour,numberOfPieces(colour)+1);
-//            incrementColour(colour);
-//            return null;
-//        }
+        if(!isMixed())
+        {
+            Colour otherColour = colour.otherColour();
+            if(numberOfPieces(otherColour) == 0) // Simply add the piece
+            {
+                incrementColour(colour);
+            }
+            else if(numberOfPieces(otherColour) == 1) // There is one piece of the other colour, so knock it and add our colour to it
+            {
+                incrementColour(colour);
+                decrementColour(colour.otherColour());
+                return otherColour;
+            }
+            else
+            {
+                throw new IllegalMoveException("Too many pieces of other colour in this location to knock.");
+            }
+            return null;
+        }
+        else
+        {
+            incrementColour(colour);
+            return null;
+        }
     }
 
     private void incrementColour(Colour c) {
         pieces.put(c, numberOfPieces(c) + 1);
     }
 
-    ///// return true if and only if a piece of that colour can be removed (i.e. no IllegalMoveException)
+    private void decrementColour(Colour c)
+    {
+        pieces.put(c, numberOfPieces(c) - 1);
+    }
+
     public boolean canRemovePiece(Colour colour) {
-        // Can remove a piece if there are >0 pieces in this Location
-        if (numberOfPieces(colour) > 0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        // Can remove a piece if there are >0 pieces of that colour in this Location
+        return numberOfPieces(colour) > 0;
     }
 
     public void removePiece(Colour colour) throws IllegalMoveException {
         if (canRemovePiece(colour)) {
-            pieces.put(colour, numberOfPieces(colour) - 1);
+//            pieces.put(colour, numberOfPieces(colour) - 1);
+            decrementColour(colour);
         }
         else {
             throw new IllegalMoveException("No pieces of that colour (" + colour + ") are in that location.");

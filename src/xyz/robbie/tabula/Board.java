@@ -204,12 +204,11 @@ public class Board implements BoardInterface {
         }
     }
 
+    // ??
     public void makeMove(Colour colour, MoveInterface move) throws IllegalMoveException {
         if (canMakeMove(colour, move)) {
             LocationInterface sourceLocation = locations.get(move.getSourceLocation());
-//            if(sourceLocation.canRemovePiece(colour)){
             try {
-
                 // Find the new space
                 LocationInterface targetLocation;
                 try {
@@ -250,6 +249,7 @@ public class Board implements BoardInterface {
         }
     }
 
+    // ??
     public void takeTurn(Colour colour, TurnInterface turn, List<Integer> diceValues) throws IllegalTurnException {
         int index = 0;
         for (MoveInterface move : turn.getMoves()) {
@@ -263,18 +263,22 @@ public class Board implements BoardInterface {
         }
     }
 
+    // ??
     public boolean isWinner(Colour colour) {
         return false;
     }
 
+    // ??
     public Colour winner() {
         return null;
     }
 
+    // ??
     public boolean isValid() {
         return false;
     }
 
+    // ??
     public Set<MoveInterface> possibleMoves(Colour colour, List<Integer> diceValues) {
         return null;
     }
@@ -284,18 +288,12 @@ public class Board implements BoardInterface {
         //     make new Board()
         //         (this will create new locations and set them mixed as required)
         //     transfer number of each colour counters to each location in the new board
-//        System.out.println("Called Board.clone()");
-        BoardInterface cloneBoard = new Board(false);
 
-//        System.out.println("this START location has " + this.getStartLocation().numberOfPieces(Colour.GREEN) + " GREEN pieces");
-//        System.out.println("this START location has " + this.getStartLocation().numberOfPieces(Colour.BLUE) + " BLUE pieces");
-//        System.out.println("clone START location has " + cloneBoard.getStartLocation().numberOfPieces(Colour.GREEN) + " GREEN pieces");
-//        System.out.println("clone START location has " + cloneBoard.getStartLocation().numberOfPieces(Colour.BLUE) + " BLUE pieces");
+        BoardInterface cloneBoard = new Board(false);
 
         for (int i = 0; i <= NUMBER_OF_LOCATIONS + 2; i++) {
             LocationInterface tl = null;
             LocationInterface cl = null;
-//            System.out.println("i = " + i);
 
             if (i == 0) // Start location
             {
@@ -331,12 +329,10 @@ public class Board implements BoardInterface {
 
             // Transfer number of pieces of each colour
             for (Colour c : Colour.values()) {
-//                System.out.println("" + c + " " + tl.numberOfPieces(c) + " pieces");
                 // Add the piece c to cl the correct number of times
                 for (int j = 1; j <= tl.numberOfPieces(c); j++) {
                     try {
                         cl.addPieceGetKnocked(c);
-//                        System.out.println("Added piece " + c + " on the " + j + "th round to location " + i);
                     } catch (IllegalMoveException e) {
                         // Should never happen as tl will be valid
                         System.out.println("Error adding " + c + " on j-iteration #" + j + " to location #" + i);
@@ -344,7 +340,6 @@ public class Board implements BoardInterface {
                 }
             }
 
-//            System.out.println("Copied location " + i);
         }
         return cloneBoard;
     }
@@ -392,18 +387,14 @@ public class Board implements BoardInterface {
                 maxColourLength = c.toString().length();
             }
         }
-//            System.out.println("Max colour length is " + maxColourLength);
-
 
         // Calculate the biggest number length
         // Biggest number will be number of pieces per colour
         // Length will be floor (log_10 (NUMBER_OF_PIECES)) + 1
         int maxNumberLength = getLengthOfNumber(BoardInterface.PIECES_PER_PLAYER);
-//            System.out.println("Max number length is " + maxNumberLength);
 
         // space + maxNumberLength + space + maxColourLength + space
         int boxInnerWidth = maxNumberLength + maxColourLength + 3;
-//            System.out.println("Inner box width is " + boxInnerWidth);
 
         String dashLine = getNOf("-", boxInnerWidth); // Store this for use in dashLine (efficiency)
         String paddedDashLine = "  " + dashLine; // Use this one for efficiency
