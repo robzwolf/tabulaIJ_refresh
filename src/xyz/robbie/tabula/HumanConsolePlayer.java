@@ -70,7 +70,11 @@ public class HumanConsolePlayer implements PlayerInterface {
         List<MoveInterface> moves = new ArrayList<MoveInterface>();
 
         // Loop through until diceValues() is empty
-        do {
+        while (diceValues.size() > 0 || board.possibleMoves(colour, diceValues).size() > 0) {
+            for(MoveInterface move : board.possibleMoves(colour, diceValues)) {
+                System.out.println("move = " + move);
+            }
+
             // Ask user for their preferred dice value
             System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));
             System.out.println("Enter which die value you wish to use " + ordinalNumbers[moves.size()] + ":"); // when moves is empty, get ordinalNumbers[0] and so on
@@ -89,6 +93,11 @@ public class HumanConsolePlayer implements PlayerInterface {
                 calculatedMove.setDiceValue(chosenDie);
                 calculatedMove.setSourceLocation(chosenSourceLocation);
                 if (board.canMakeMove(colour, calculatedMove)) {
+                    try {
+                        board.makeMove(colour, calculatedMove);
+                    } catch (IllegalMoveException e) {
+                        System.out.println("That move is not valid.");
+                    }
                     diceValues.remove(Integer.valueOf(chosenDie));
                     moves.add(calculatedMove);
                     System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
@@ -103,7 +112,7 @@ public class HumanConsolePlayer implements PlayerInterface {
                 System.out.println("Something went catastrophically wrong!");
                 e.printStackTrace();
             }
-        } while (diceValues.size() > 0);
+        }
 
         TurnInterface turn = new Turn();
         for (MoveInterface move : moves) {

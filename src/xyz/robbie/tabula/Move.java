@@ -19,7 +19,7 @@ public class Move implements MoveInterface {
         if (locationNumber < 0 || locationNumber > BoardInterface.NUMBER_OF_LOCATIONS) {
             throw new NoSuchLocationException("That is not a valid location. Locations must lie in the range 0 to " + BoardInterface.NUMBER_OF_LOCATIONS);
         } else {
-            sourceLocation = locationNumber;
+            this.sourceLocation = locationNumber;
         }
 
     }
@@ -41,6 +41,11 @@ public class Move implements MoveInterface {
     // name getDiceValue should really be name getDieValue
     public int getDiceValue() {
         return dieValue;
+    }
+
+    // For debugging
+    public String toString() {
+        return "Move " + getDiceValue() + " spaces from location no. " + getSourceLocation();
     }
 
 }

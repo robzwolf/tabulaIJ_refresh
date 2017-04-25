@@ -60,12 +60,6 @@ public class Game implements GameInterface {
         board = getBoard();
         Dice d = new Dice();
 
-//        PlayerInterface humanConsolePlayerOne = new HumanConsolePlayer();
-//        PlayerInterface humanConsolePlayerTwo = new HumanConsolePlayer();
-
-//        setPlayer(Colour.GREEN, humanConsolePlayerOne);
-//        setPlayer(Colour.BLUE, humanConsolePlayerTwo);
-
         boolean stillPlaying = true;
         TurnInterface t;
         // Do the game loop

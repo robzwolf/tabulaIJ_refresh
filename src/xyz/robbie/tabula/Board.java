@@ -1,5 +1,6 @@
 package xyz.robbie.tabula;
 
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import java.util.ArrayList;
@@ -197,18 +198,28 @@ public class Board implements BoardInterface {
     public void makeMove(Colour colour, MoveInterface move) throws IllegalMoveException {
         if (canMakeMove(colour, move)) {
             LocationInterface sourceLocation = locations.get(move.getSourceLocation());
+
+            if(!sourceLocation.canRemovePiece(colour)) {
+                throw new IllegalMoveException("Cannot remove a piece from location " + sourceLocation.getName() + ".");
+            }
+
             try {
-                // Find the new space
-                LocationInterface targetLocation;
                 try {
+                    // Find the new space
+                    LocationInterface targetLocation;
                     int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
-                    if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the board
+                    if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
                     {
                         targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
                     }
                     targetLocation = getBoardLocation(targetLocIndex);
+
                     if (targetLocation.canAddPiece(colour)) {
-                        targetLocation.addPieceGetKnocked(colour);
+                        Colour knockedColour = targetLocation.addPieceGetKnocked(colour);
+                        if(knockedColour != null) {
+                            getKnockedLocation().addPieceGetKnocked(knockedColour);
+                            targetLocation.removePiece(knockedColour);
+                        }
                     } else {
                         throw new IllegalMoveException("That move is not allowed. Player forfeits.");
                     }
@@ -222,16 +233,7 @@ public class Board implements BoardInterface {
             } catch (IllegalMoveException e) {
                 throw new IllegalMoveException("Cannot remove a " + colour + " piece from location " + sourceLocation.getName());
             }
-//            }
-//            else
-//            {
-//                throw new IllegalMoveException("Cannot remove a " + colour + " piece from location " + sourceLocation.getName());
-//            }
-        } else {
-            // addPieceGetKnocked(); ??
-            // try-catch on moveThing() instead?
-            // throw IllegalMoveException
-            // Can't make move
+        } else { // Can't make move
             throw new IllegalMoveException("That move is not allowed. Player forfeits.");
         }
     }
@@ -278,8 +280,46 @@ public class Board implements BoardInterface {
 
     // ??
     public Set<MoveInterface> possibleMoves(Colour colour, List<Integer> diceValues) {
-        return null;
+        Set<MoveInterface> moves = new HashSet<MoveInterface>();
+        if(diceValues.size() == 4) {
+            moves.addAll(calculatePossibleMoves(colour, diceValues.get(0)));
+        } else {
+            for(int dieValue : diceValues) {
+                moves.addAll(calculatePossibleMoves(colour, dieValue));
+            } // end for each die value
+        }
+        return moves;
     }
+
+    private Set<MoveInterface> calculatePossibleMoves(Colour colour, int dieValue) {
+        Set<MoveInterface> moves = new HashSet<MoveInterface>();
+        for(int sourceLocationIndex=0; sourceLocationIndex<=NUMBER_OF_LOCATIONS; sourceLocationIndex++) {
+            LocationInterface sourceLocation = locations.get(sourceLocationIndex);
+            if(sourceLocation .canRemovePiece(colour)) {
+                // Find the new space
+                LocationInterface targetLocation;
+                int targetLocIndex = sourceLocationIndex + dieValue;
+                if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
+                {
+                    targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
+                }
+                targetLocation = locations.get(targetLocIndex);
+                if(targetLocation.canAddPiece(colour)) {
+                    MoveInterface move = new Move();
+                    try {
+                        move.setSourceLocation(sourceLocationIndex);
+                        move.setDiceValue(dieValue);
+                    } catch (NoSuchLocationException | IllegalMoveException e) {
+                        // Should never be called
+                        e.printStackTrace();
+                    }
+                    moves.add(move);
+                } // end if canAddPiece()
+            } // end if canRemovePiece()
+        } // end for each location
+        return moves;
+    }
+
 
     public BoardInterface clone() {
 

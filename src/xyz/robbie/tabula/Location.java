@@ -64,28 +64,36 @@ public class Location implements LocationInterface {
            - The space is empty
            - The space has counters of the same colour
            - The space has one counter of the opposite colour
+           - The space is mixed
 
            If a counter moves to a space with one counter of the opposite
            colour, the opposition counter is knocked off and is placed in a
            holding area
         */
 
-        // If the space is empty
-        if (this.isEmpty()) {
+        if (this.isEmpty()) {                                       // If the space is empty
             return true;
         }
 
-        // If the space has only counters of the same colour
-        if (!this.isMixed() && numberOfPieces(colour) != 0) {
+        if(this.isMixed()) {                                        // If the space is mixed
             return true;
-        }
-
-        // If the space is not mixed and has exactly one counter of the opposite colour
-        if (!this.isMixed()) {
-            if (numberOfPieces(colour.otherColour()) == 1) {
+        } else {
+            if(this.numberOfPieces(colour) != 0) {                  // If the space has only counters of the same colour
+                return true;
+            } else if(numberOfPieces(colour.otherColour()) == 1) {  // If the space is not mixed and has exactly one counter of the opposite colour
                 return true;
             }
         }
+
+//        if (!this.isMixed() && numberOfPieces(colour) != 0) {
+//            return true;
+//        }
+//
+//        if (!this.isMixed()) {
+//            if (numberOfPieces(colour.otherColour()) == 1) {
+//                return true;
+//            }
+//        }
 
         // If none of the above conditions are satisfied
         return false;
