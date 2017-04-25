@@ -122,7 +122,9 @@ public class Location implements LocationInterface
 
     public Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException
     {
+//        System.out.println("This location currently has " + numberOfPieces(colour) + " " + colour + " pieces on it");
         incrementColour(colour);
+//        System.out.println("This location now has " + numberOfPieces(colour) + " " + colour + " pieces on it");
         return null;
         // Do we need to knock a piece?
         // First, check if the location is mixed
@@ -155,7 +157,7 @@ public class Location implements LocationInterface
 
     private void incrementColour(Colour c)
     {
-        pieces.put(c,numberOfPieces(c)+1);
+        pieces.put(c, numberOfPieces(c) + 1);
     }
 
     ///// return true if and only if a piece of that colour can be removed (i.e. no IllegalMoveException)

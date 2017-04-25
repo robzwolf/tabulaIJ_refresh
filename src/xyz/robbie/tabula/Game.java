@@ -46,6 +46,9 @@ public class Game implements GameInterface
 
     public Colour play() throws PlayerNotDefinedException
     {
+        // Green starts
+        currentColour = Colour.values()[0];
+        System.out.println("Current player is currently " + currentColour);
         if(players.size() == 0)
         {
             throw new PlayerNotDefinedException("No players have been defined.", 2);

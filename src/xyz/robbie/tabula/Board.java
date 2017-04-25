@@ -13,8 +13,6 @@ import java.util.ArrayList;
 
 public class Board implements BoardInterface
 {
-    // Determines whether to print all locations in a vertical list (as opposed to S-shape) in toString()
-    private boolean verticalToString;
 
     private String name;
 
@@ -61,7 +59,22 @@ public class Board implements BoardInterface
 
     public Board()
     {
+        initialiseBoard();
+        prePopulateStart();
+    }
 
+    public Board(boolean prePopulateStart)
+    {
+        if(prePopulateStart)
+        {
+            prePopulateStart();
+        }
+
+        initialiseBoard();
+    }
+
+    private void initialiseBoard()
+    {
         locations = new ArrayList<LocationInterface>();
 
         // Create the list of Locations
@@ -111,7 +124,10 @@ public class Board implements BoardInterface
 
         // Set the board name
         setName("North-East Board");
+    }
 
+    private void prePopulateStart()
+    {
         // Pre-populate the START location
         for(Colour c : Colour.values())
         {
@@ -128,17 +144,6 @@ public class Board implements BoardInterface
                 }
             }
         }
-
-    }
-
-    public void setVerticalToString(boolean v)
-    {
-        verticalToString = v;
-    }
-
-    public boolean getVerticalToString()
-    {
-        return verticalToString;
     }
 
     public void setName(String name)
@@ -336,14 +341,19 @@ public class Board implements BoardInterface
         //     make new Board()
         //         (this will create new locations and set them mixed as required)
         //     transfer number of each colour counters to each location in the new board
+//        System.out.println("Called Board.clone()");
+        BoardInterface cloneBoard = new Board(false);
 
-        BoardInterface cloneBoard = new Board();
+//        System.out.println("this START location has " + this.getStartLocation().numberOfPieces(Colour.GREEN) + " GREEN pieces");
+//        System.out.println("this START location has " + this.getStartLocation().numberOfPieces(Colour.BLUE) + " BLUE pieces");
+//        System.out.println("clone START location has " + cloneBoard.getStartLocation().numberOfPieces(Colour.GREEN) + " GREEN pieces");
+//        System.out.println("clone START location has " + cloneBoard.getStartLocation().numberOfPieces(Colour.BLUE) + " BLUE pieces");
 
         for(int i=0; i<=NUMBER_OF_LOCATIONS+2; i++)
         {
             LocationInterface tl = null;
             LocationInterface cl = null;
-            System.out.println("i = " + i);
+//            System.out.println("i = " + i);
 
             if(i == 0) // Start location
             {
@@ -372,7 +382,6 @@ public class Board implements BoardInterface
                 {
                     // Something went wrong, but we this should never happen
                     System.out.println(e);
-//                  continue;
                 }
             }
 
@@ -385,12 +394,14 @@ public class Board implements BoardInterface
             // Transfer number of pieces of each colour
             for(Colour c : Colour.values())
             {
-                // Add the piece c the correct number of times
+//                System.out.println("" + c + " " + tl.numberOfPieces(c) + " pieces");
+                // Add the piece c to cl the correct number of times
                 for(int j=1; j<=tl.numberOfPieces(c); j++)
                 {
                     try
                     {
                         cl.addPieceGetKnocked(c);
+//                        System.out.println("Added piece " + c + " on the " + j + "th round to location " + i);
                     }
                     catch(IllegalMoveException e)
                     {
@@ -400,7 +411,7 @@ public class Board implements BoardInterface
                 }
             }
 
-            System.out.println("Copied location " + i);
+//            System.out.println("Copied location " + i);
         }
         return cloneBoard;
     }
