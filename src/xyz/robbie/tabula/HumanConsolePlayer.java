@@ -60,24 +60,25 @@ public class HumanConsolePlayer implements PlayerInterface {
 
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException {
         System.out.println(board);
-        System.out.println("Player " + strToTitleCase(colour + ", it's your turn."));
+        System.out.println("== PLAYER " + colour.toString().toUpperCase() + " ==");
+//        System.out.println("Player " + strToTitleCase(colour + ", it's your turn."));
         if (diceValues.size() == 4) {
             System.out.print("You're lucky - you rolled a double! ");
         } else {
             System.out.print("The dice have been rolled. ");
         }
 
-        List<MoveInterface> moves = new ArrayList<MoveInterface>();
+        List<MoveInterface> chosenMoves = new ArrayList<MoveInterface>();
 
         // Loop through until diceValues() is empty
         while (diceValues.size() > 0 || board.possibleMoves(colour, diceValues).size() > 0) {
-            for(MoveInterface move : board.possibleMoves(colour, diceValues)) {
-                System.out.println("move = " + move);
-            }
+//            for(MoveInterface move : board.possibleMoves(colour, diceValues)) {
+//                System.out.println("move = " + move);
+//            }
 
             // Ask user for their preferred dice value
             System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));
-            System.out.println("Enter which die value you wish to use " + ordinalNumbers[moves.size()] + ":"); // when moves is empty, get ordinalNumbers[0] and so on
+            System.out.println("Enter which die value you wish to use " + ordinalNumbers[chosenMoves.size()] + ":"); // when chosenMoves is empty, get ordinalNumbers[0] and so on
             int chosenDie = askUserForNum(diceValues, "%s is not one of the values you rolled. Try again:");
 
             // Ask user for move source location
@@ -99,7 +100,7 @@ public class HumanConsolePlayer implements PlayerInterface {
                         System.out.println("That move is not valid.");
                     }
                     diceValues.remove(Integer.valueOf(chosenDie));
-                    moves.add(calculatedMove);
+                    chosenMoves.add(calculatedMove);
                     System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
                 } else {
                     System.out.println("That move is not valid. Try again.");
@@ -115,7 +116,7 @@ public class HumanConsolePlayer implements PlayerInterface {
         }
 
         TurnInterface turn = new Turn();
-        for (MoveInterface move : moves) {
+        for (MoveInterface move : chosenMoves) {
             try {
                 turn.addMove(move);
             } catch (IllegalTurnException e) {

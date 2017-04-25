@@ -173,7 +173,7 @@ public class Game implements GameInterface {
 //        ComputerPlayer cp1;
 //        ComputerPlayer cp2;
         Game g = new Game();
-        System.out.println("Welcome to Tabula North-East.");
+        System.out.println("\nWelcome to Tabula North-East.");
 
 
         do {
