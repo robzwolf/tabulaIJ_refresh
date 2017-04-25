@@ -255,6 +255,7 @@ public class Board implements BoardInterface
         }
         else
         {
+            // addPieceGetKnocked(); ??
             // try-catch on moveThing() instead?
             // throw IllegalMoveException
         }
