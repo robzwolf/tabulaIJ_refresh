@@ -46,11 +46,9 @@ public class Game implements GameInterface {
         System.out.println("Current player is currently " + currentColour);
         if (players.size() == 0) {
             throw new PlayerNotDefinedException("No players have been defined.", 2);
-        }
-        else if (players.size() == 1) {
+        } else if (players.size() == 1) {
             throw new PlayerNotDefinedException("One player has not yet been defined.", 1);
-        }
-        else if (players.size() != 2) {
+        } else if (players.size() != 2) {
             // Shouldn't be able to get this far though
             throw new PlayerNotDefinedException("Two players need to be defined.");
         }
@@ -233,14 +231,12 @@ public class Game implements GameInterface {
                             PlayerInterface hcp = new HumanConsolePlayer();
                             g.setPlayer(Colour.values()[0], hcp);
                             System.out.println("You have set " + colours[0] + " to be a human player.");
-                        }
-                        else if (input.equals("2")) {
+                        } else if (input.equals("2")) {
                             // make second colour computer
                             PlayerInterface cp = new ComputerPlayer();
                             g.setPlayer(Colour.values()[0], cp);
                             System.out.println("You have set " + colours[0] + " to be a computer player.");
-                        }
-                        else if (input.equals("3")) {
+                        } else if (input.equals("3")) {
                             returnToMainMenu = true;
                         }
                     } while (!input.equals("1") && !input.equals("2") && !input.equals("3"));
@@ -261,14 +257,12 @@ public class Game implements GameInterface {
                             PlayerInterface hcp = new HumanConsolePlayer();
                             g.setPlayer(Colour.values()[1], hcp);
                             System.out.println("You have set " + colours[1] + " to be a human player.");
-                        }
-                        else if (input.equals("2")) {
+                        } else if (input.equals("2")) {
                             // make second colour computer
                             PlayerInterface cp = new ComputerPlayer();
                             g.setPlayer(Colour.values()[1], cp);
                             System.out.println("You have set " + colours[1] + " to be a computer player.");
-                        }
-                        else if (input.equals("3")) {
+                        } else if (input.equals("3")) {
                             returnToMainMenu = true;
                         }
                     } while (!input.equals("1") && !input.equals("2") && !input.equals("3"));
@@ -286,11 +280,9 @@ public class Game implements GameInterface {
                     } catch (PlayerNotDefinedException e) {
                         if (e.getNumUndefined() == 2) {
                             System.out.println("You have not defined any players. Return to the main menu and try again.");
-                        }
-                        else if (e.getNumUndefined() == 1) {
+                        } else if (e.getNumUndefined() == 1) {
                             System.out.println("You have only defined one player. Return to the main menu to define the other player.");
-                        }
-                        else {
+                        } else {
                             System.out.println("Some players are undefined. Return to the main menu and try again.");
                         }
 //                        System.out.println("You have not defined both players. Return to the main menu and try again.");

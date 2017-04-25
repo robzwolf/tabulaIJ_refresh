@@ -35,8 +35,7 @@ public class Die implements DieInterface {
     public int getValue() throws NotRolledYetException {
         if (hasRolled()) {
             return value;
-        }
-        else {
+        } else {
             throw new NotRolledYetException("Die has not yet been rolled.");
         }
     }
@@ -44,8 +43,7 @@ public class Die implements DieInterface {
     public void setValue(int value) {
         if (1 <= value && value <= NUMBER_OF_SIDES_ON_DIE) {
             this.value = value;
-        }
-        else {
+        } else {
             this.value = null;
         }
     }

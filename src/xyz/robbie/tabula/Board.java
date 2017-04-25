@@ -83,17 +83,13 @@ public class Board implements BoardInterface {
             String locName;
             if (i == 0) {
                 locName = START_NAME;
-            }
-            else if (i == NUMBER_OF_LOCATIONS + 1) {
+            } else if (i == NUMBER_OF_LOCATIONS + 1) {
                 locName = FINISH_NAME;
-            }
-            else if (i == NUMBER_OF_LOCATIONS + 2) {
+            } else if (i == NUMBER_OF_LOCATIONS + 2) {
                 locName = KNOCKED_NAME;
-            }
-            else if (1 <= i && i <= locationNames.length) {
+            } else if (1 <= i && i <= locationNames.length) {
                 locName = locationNames[i - 1];
-            }
-            else {
+            } else {
                 locName = "Town #" + i;
             }
             //String locName = i>=locationNames.length ? "Town "+i : locationNames[i];
@@ -147,32 +143,26 @@ public class Board implements BoardInterface {
     public LocationInterface getBoardLocation(int locationNumber) throws NoSuchLocationException {
         if (locationNumber < 1 || locationNumber > BoardInterface.NUMBER_OF_LOCATIONS) {
             throw new NoSuchLocationException("Requested location number was out of the given range (1 to " + NUMBER_OF_LOCATIONS + ").");
-        }
-        else {
+        } else {
             return locations.get(locationNumber);
         }
     }
 
     public boolean canMakeMove(Colour colour, MoveInterface move) {
-        // Move can be made if:
-        // - current space has available pieces of that colour
-        // - new space is empty
-        // - new space has counters of the same colour
-        // - new space has one counter of the opposite colour
+        /* Move can be made if:
+         - current space has available pieces of that colour
+         - new space is empty
+         - new space has counters of the same colour
+         - new space has one counter of the opposite colour */
 
         // Check current space has at least one of this colour
         try {
             LocationInterface sourceLocation;
             if (move.getSourceLocation() == 0) {
                 sourceLocation = getStartLocation();
-            }
-            else {
+            } else {
                 sourceLocation = getBoardLocation(move.getSourceLocation());
             }
-//            if(sourceLocation.numberOfPieces(colour) == 0)
-//            {
-//                return false;
-//            }
             if (!sourceLocation.canRemovePiece(colour)) {
                 return false;
             }
@@ -186,15 +176,14 @@ public class Board implements BoardInterface {
         LocationInterface targetLocation;
         try {
             int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
-            if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the board
+            if (targetLocIndex > NUMBER_OF_LOCATIONS)       // if the move would take us off the board
             {
-                targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
+                targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
             }
             targetLocation = getBoardLocation(targetLocIndex);
             if (targetLocation.canAddPiece(colour)) {
                 return true;
-            }
-            else {
+            } else {
                 return false;
             }
         } catch (NoSuchLocationException e) {
@@ -220,8 +209,7 @@ public class Board implements BoardInterface {
                     targetLocation = getBoardLocation(targetLocIndex);
                     if (targetLocation.canAddPiece(colour)) {
                         targetLocation.addPieceGetKnocked(colour);
-                    }
-                    else {
+                    } else {
                         throw new IllegalMoveException("That move is not allowed. Player forfeits.");
                     }
                 } catch (NoSuchLocationException e) {
@@ -239,8 +227,7 @@ public class Board implements BoardInterface {
 //            {
 //                throw new IllegalMoveException("Cannot remove a " + colour + " piece from location " + sourceLocation.getName());
 //            }
-        }
-        else {
+        } else {
             // addPieceGetKnocked(); ??
             // try-catch on moveThing() instead?
             // throw IllegalMoveException
@@ -251,13 +238,24 @@ public class Board implements BoardInterface {
 
     // ??
     public void takeTurn(Colour colour, TurnInterface turn, List<Integer> diceValues) throws IllegalTurnException {
+
+        if (turn.getMoves().size() != diceValues.size()) {
+            throw new IllegalTurnException("Player submitted too many moves in one turn. You forfeit.");
+        }
+
         int index = 0;
         for (MoveInterface move : turn.getMoves()) {
-            if (move.getDiceValue() != diceValues.get(index)) {
-                throw new IllegalTurnException("Die value (" + move.getDiceValue() + ") of move #" + (index + 1) + " does not match the given dice value (" + diceValues.get(index) + ")");
-            }
-            else {
-
+            //if (move.getDiceValue() != diceValues.get(index)) {
+            if (!diceValues.contains(move.getDiceValue())) {
+                throw new IllegalTurnException("Die value (" + move.getDiceValue() + ") of move #" + (index + 1) + " does not match the given dice value (" + diceValues.get(index) + "). Player forfeits.");
+            } else {
+                try {
+                    makeMove(colour, move);
+                } catch (IllegalMoveException e) {
+                    // Player submitted an illegal move
+                    e.printStackTrace();
+                    throw new IllegalTurnException("One of your moves was invalid. You forfeit.");
+                }
             }
             index++;
         }
@@ -285,39 +283,28 @@ public class Board implements BoardInterface {
 
     public BoardInterface clone() {
 
-        //     make new Board()
-        //         (this will create new locations and set them mixed as required)
-        //     transfer number of each colour counters to each location in the new board
-
         BoardInterface cloneBoard = new Board(false);
 
         for (int i = 0; i <= NUMBER_OF_LOCATIONS + 2; i++) {
             LocationInterface tl = null;
             LocationInterface cl = null;
 
-            if (i == 0) // Start location
-            {
+            if (i == 0) {                               // Start location
                 cl = cloneBoard.getStartLocation();
                 tl = this.getStartLocation();
-            }
-            else if (i == NUMBER_OF_LOCATIONS + 1) // Finish location
-            {
+            } else if (i == NUMBER_OF_LOCATIONS + 1) {  // Finish location
                 cl = cloneBoard.getEndLocation();
                 tl = this.getEndLocation();
-            }
-            else if (i == NUMBER_OF_LOCATIONS + 2) // Knocked location
-            {
+            } else if (i == NUMBER_OF_LOCATIONS + 2) {  // Knocked location
                 cl = cloneBoard.getKnockedLocation();
                 tl = this.getKnockedLocation();
-            }
-            else {
+            } else {
                 try {
-
                     cl = cloneBoard.getBoardLocation(i);
                     tl = this.getBoardLocation(i);
-                } catch (NoSuchLocationException e) {
-                    // Something went wrong, but we this should never happen
+                } catch (NoSuchLocationException e) {   // Something went wrong, but we this should never happen
                     System.out.println(e);
+                    continue;
                 }
             }
 
@@ -329,12 +316,12 @@ public class Board implements BoardInterface {
 
             // Transfer number of pieces of each colour
             for (Colour c : Colour.values()) {
+
                 // Add the piece c to cl the correct number of times
                 for (int j = 1; j <= tl.numberOfPieces(c); j++) {
                     try {
                         cl.addPieceGetKnocked(c);
-                    } catch (IllegalMoveException e) {
-                        // Should never happen as tl will be valid
+                    } catch (IllegalMoveException e) {  // Should never happen as tl will be valid
                         System.out.println("Error adding " + c + " on j-iteration #" + j + " to location #" + i);
                     }
                 }
@@ -359,8 +346,7 @@ public class Board implements BoardInterface {
                 output += str;
             }
             return output;
-        }
-        else {
+        } else {
             return "";
         }
     }
@@ -388,21 +374,23 @@ public class Board implements BoardInterface {
             }
         }
 
-        // Calculate the biggest number length
-        // Biggest number will be number of pieces per colour
-        // Length will be floor (log_10 (NUMBER_OF_PIECES)) + 1
+        /* Calculate the biggest number length
+         * Biggest number will be number of pieces per colour
+         * Length will be floor (log_10 (NUMBER_OF_PIECES)) + 1
+         */
         int maxNumberLength = getLengthOfNumber(BoardInterface.PIECES_PER_PLAYER);
 
         // space + maxNumberLength + space + maxColourLength + space
         int boxInnerWidth = maxNumberLength + maxColourLength + 3;
 
-        String dashLine = getNOf("-", boxInnerWidth); // Store this for use in dashLine (efficiency)
-        String paddedDashLine = "  " + dashLine; // Use this one for efficiency
+        String dashLine = getNOf("-", boxInnerWidth);   // Store this for use in dashLine (efficiency)
+        String paddedDashLine = "  " + dashLine;            // Use this one for efficiency
 
         String thisLine = "";
 
         // Print start + main (1, ..., NUMBER_OF_LOCATIONS) + finish + knocked locations
         for (int i = 0; i <= NUMBER_OF_LOCATIONS + 2; i++) {
+
             // Special locations are START (index 0), FINISH (index NUMBER_OF_LOCATIONS+1), KNOCKED (NUMBER_OF_LOCATIONS+2)
             boolean isSpecialLocation = i == 0 || i == NUMBER_OF_LOCATIONS + 1 || i == NUMBER_OF_LOCATIONS + 2;
 
@@ -422,7 +410,7 @@ public class Board implements BoardInterface {
                 lines.add(thisLine);
             }
 
-        } // End for each location
+        } // End for each Location
 
         lines.add(paddedDashLine);
 

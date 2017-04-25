@@ -23,7 +23,7 @@ public class Location implements LocationInterface {
         setMixed(false);
         pieces = new HashMap<Colour, Integer>();
 
-        // Populate the pieces HashMap
+        // Initialise the pieces HashMap
         for (Colour colour : Colour.values()) {
             pieces.put(colour, 0);
         }
@@ -46,7 +46,7 @@ public class Location implements LocationInterface {
     }
 
     public boolean isEmpty() {
-        for (Integer count : pieces.values()) {
+        for (int count : pieces.values()) {
             if (count != 0) {
                 return false;
             }
@@ -75,29 +75,16 @@ public class Location implements LocationInterface {
             return true;
         }
 
-        // If the space has counters of the same colour
+        // If the space has only counters of the same colour
         if (!this.isMixed() && numberOfPieces(colour) != 0) {
             return true;
         }
 
         // If the space is not mixed and has exactly one counter of the opposite colour
         if (!this.isMixed()) {
-            if (numberOfPieces(colour.otherColour()/*Board.getOtherColour(colour)*/) == 1) {
+            if (numberOfPieces(colour.otherColour()) == 1) {
                 return true;
             }
-
-            // boolean onlyThisColour = true;
-            // // If any other colours have a non-zero number of pieces on this location
-            // for(Colour c : pieces.keySet())
-            // {
-            //     if(numberOfPieces(c) != 0 & c != colour)
-            //     {
-            //         onlyThisColour = false;
-            //     }
-            // }
-            // if(onlyThisColour){
-            //     return true;
-            // }
         }
 
         // If none of the above conditions are satisfied
@@ -105,55 +92,60 @@ public class Location implements LocationInterface {
     }
 
     public Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException {
-        // Do we need to knock a piece?
-        // First, check if the location is mixed
+        if(colour == null) {
+            throw new IllegalMoveException("Null colour");
+        }
 
-        if(!isMixed())
-        {
-            Colour otherColour = colour.otherColour();
-            if(numberOfPieces(otherColour) == 0) // Simply add the piece
-            {
-                incrementColour(colour);
-            }
-            else if(numberOfPieces(otherColour) == 1) // There is one piece of the other colour, so knock it and add our colour to it
-            {
-                incrementColour(colour);
-                decrementColour(colour.otherColour());
-                return otherColour;
-            }
-            else
-            {
-                throw new IllegalMoveException("Too many pieces of other colour in this location to knock.");
-            }
-            return null;
-        }
-        else
-        {
+        if(canAddPiece(colour)) {
             incrementColour(colour);
-            return null;
+            if(numberOfPieces(colour.otherColour()) == 1) {
+                return colour.otherColour();
+            }
+        } else {
+            throw new IllegalMoveException("Cannot add piece");
         }
+
+        return null;
+
+//        // First, check if the location is mixed
+//
+//        if (!isMixed()) {
+//            Colour otherColour = colour.otherColour();
+//            if (numberOfPieces(otherColour) == 0) // Simply add the piece
+//            {
+//                incrementColour(colour);
+//            } else if (numberOfPieces(otherColour) == 1) // There is one piece of the other colour, so knock it and add our colour to it
+//            {
+//                incrementColour(colour);
+//                decrementColour(colour.otherColour());
+//                return otherColour;
+//            } else {
+//                throw new IllegalMoveException("Too many pieces of other colour in this location to knock.");
+//            }
+//            return null;
+//        } else {
+//            incrementColour(colour);
+//            return null;
+//        }
     }
 
     private void incrementColour(Colour c) {
         pieces.put(c, numberOfPieces(c) + 1);
     }
 
-    private void decrementColour(Colour c)
-    {
+    private void decrementColour(Colour c) {
         pieces.put(c, numberOfPieces(c) - 1);
     }
 
     public boolean canRemovePiece(Colour colour) {
-        // Can remove a piece if there are >0 pieces of that colour in this Location
+        // Can only remove a piece if there are >0 pieces of that colour in this Location
         return numberOfPieces(colour) > 0;
     }
 
     public void removePiece(Colour colour) throws IllegalMoveException {
         if (canRemovePiece(colour)) {
-//            pieces.put(colour, numberOfPieces(colour) - 1);
             decrementColour(colour);
-        }
-        else {
+        } else {
             throw new IllegalMoveException("No pieces of that colour (" + colour + ") are in that location.");
         }
     }
@@ -169,14 +161,12 @@ public class Location implements LocationInterface {
         Colour firstColourWithSomePieces = null;
         for (Colour c : pieces.keySet()) {
             if (numberOfPieces(c) > 0) {
-                if (firstColourWithSomePieces instanceof Colour) {
+                if (firstColourWithSomePieces != null) {
                     moreThanOneColour = true;
-                }
-                else {
+                } else {
                     firstColourWithSomePieces = c;
                 }
-            }
-            else if (numberOfPieces(c) < 0) // No negative values allowed
+            } else if (numberOfPieces(c) < 0) // No negative values allowed
             {
                 return false;
             }

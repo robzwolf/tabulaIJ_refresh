@@ -3,18 +3,18 @@ package xyz.robbie.tabula;
 /**
  * LocationInterface represents a single location on the board, but not its position
  * Locations on the main part of the board may only contain a single colour of piece.
- *
+ * <p>
  * Off-board locations, i.e. the starting location, the finishing location and the knocked-off location
  * can contain pieces of both colours and are referred to as mixed.
- *
+ * <p>
  * Requires a constructor with one parameter (the name of the location), which creates a non-mixed location with no pieces.
- *
  */
 
 
 public interface LocationInterface {
 
     String getName();
+
     void setName(String name);
 
     /**
@@ -47,11 +47,9 @@ public interface LocationInterface {
 
     /**
      * @param colour the colour of the piece to add
-     *
-     * @throws IllegalMoveException if the location is not mixed and already contains two or more pieces
-     * of the other colour
-     *
      * @return null if nothing has been knocked off, otherwise the colour of the piece that has been knocked off
+     * @throws IllegalMoveException if the location is not mixed and already contains two or more pieces
+     *                              of the other colour
      **/
     Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException;
 
@@ -63,9 +61,7 @@ public interface LocationInterface {
 
     /**
      * @param colour the colour of the piece to remove
-     *
      * @throws IllegalMoveException if there are no pieces of that colour in the location
-     *
      **/
     void removePiece(Colour colour) throws IllegalMoveException;
 

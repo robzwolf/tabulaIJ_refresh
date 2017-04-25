@@ -37,8 +37,7 @@ public class Dice implements DiceInterface {
             values.add(d1.getValue());
             values.add(d1.getValue());
             values.add(d1.getValue());
-        }
-        else {
+        } else {
             values.add(d1.getValue());
             values.add(d2.getValue());
         }

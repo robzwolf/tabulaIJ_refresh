@@ -63,8 +63,7 @@ public class HumanConsolePlayer implements PlayerInterface {
         System.out.println("Player " + strToTitleCase(colour + ", it's your turn."));
         if (diceValues.size() == 4) {
             System.out.print("You're lucky - you rolled a double! ");
-        }
-        else {
+        } else {
             System.out.print("The dice have been rolled. ");
         }
 
@@ -93,8 +92,7 @@ public class HumanConsolePlayer implements PlayerInterface {
                     diceValues.remove(Integer.valueOf(chosenDie));
                     moves.add(calculatedMove);
                     System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
-                }
-                else {
+                } else {
                     System.out.println("That move is not valid. Try again.");
                 }
             } catch (IllegalMoveException e) {

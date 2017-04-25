@@ -18,8 +18,7 @@ public class Move implements MoveInterface {
     public void setSourceLocation(int locationNumber) throws NoSuchLocationException {
         if (locationNumber < 0 || locationNumber > BoardInterface.NUMBER_OF_LOCATIONS) {
             throw new NoSuchLocationException("That is not a valid location. Locations must lie in the range 0 to " + BoardInterface.NUMBER_OF_LOCATIONS);
-        }
-        else {
+        } else {
             sourceLocation = locationNumber;
         }
 
@@ -34,8 +33,7 @@ public class Move implements MoveInterface {
     public void setDiceValue(int diceValue) throws IllegalMoveException {
         if (1 <= diceValue && diceValue <= DieInterface.NUMBER_OF_SIDES_ON_DIE) {
             this.dieValue = diceValue;
-        }
-        else {
+        } else {
             throw new IllegalMoveException("Dice value must be in the range 1-" + DieInterface.NUMBER_OF_SIDES_ON_DIE);
         }
     }

@@ -18,8 +18,7 @@ public class Turn implements TurnInterface {
     public void addMove(MoveInterface move) throws IllegalTurnException {
         if (moves.size() == 4) {
             throw new IllegalTurnException("Only four moves are allowed per turn.");
-        }
-        else {
+        } else {
             moves.add(move);
         }
     }
