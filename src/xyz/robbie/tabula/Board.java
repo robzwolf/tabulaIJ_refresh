@@ -150,11 +150,21 @@ public class Board implements BoardInterface {
     }
 
     public boolean canMakeMove(Colour colour, MoveInterface move) {
+
         /* Move can be made if:
-         - current space has available pieces of that colour
-         - new space is empty
-         - new space has counters of the same colour
-         - new space has one counter of the opposite colour */
+         - player has no pieces on knockedLocation AND any of the following apply:
+            - current space has available pieces of that colour
+            - new space is empty
+            - new space has counters of the same colour
+            - new space has one counter of the opposite colour */
+
+//        if(getKnockedLocation().numberOfPieces(colour) > 0) {
+//
+//            // Move pieces from knocked
+//            if(move.getSourceLocation() != NUMBER_OF_LOCATIONS + 2) {
+//                return false;
+//            }
+//        }
 
         // Check current space has at least one of this colour
         try {
@@ -176,22 +186,24 @@ public class Board implements BoardInterface {
         // Find the new space
         LocationInterface targetLocation;
         int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
-        if (targetLocIndex > NUMBER_OF_LOCATIONS)       // if the move would take us off the board
-        {
+        if (targetLocIndex > NUMBER_OF_LOCATIONS) {     // if the move would take us off the board
             targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
         }
         targetLocation = locations.get(targetLocIndex);
-        if (targetLocation.canAddPiece(colour)) {
-            return true;
-        } else {
-            return false;
-        }
+        return targetLocation.canAddPiece(colour);
     }
 
     // ??
     public void makeMove(Colour colour, MoveInterface move) throws IllegalMoveException {
+
+        // Move a knocked piece to the start location, if we have to
+        if(getKnockedLocation().numberOfPieces(colour) > 0) {
+            getStartLocation().addPieceGetKnocked(colour);
+            getKnockedLocation().removePiece(colour);
+        }
+
+        LocationInterface sourceLocation = locations.get(move.getSourceLocation());
         if (canMakeMove(colour, move)) {
-            LocationInterface sourceLocation = locations.get(move.getSourceLocation());
 
             if(!sourceLocation.canRemovePiece(colour)) {
                 throw new IllegalMoveException("Cannot remove a piece from location " + sourceLocation.getName() + ".");
@@ -254,11 +266,18 @@ public class Board implements BoardInterface {
 
     // ??
     public boolean isWinner(Colour colour) {
-        return false;
+        // Colour has won iff all their pieces are on the finish location AND not all the other colour's pieces are on the finish location
+        return getEndLocation().numberOfPieces(colour) == PIECES_PER_PLAYER && getEndLocation().numberOfPieces(colour.otherColour()) != PIECES_PER_PLAYER;
     }
 
     // ??
     public Colour winner() {
+        for(Colour c : Colour.values())
+        {
+            if(isWinner(c)) {
+                return c;
+            }
+        }
         return null;
     }
 
@@ -284,7 +303,7 @@ public class Board implements BoardInterface {
         Set<MoveInterface> moves = new HashSet<MoveInterface>();
         for(int sourceLocationIndex=0; sourceLocationIndex<=NUMBER_OF_LOCATIONS; sourceLocationIndex++) {
             LocationInterface sourceLocation = locations.get(sourceLocationIndex);
-            if(sourceLocation .canRemovePiece(colour)) {
+            if(sourceLocation.canRemovePiece(colour)) {
                 // Find the new space
                 LocationInterface targetLocation;
                 int targetLocIndex = sourceLocationIndex + dieValue;

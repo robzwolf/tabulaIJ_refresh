@@ -82,12 +82,20 @@ public class HumanConsolePlayer implements PlayerInterface {
             int chosenDie = askUserForNum(diceValues, "%s is not one of the values you rolled. Try again:");
 
             // Ask user for move source location
-            System.out.println("Enter from which location you wish to move a counter " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " (for the start location, enter 0):");
-            List<Integer> locationNums = new ArrayList<Integer>();
-            for (int j = 0; j < BoardInterface.NUMBER_OF_LOCATIONS; j++) {
-                locationNums.add(j);
+            // First, check if they have any knocked pieces
+            int numKnocked = board.getKnockedLocation().numberOfPieces(colour);
+            int chosenSourceLocation;
+            if(numKnocked > 0) {
+                System.out.println("You currently have " + numKnocked + " knocked piece" + (numKnocked == 1 ? "" : "s") + ". The die value " + chosenDie + " will be used to move a piece from the knocked location.");
+                chosenSourceLocation = 0; // The knocked location
+            } else {
+                System.out.println("Enter from which location you wish to move a counter " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " (for the start location, enter 0):");
+                List<Integer> locationNums = new ArrayList<Integer>();
+                for (int j = 0; j < BoardInterface.NUMBER_OF_LOCATIONS; j++) {
+                    locationNums.add(j);
+                }
+                chosenSourceLocation = askUserForNum(locationNums, "%s is not a valid location. Try again:");
             }
-            int chosenSourceLocation = askUserForNum(locationNums, "%s is not a valid location. Try again:");
 
             MoveInterface calculatedMove = new Move();
             try {
@@ -101,14 +109,18 @@ public class HumanConsolePlayer implements PlayerInterface {
                     }
                     diceValues.remove(Integer.valueOf(chosenDie));
                     chosenMoves.add(calculatedMove);
-                    System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
+                    if(numKnocked == 0) { // Don't print this if we forced the player to move his knocked piece first
+                        System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
+                    }
                 } else {
                     System.out.println("That move is not valid. Try again.");
                 }
             } catch (IllegalMoveException e) {
                 System.out.println("Something went wrong. That die value is not valid.");
+                e.printStackTrace();
             } catch (NoSuchLocationException e) {
                 System.out.println("Something went wrong. That location number is not valid.");
+                e.printStackTrace();
             } catch (NullPointerException e) {
                 System.out.println("Something went catastrophically wrong!");
                 e.printStackTrace();
