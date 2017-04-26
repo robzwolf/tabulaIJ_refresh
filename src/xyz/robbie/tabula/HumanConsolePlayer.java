@@ -50,28 +50,39 @@ public class HumanConsolePlayer implements PlayerInterface {
 
         List<MoveInterface> chosenMoves = new ArrayList<MoveInterface>();
 
-        // Loop through until diceValues() is empty
+        /* Loop through until diceValues() is empty */
         while (diceValues.size() > 0 || board.possibleMoves(colour, diceValues).size() > 0) {
 
-            // Ask user for their preferred dice value
+            /* Ask user for their preferred dice value */
             System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));
             System.out.println("Enter which die value you wish to use " + ordinalNumbers[chosenMoves.size()] + ":"); // when chosenMoves is empty, get ordinalNumbers[0] and so on
             int chosenDie = askUserForNum(diceValues, "%s is not one of the values you rolled. Try again:");
 
-            // Ask user for move source location
-            // First, check if they have any knocked pieces
+            /* Ask user for move source location
+             * First, check if they have any knocked pieces */
             int numKnocked = board.getKnockedLocation().numberOfPieces(colour);
             int chosenSourceLocation;
             if(numKnocked > 0) {
                 System.out.println("You currently have " + numKnocked + " knocked piece" + (numKnocked == 1 ? "" : "s") + ". The die value " + chosenDie + " will be used to move a piece from the knocked location.");
-                chosenSourceLocation = 0; // The knocked location
+                chosenSourceLocation = 0;
             } else {
                 System.out.println("Enter from which location you wish to move a counter " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " (for the start location, enter 0):");
-                List<Integer> locationNums = new ArrayList<Integer>();
-                for (int j = 0; j < BoardInterface.NUMBER_OF_LOCATIONS; j++) {
-                    locationNums.add(j);
+                List<Integer> availableLocationNums = new ArrayList<Integer>();
+                if(board.getStartLocation().canRemovePiece(colour)) {
+                    availableLocationNums.add(0);
                 }
-                chosenSourceLocation = askUserForNum(locationNums, "%s is not a valid location. Try again:");
+                for (int j = 1; j < BoardInterface.NUMBER_OF_LOCATIONS; j++) {
+                    try {
+                        if(board.getBoardLocation(j).canRemovePiece(colour)) {
+                            availableLocationNums.add(j);
+                        }
+                    } catch (NoSuchLocationException e) {
+                        /* Should never be called */
+                        System.out.println("Something went wrong.");
+                        e.printStackTrace();
+                    }
+                }
+                chosenSourceLocation = askUserForNum(availableLocationNums, "%s is not a valid location. Try again:");
             }
 
             MoveInterface calculatedMove = new Move();

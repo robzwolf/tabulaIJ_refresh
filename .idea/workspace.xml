@@ -2,7 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aef5ae51-d669-45da-a45f-035a169cf56f" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Board.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Board.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/ComputerPlayer.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/ComputerPlayer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Game.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/HumanConsolePlayer.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/HumanConsolePlayer.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Location.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Location.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Move.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Move.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -48,16 +60,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="11">
-              <caret line="147" column="49" lean-forward="true" selection-start-line="147" selection-start-column="49" selection-end-line="147" selection-end-column="49" />
+            <state relative-caret-position="224">
+              <caret line="266" column="76" lean-forward="true" selection-start-line="266" selection-start-column="76" selection-end-line="266" selection-end-column="76" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#11120#11135#0" expanded="true" />
-                <element signature="e#11597#11612#0" expanded="true" />
-                <element signature="e#15588#15596#0" expanded="true" />
+                <element signature="e#11045#11046#0" expanded="true" />
+                <element signature="e#11073#11074#0" expanded="true" />
+                <element signature="e#11219#11234#0" expanded="true" />
+                <element signature="e#11696#11711#0" expanded="true" />
+                <element signature="e#15687#15695#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -66,8 +80,8 @@
       <file leaf-file-name="BoardTestBasic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="301">
-              <caret line="99" column="9" lean-forward="true" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
+            <state relative-caret-position="137">
+              <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -86,11 +100,12 @@
       <file leaf-file-name="ComputerPlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="192">
-              <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+            <state relative-caret-position="687">
+              <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
               <folding>
-                <element signature="e#557#558#0" expanded="true" />
-                <element signature="e#590#591#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1533#1548#0" expanded="true" />
+                <element signature="e#3215#3224#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -131,21 +146,21 @@
       <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2464">
-              <caret line="162" column="19" lean-forward="false" selection-start-line="162" selection-start-column="19" selection-end-line="162" selection-end-column="19" />
+            <state relative-caret-position="605">
+              <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="HumanConsolePlayer.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="HumanConsolePlayer.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="239">
-              <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
+            <state relative-caret-position="208">
+              <caret line="79" column="41" lean-forward="false" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
               <folding>
                 <element signature="e#1690#1705#0" expanded="true" />
-                <element signature="e#3116#3125#0" expanded="true" />
+                <element signature="e#3110#3119#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -154,8 +169,8 @@
       <file leaf-file-name="Location.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="861">
-              <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+            <state relative-caret-position="429">
+              <caret line="80" column="35" lean-forward="true" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
               <folding />
             </state>
           </provider>
@@ -164,8 +179,8 @@
       <file leaf-file-name="Move.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Move.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="720">
-              <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+            <state relative-caret-position="624">
+              <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -189,6 +204,7 @@
       <find>??</find>
       <find>146</find>
       <find>that location number is not valid</find>
+      <find>-1</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -203,18 +219,18 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/DiceTestBasic.java" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/PlayerNotDefinedException.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Turn.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Colour.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Dice.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Die.java" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Move.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Move.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" />
       </list>
     </option>
   </component>
@@ -834,7 +850,7 @@
       <workItem from="1493069901036" duration="6676000" />
       <workItem from="1493124472933" duration="562000" />
       <workItem from="1493163227421" duration="1097000" />
-      <workItem from="1493215358811" duration="4218000" />
+      <workItem from="1493215358811" duration="13974000" />
     </task>
     <servers />
   </component>
@@ -851,6 +867,12 @@
     <history-entry file="BoardTestBasic - 2017.04.26 at 15h 24m 06s.xml">
       <configuration name="BoardTestBasic" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="BoardTestBasic - 2017.04.26 at 19h 08m 08s.xml">
+      <configuration name="BoardTestBasic" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="BoardTestBasic - 2017.04.26 at 19h 09m 45s.xml">
+      <configuration name="BoardTestBasic" configurationId="JUnit" />
+    </history-entry>
     <history-entry file="DiceTestBasic - 2017.04.26 at 15h 17m 23s.xml">
       <configuration name="DiceTestBasic" configurationId="JUnit" />
     </history-entry>
@@ -859,7 +881,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33155000" />
+    <option name="totallyTimeSpent" value="42911000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -868,7 +890,7 @@
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32866243" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -966,9 +988,11 @@
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11120#11135#0" expanded="true" />
-            <element signature="e#11597#11612#0" expanded="true" />
-            <element signature="e#15588#15596#0" expanded="true" />
+            <element signature="e#11045#11046#0" expanded="true" />
+            <element signature="e#11073#11074#0" expanded="true" />
+            <element signature="e#11219#11234#0" expanded="true" />
+            <element signature="e#11696#11711#0" expanded="true" />
+            <element signature="e#15687#15695#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -979,7 +1003,7 @@
           <caret line="89" column="78" lean-forward="true" selection-start-line="89" selection-start-column="78" selection-end-line="89" selection-end-column="78" />
           <folding>
             <element signature="e#1690#1705#0" expanded="true" />
-            <element signature="e#3116#3125#0" expanded="true" />
+            <element signature="e#3110#3119#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1052,9 +1076,11 @@
           <caret line="174" column="0" lean-forward="true" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11120#11135#0" expanded="true" />
-            <element signature="e#11597#11612#0" expanded="true" />
-            <element signature="e#15588#15596#0" expanded="true" />
+            <element signature="e#11045#11046#0" expanded="true" />
+            <element signature="e#11073#11074#0" expanded="true" />
+            <element signature="e#11219#11234#0" expanded="true" />
+            <element signature="e#11696#11711#0" expanded="true" />
+            <element signature="e#15687#15695#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1064,8 +1090,9 @@
         <state relative-caret-position="272">
           <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1533#1548#0" expanded="true" />
+            <element signature="e#3215#3224#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1084,7 +1111,7 @@
           <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding>
             <element signature="e#1690#1705#0" expanded="true" />
-            <element signature="e#3116#3125#0" expanded="true" />
+            <element signature="e#3110#3119#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1095,9 +1122,11 @@
           <caret line="174" column="0" lean-forward="false" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11120#11135#0" expanded="true" />
-            <element signature="e#11597#11612#0" expanded="true" />
-            <element signature="e#15588#15596#0" expanded="true" />
+            <element signature="e#11045#11046#0" expanded="true" />
+            <element signature="e#11073#11074#0" expanded="true" />
+            <element signature="e#11219#11234#0" expanded="true" />
+            <element signature="e#11696#11711#0" expanded="true" />
+            <element signature="e#15687#15695#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1123,8 +1152,9 @@
         <state relative-caret-position="306">
           <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="e#1533#1548#0" expanded="true" />
+            <element signature="e#3215#3224#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1143,7 +1173,7 @@
           <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding>
             <element signature="e#1690#1705#0" expanded="true" />
-            <element signature="e#3116#3125#0" expanded="true" />
+            <element signature="e#3110#3119#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1217,9 +1247,11 @@
           <caret line="13" column="13" lean-forward="false" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11120#11135#0" expanded="true" />
-            <element signature="e#11597#11612#0" expanded="true" />
-            <element signature="e#15588#15596#0" expanded="true" />
+            <element signature="e#11045#11046#0" expanded="true" />
+            <element signature="e#11073#11074#0" expanded="true" />
+            <element signature="e#11219#11234#0" expanded="true" />
+            <element signature="e#11696#11711#0" expanded="true" />
+            <element signature="e#15687#15695#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1230,7 +1262,7 @@
           <caret line="89" column="78" lean-forward="true" selection-start-line="89" selection-start-column="78" selection-end-line="89" selection-end-column="78" />
           <folding>
             <element signature="e#1690#1705#0" expanded="true" />
-            <element signature="e#3116#3125#0" expanded="true" />
+            <element signature="e#3110#3119#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1250,17 +1282,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="192">
-          <caret line="12" column="13" lean-forward="false" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
-          <folding>
-            <element signature="e#557#558#0" expanded="true" />
-            <element signature="e#590#591#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Dice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="192">
@@ -1273,14 +1294,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2464">
-          <caret line="162" column="19" lean-forward="false" selection-start-line="162" selection-start-column="19" selection-end-line="162" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1319,50 +1332,72 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="79" column="41" lean-forward="false" selection-start-line="79" selection-start-column="41" selection-end-line="79" selection-end-column="41" />
+          <folding>
+            <element signature="e#1690#1705#0" expanded="true" />
+            <element signature="e#3110#3119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Move.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="624">
+          <caret line="43" column="5" lean-forward="true" selection-start-line="43" selection-start-column="5" selection-end-line="43" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="99" column="9" lean-forward="true" selection-start-line="99" selection-start-column="9" selection-end-line="99" selection-end-column="9" />
+        <state relative-caret-position="137">
+          <caret line="51" column="39" lean-forward="false" selection-start-line="51" selection-start-column="39" selection-end-line="51" selection-end-column="39" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="861">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
+        <state relative-caret-position="429">
+          <caret line="80" column="35" lean-forward="true" selection-start-line="80" selection-start-column="35" selection-end-line="80" selection-end-column="35" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Move.java">
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="720">
-          <caret line="51" column="0" lean-forward="true" selection-start-line="51" selection-start-column="0" selection-end-line="51" selection-end-column="0" />
+        <state relative-caret-position="687">
+          <caret line="139" column="0" lean-forward="false" selection-start-line="139" selection-start-column="0" selection-end-line="139" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1533#1548#0" expanded="true" />
+            <element signature="e#3215#3224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="81" column="28" lean-forward="false" selection-start-line="81" selection-start-column="28" selection-end-line="81" selection-end-column="28" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="11">
-          <caret line="147" column="49" lean-forward="true" selection-start-line="147" selection-start-column="49" selection-end-line="147" selection-end-column="49" />
+        <state relative-caret-position="224">
+          <caret line="266" column="76" lean-forward="true" selection-start-line="266" selection-start-column="76" selection-end-line="266" selection-end-column="76" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#11120#11135#0" expanded="true" />
-            <element signature="e#11597#11612#0" expanded="true" />
-            <element signature="e#15588#15596#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="239">
-          <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
-          <folding>
-            <element signature="e#1690#1705#0" expanded="true" />
-            <element signature="e#3116#3125#0" expanded="true" />
+            <element signature="e#11045#11046#0" expanded="true" />
+            <element signature="e#11073#11074#0" expanded="true" />
+            <element signature="e#11219#11234#0" expanded="true" />
+            <element signature="e#11696#11711#0" expanded="true" />
+            <element signature="e#15687#15695#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -47,7 +47,7 @@ public class BoardTestBasic {
 	}
 
 	@Test
-	public void constructor_initialises_empty_elsewhere() throws Exception{
+	public void constructor_initialises_empty_elsewhere() throws Exception {
 		assertEquals(0, e.numberOfPieces(B));
 		assertEquals(0, e.numberOfPieces(G));
 		assertEquals(0, k.numberOfPieces(B));
@@ -59,7 +59,7 @@ public class BoardTestBasic {
 	}
 
 	@Test
-	public void cloned_board_is_different() throws Exception{
+	public void cloned_board_is_different() throws Exception {
 		BoardInterface clone = b.clone();
 		assertEquals(clone.getBoardLocation(1).numberOfPieces(G), 0);
 		assertEquals(b.getBoardLocation(1).numberOfPieces(G), 0);

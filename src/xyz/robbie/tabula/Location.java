@@ -62,8 +62,8 @@ public class Location implements LocationInterface {
     public boolean canAddPiece(Colour colour) {
         /* A piece can be added if:
            - The space is empty
-           - The space has counters of the same colour
-           - The space has one counter of the opposite colour
+           - The space only has counters of the same colour
+           - The space has exactly one counter of the opposite colour
            - The space is mixed
 
            If a counter moves to a space with one counter of the opposite
@@ -78,25 +78,22 @@ public class Location implements LocationInterface {
         if(this.isMixed()) {                                        // If the space is mixed
             return true;
         } else {
-            if(this.numberOfPieces(colour) != 0) {                  // If the space has only counters of the same colour
-                return true;
-            } else if(numberOfPieces(colour.otherColour()) == 1) {  // If the space is not mixed and has exactly one counter of the opposite colour
+            System.out.println("numberOfPieces(" + colour + ") = " + numberOfPieces(colour));
+            System.out.println("numberOfPieces(" + colour.otherColour() + ") = " + numberOfPieces(colour.otherColour()));
+            if(numberOfPieces(colour.otherColour()) > 1) {          // If the space has more than one counter of the other colour
+                return false;
+            } else {                                                // If the space only has one or zero counters of the other colour
                 return true;
             }
-        }
-
-//        if (!this.isMixed() && numberOfPieces(colour) != 0) {
-//            return true;
-//        }
-//
-//        if (!this.isMixed()) {
-//            if (numberOfPieces(colour.otherColour()) == 1) {
+//            if(this.numberOfPieces(colour) != 0) {                  // If the space has only counters of the same colour
+//                return true;
+//            } else if(numberOfPieces(colour.otherColour()) == 1) {  // If the space is not mixed and has exactly one counter of the opposite colour
 //                return true;
 //            }
-//        }
+        }
 
-        // If none of the above conditions are satisfied
-        return false;
+        /* If none of the above conditions are satisfied */
+//        return false;
     }
 
     public Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException {
@@ -114,27 +111,6 @@ public class Location implements LocationInterface {
         }
 
         return null;
-
-//        // First, check if the location is mixed
-//
-//        if (!isMixed()) {
-//            Colour otherColour = colour.otherColour();
-//            if (numberOfPieces(otherColour) == 0) // Simply add the piece
-//            {
-//                incrementColour(colour);
-//            } else if (numberOfPieces(otherColour) == 1) // There is one piece of the other colour, so knock it and add our colour to it
-//            {
-//                incrementColour(colour);
-//                decrementColour(colour.otherColour());
-//                return otherColour;
-//            } else {
-//                throw new IllegalMoveException("Too many pieces of other colour in this location to knock.");
-//            }
-//            return null;
-//        } else {
-//            incrementColour(colour);
-//            return null;
-//        }
     }
 
     private void incrementColour(Colour c) {
@@ -146,7 +122,7 @@ public class Location implements LocationInterface {
     }
 
     public boolean canRemovePiece(Colour colour) {
-        // Can only remove a piece if there are >0 pieces of that colour in this Location
+        /* Can only remove a piece if there are >0 pieces of that colour in this Location */
         return numberOfPieces(colour) > 0;
     }
 

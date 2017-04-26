@@ -158,15 +158,11 @@ public class Board implements BoardInterface {
             - new space has counters of the same colour
             - new space has one counter of the opposite colour */
 
-//        if(getKnockedLocation().numberOfPieces(colour) > 0) {
-//
-//            // Move pieces from knocked
-//            if(move.getSourceLocation() != NUMBER_OF_LOCATIONS + 2) {
-//                return false;
-//            }
-//        }
+        if(getKnockedLocation().numberOfPieces(colour) > 0 & move.getSourceLocation() != 0) {
+            return false;
+        }
 
-        // Check current space has at least one of this colour
+        /* Check current space has at least one of this colour */
         try {
             LocationInterface sourceLocation;
             if (move.getSourceLocation() == 0) {
@@ -183,13 +179,14 @@ public class Board implements BoardInterface {
             return false;
         }
 
-        // Find the new space
+        /* Find the new space */
         LocationInterface targetLocation;
         int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
         if (targetLocIndex > NUMBER_OF_LOCATIONS) {     // if the move would take us off the board
             targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
         }
         targetLocation = locations.get(targetLocIndex);
+        System.out.println("locations.get(" + targetLocIndex + ").canAddPiece(" + colour + ") = " + targetLocation.canAddPiece(colour));
         return targetLocation.canAddPiece(colour);
     }
 
@@ -267,10 +264,10 @@ public class Board implements BoardInterface {
     // ??
     public boolean isWinner(Colour colour) {
         // Colour has won iff all their pieces are on the finish location AND not all the other colour's pieces are on the finish location
+        // Colour has also won if no possible moves for colour.otherColour()
         return getEndLocation().numberOfPieces(colour) == PIECES_PER_PLAYER && getEndLocation().numberOfPieces(colour.otherColour()) != PIECES_PER_PLAYER;
     }
 
-    // ??
     public Colour winner() {
         for(Colour c : Colour.values())
         {
