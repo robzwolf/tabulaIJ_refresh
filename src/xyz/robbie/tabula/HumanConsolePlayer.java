@@ -51,7 +51,7 @@ public class HumanConsolePlayer implements PlayerInterface {
         List<MoveInterface> chosenMoves = new ArrayList<MoveInterface>();
 
         /* Loop through until diceValues() is empty */
-        while (diceValues.size() > 0 || board.possibleMoves(colour, diceValues).size() > 0) {
+        while (diceValues.size() > 0 && board.possibleMoves(colour, diceValues).size() > 0) {
 
             /* Ask user for their preferred dice value */
             System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));

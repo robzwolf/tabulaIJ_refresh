@@ -239,8 +239,10 @@ public class Board implements BoardInterface {
     // ??
     public void takeTurn(Colour colour, TurnInterface turn, List<Integer> diceValues) throws IllegalTurnException {
 
-        if (turn.getMoves().size() != diceValues.size()) {
-            throw new IllegalTurnException("Player submitted too many moves in one turn. You forfeit.");
+        if (turn.getMoves().size() > diceValues.size()) {
+            throw new IllegalTurnException("Player submitted wrong number of moves in one turn. You forfeit.");
+        } else if(turn.getMoves().size() == 0) {
+            // There were no moves, so the player must've been unable to lose or they cheated
         }
 
         int index = 0;
@@ -263,9 +265,17 @@ public class Board implements BoardInterface {
 
     // ??
     public boolean isWinner(Colour colour) {
-        // Colour has won iff all their pieces are on the finish location AND not all the other colour's pieces are on the finish location
-        // Colour has also won if no possible moves for colour.otherColour()
-        return getEndLocation().numberOfPieces(colour) == PIECES_PER_PLAYER && getEndLocation().numberOfPieces(colour.otherColour()) != PIECES_PER_PLAYER;
+        /*
+        Colour has won iff all their pieces are on the finish location AND not all the other colour's pieces are on the finish location
+        Colour has also won if no possible moves for colour.otherColour()
+        */
+        if(getEndLocation().numberOfPieces(colour) == PIECES_PER_PLAYER && getEndLocation().numberOfPieces(colour.otherColour()) != PIECES_PER_PLAYER) {
+            return true;
+        }
+
+        /* If none of the above conditions are satisfied */
+        return false;
+//        return getEndLocation().numberOfPieces(colour) == PIECES_PER_PLAYER && getEndLocation().numberOfPieces(colour.otherColour()) != PIECES_PER_PLAYER;
     }
 
     public Colour winner() {
