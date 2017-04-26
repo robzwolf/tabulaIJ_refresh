@@ -7,9 +7,9 @@ import java.util.Scanner;
 
 /**
  * Player represents a player in the game of tabula
- * <p>
+ *
  * Up to three different implementations of this interface can be provided: HumanConsolePlayer; ; ComputerPlayer; HumanGUIPlayer
- * <p>
+ *
  * Each implementation requires a constructor with no parameters.
  **/
 
@@ -39,29 +39,9 @@ public class HumanConsolePlayer implements PlayerInterface {
         return output;
     }
 
-    /**
-     * Takes a string and returns it in Title Case
-     *
-     * @param str The string to convert
-     * @return The Title Case form of the string
-     */
-    private static String strToTitleCase(String str) {
-        if (str.length() == 0) {
-            return "";
-        }
-        String[] strSplit = str.split("");
-        String output = "";
-        output += strSplit[0].toUpperCase();
-        for (int i = 1; i < strSplit.length; i++) {
-            output += strSplit[i].toLowerCase();
-        }
-        return output;
-    }
-
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException {
         System.out.println(board);
         System.out.println("== PLAYER " + colour.toString().toUpperCase() + " ==");
-//        System.out.println("Player " + strToTitleCase(colour + ", it's your turn."));
         if (diceValues.size() == 4) {
             System.out.print("You're lucky - you rolled a double! ");
         } else {
@@ -72,9 +52,6 @@ public class HumanConsolePlayer implements PlayerInterface {
 
         // Loop through until diceValues() is empty
         while (diceValues.size() > 0 || board.possibleMoves(colour, diceValues).size() > 0) {
-//            for(MoveInterface move : board.possibleMoves(colour, diceValues)) {
-//                System.out.println("move = " + move);
-//            }
 
             // Ask user for their preferred dice value
             System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));

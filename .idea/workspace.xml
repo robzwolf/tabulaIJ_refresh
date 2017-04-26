@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="aef5ae51-d669-45da-a45f-035a169cf56f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Board.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Board.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/BoardTestBasic.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -145,11 +141,11 @@
       <file leaf-file-name="HumanConsolePlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="309">
-              <caret line="95" column="17" lean-forward="true" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
+            <state relative-caret-position="239">
+              <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
               <folding>
-                <element signature="e#2327#2342#0" expanded="true" />
-                <element signature="e#3907#3916#0" expanded="true" />
+                <element signature="e#1690#1705#0" expanded="true" />
+                <element signature="e#3116#3125#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -838,7 +834,7 @@
       <workItem from="1493069901036" duration="6676000" />
       <workItem from="1493124472933" duration="562000" />
       <workItem from="1493163227421" duration="1097000" />
-      <workItem from="1493215358811" duration="4153000" />
+      <workItem from="1493215358811" duration="4218000" />
     </task>
     <servers />
   </component>
@@ -863,10 +859,11 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33090000" />
+    <option name="totallyTimeSpent" value="33155000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -877,7 +874,7 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.2826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1920" y="75" width="1280" height="961" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.2826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1920" y="75" width="1280" height="961" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -981,8 +978,8 @@
         <state relative-caret-position="1376">
           <caret line="89" column="78" lean-forward="true" selection-start-line="89" selection-start-column="78" selection-end-line="89" selection-end-column="78" />
           <folding>
-            <element signature="e#2327#2342#0" expanded="true" />
-            <element signature="e#3907#3916#0" expanded="true" />
+            <element signature="e#1690#1705#0" expanded="true" />
+            <element signature="e#3116#3125#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1086,8 +1083,8 @@
         <state relative-caret-position="317">
           <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding>
-            <element signature="e#2327#2342#0" expanded="true" />
-            <element signature="e#3907#3916#0" expanded="true" />
+            <element signature="e#1690#1705#0" expanded="true" />
+            <element signature="e#3116#3125#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1145,8 +1142,8 @@
         <state relative-caret-position="2556">
           <caret line="145" column="0" lean-forward="true" selection-start-line="145" selection-start-column="0" selection-end-line="145" selection-end-column="0" />
           <folding>
-            <element signature="e#2327#2342#0" expanded="true" />
-            <element signature="e#3907#3916#0" expanded="true" />
+            <element signature="e#1690#1705#0" expanded="true" />
+            <element signature="e#3116#3125#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1232,8 +1229,8 @@
         <state relative-caret-position="1376">
           <caret line="89" column="78" lean-forward="true" selection-start-line="89" selection-start-column="78" selection-end-line="89" selection-end-column="78" />
           <folding>
-            <element signature="e#2327#2342#0" expanded="true" />
-            <element signature="e#3907#3916#0" expanded="true" />
+            <element signature="e#1690#1705#0" expanded="true" />
+            <element signature="e#3116#3125#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1361,11 +1358,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="309">
-          <caret line="95" column="17" lean-forward="true" selection-start-line="95" selection-start-column="17" selection-end-line="95" selection-end-column="17" />
+        <state relative-caret-position="239">
+          <caret line="118" column="0" lean-forward="true" selection-start-line="118" selection-start-column="0" selection-end-line="118" selection-end-column="0" />
           <folding>
-            <element signature="e#2327#2342#0" expanded="true" />
-            <element signature="e#3907#3916#0" expanded="true" />
+            <element signature="e#1690#1705#0" expanded="true" />
+            <element signature="e#3116#3125#0" expanded="true" />
           </folding>
         </state>
       </provider>
