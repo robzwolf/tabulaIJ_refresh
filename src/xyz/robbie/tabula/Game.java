@@ -40,10 +40,14 @@ public class Game implements GameInterface {
         return currentColour;
     }
 
-    public Colour play() throws PlayerNotDefinedException {
+    private void initialiseNewGame() {
+
         /* Green starts */
         currentColour = Colour.values()[0];
-//        System.out.println("Current player is currently " + currentColour);
+    }
+
+    public Colour play() throws PlayerNotDefinedException {
+
         if (players.size() == 0) {
             throw new PlayerNotDefinedException("No players have been defined.", 2);
         } else if (players.size() == 1) {
@@ -75,6 +79,7 @@ public class Game implements GameInterface {
                 }
             } catch (PauseException e) {
                 System.out.println(e);
+                return null;
             } catch (NotRolledYetException e) {
                 /* Should never happen */
                 e.printStackTrace();
@@ -137,12 +142,11 @@ public class Game implements GameInterface {
                 }
                 case "2": // Continue a paused game
                 {
-
+                    g.play();
                     break;
                 }
                 case "3": // Save the current game
                 {
-
                     break;
                 }
                 case "4": // Set the players
@@ -222,9 +226,20 @@ public class Game implements GameInterface {
                 }
                 case "5": // Start a new game
                 {
+                    g.initialiseNewGame();
                     try {
                         Colour winner = g.play();
-                        System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
+                        if(winner == null) {
+
+                            /* Player paused the game */
+                            System.out.println("The game has been paused. Returning to main menu.");
+                            continue;
+                        } else {
+
+                            /* A player won the game */
+                            System.out.println(g.getBoard());
+                            System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
+                        }
                     } catch (PlayerNotDefinedException e) {
                         if (e.getNumUndefined() == 2) {
                             System.out.println("You have not defined any players. Return to the main menu and try again.");
