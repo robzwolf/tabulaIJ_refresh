@@ -306,33 +306,52 @@ public class Board implements BoardInterface {
         return moves;
     }
 
+//    private Set<MoveInterface> calculatePossibleMoves(Colour colour, int dieValue) {
+//        Set<MoveInterface> moves = new HashSet<MoveInterface>();
+//        for(int sourceLocationIndex=0; sourceLocationIndex<=NUMBER_OF_LOCATIONS; sourceLocationIndex++) {
+//            LocationInterface sourceLocation = locations.get(sourceLocationIndex);
+//            if(sourceLocation.canRemovePiece(colour)) {
+//                // Find the new space
+//                LocationInterface targetLocation;
+//                int targetLocIndex = sourceLocationIndex + dieValue;
+//                if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
+//                {
+//                    targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
+//                }
+//                targetLocation = locations.get(targetLocIndex);
+//                if(targetLocation.canAddPiece(colour)) {
+//                    MoveInterface move = new Move();
+//                    try {
+//                        move.setSourceLocation(sourceLocationIndex);
+//                        move.setDiceValue(dieValue);
+//                    } catch (NoSuchLocationException | IllegalMoveException e) {
+//                        // Should never be called
+//                        e.printStackTrace();
+//                    }
+//                    moves.add(move);
+//                } // end if canAddPiece()
+//            } // end if canRemovePiece()
+//        } // end for each location
+//        return moves;
+//    }
+
     private Set<MoveInterface> calculatePossibleMoves(Colour colour, int dieValue) {
-        Set<MoveInterface> moves = new HashSet<MoveInterface>();
+        Set<MoveInterface> output = new HashSet<MoveInterface>();
         for(int sourceLocationIndex=0; sourceLocationIndex<=NUMBER_OF_LOCATIONS; sourceLocationIndex++) {
-            LocationInterface sourceLocation = locations.get(sourceLocationIndex);
-            if(sourceLocation.canRemovePiece(colour)) {
-                // Find the new space
-                LocationInterface targetLocation;
-                int targetLocIndex = sourceLocationIndex + dieValue;
-                if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
-                {
-                    targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
-                }
-                targetLocation = locations.get(targetLocIndex);
-                if(targetLocation.canAddPiece(colour)) {
-                    MoveInterface move = new Move();
-                    try {
-                        move.setSourceLocation(sourceLocationIndex);
-                        move.setDiceValue(dieValue);
-                    } catch (NoSuchLocationException | IllegalMoveException e) {
-                        // Should never be called
-                        e.printStackTrace();
-                    }
-                    moves.add(move);
-                } // end if canAddPiece()
-            } // end if canRemovePiece()
-        } // end for each location
-        return moves;
+            MoveInterface testMove = new Move();
+            try {
+                testMove.setSourceLocation(sourceLocationIndex);
+                testMove.setDiceValue(dieValue);
+            } catch (NoSuchLocationException | IllegalMoveException e) {
+                // Should never be called
+                e.printStackTrace();
+            }
+            if(canMakeMove(colour, testMove)) {
+                output.add(testMove);
+            }
+        }
+
+        return output;
     }
 
 

@@ -59,6 +59,7 @@ public class Game implements GameInterface {
 
         boolean stillPlaying = true;
         TurnInterface t;
+
         /* Do the game loop */
         while (stillPlaying) {
             d.roll();
@@ -222,7 +223,8 @@ public class Game implements GameInterface {
                 case "5": // Start a new game
                 {
                     try {
-                        g.play();
+                        Colour winner = g.play();
+                        System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
                     } catch (PlayerNotDefinedException e) {
                         if (e.getNumUndefined() == 2) {
                             System.out.println("You have not defined any players. Return to the main menu and try again.");
