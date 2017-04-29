@@ -186,14 +186,14 @@ public class Board implements BoardInterface {
             targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
         }
         targetLocation = locations.get(targetLocIndex);
-        System.out.println("locations.get(" + targetLocIndex + ").canAddPiece(" + colour + ") = " + targetLocation.canAddPiece(colour));
+//        System.out.println("locations.get(" + targetLocIndex + ").canAddPiece(" + colour + ") = " + targetLocation.canAddPiece(colour));
         return targetLocation.canAddPiece(colour);
     }
 
     // ??
     public void makeMove(Colour colour, MoveInterface move) throws IllegalMoveException {
 
-        // Move a knocked piece to the start location, if we have to
+        /* Move a knocked piece to the start location, if we have to */
         if(getKnockedLocation().numberOfPieces(colour) > 0) {
             getStartLocation().addPieceGetKnocked(colour);
             getKnockedLocation().removePiece(colour);
@@ -207,7 +207,8 @@ public class Board implements BoardInterface {
             }
 
             try {
-                // Find the new space
+
+                /* Find the new space */
                 LocationInterface targetLocation;
                 int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
                 if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board

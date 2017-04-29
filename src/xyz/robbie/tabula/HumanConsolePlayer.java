@@ -14,7 +14,7 @@ import java.util.Scanner;
  **/
 
 public class HumanConsolePlayer implements PlayerInterface {
-    private static final String[] ordinalNumbers = {"first", "second", "third", "fourth"};
+//    private static final String[] ordinalNumbers = {"first", "second", "third", "fourth"};
 
     private Scanner scanner;
     private String input;
@@ -24,28 +24,29 @@ public class HumanConsolePlayer implements PlayerInterface {
         input = "";
     }
 
-    private String getPrettyNumbersList(List<Integer> diceValues) {
-        String output = "";
-        if (diceValues.size() == 1) {
-            return "" + diceValues.get(0);
-        }
-        for (int i = 0; i < diceValues.size() - 2; i++) {
-            output += diceValues.get(i) + ", ";
-        }
-        if (diceValues.size() >= 2) {
-            output += diceValues.get(diceValues.size() - 2) + " and " + diceValues.get(diceValues.size() - 1);
-        }
-
-        return output;
-    }
+//    private String getPrettyNumbersList(List<Integer> diceValues) {
+//        String output = "";
+//        if (diceValues.size() == 1) {
+//            return "" + diceValues.get(0);
+//        }
+//        for (int i = 0; i < diceValues.size() - 2; i++) {
+//            output += diceValues.get(i) + ", ";
+//        }
+//        if (diceValues.size() >= 2) {
+//            output += diceValues.get(diceValues.size() - 2) + " and " + diceValues.get(diceValues.size() - 1);
+//        }
+//
+//        return output;
+//    }
 
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException {
+        System.out.println();
         System.out.println(board);
         System.out.println("== PLAYER " + colour.toString().toUpperCase() + " ==");
         if (diceValues.size() == 4) {
-            System.out.print("You're lucky - you rolled a double! ");
+            System.out.println("You're lucky - you rolled a double!");
         } else {
-            System.out.print("The dice have been rolled. ");
+            System.out.println("The dice have been rolled.");
         }
 
         List<MoveInterface> chosenMoves = new ArrayList<MoveInterface>();
@@ -54,8 +55,8 @@ public class HumanConsolePlayer implements PlayerInterface {
         while (diceValues.size() > 0 && board.possibleMoves(colour, diceValues).size() > 0) {
 
             /* Ask user for their preferred dice value */
-            System.out.println("The die values available to you are: " + getPrettyNumbersList(diceValues));
-            System.out.println("Enter which die value you wish to use " + ordinalNumbers[chosenMoves.size()] + ":"); // when chosenMoves is empty, get ordinalNumbers[0] and so on
+            System.out.println("\nThe die values available to you are: " + PrettyStrings.prettifyList(diceValues));
+            System.out.println("Enter which die value you wish to use " + PrettyStrings.ordinalNumber(chosenMoves.size() + 1) + ":"); // when chosenMoves is empty, get ordinalNumbers[0] and so on
             int chosenDie = askUserForNum(diceValues, "%s is not one of the values you rolled. Try again:");
 
             /* Ask user for move source location

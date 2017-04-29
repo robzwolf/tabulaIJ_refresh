@@ -15,33 +15,35 @@ import java.util.Set;
 
 public class ComputerPlayer implements PlayerInterface {
 
-    private static final String[] ordinalNumbers = {"first", "second", "third", "fourth"};
-
-    private String getPrettyNumbersList(List<Integer> diceValues) {
-        String output = "";
-        if (diceValues.size() == 1) {
-            return "" + diceValues.get(0);
-        }
-        for (int i = 0; i < diceValues.size() - 2; i++) {
-            output += diceValues.get(i) + ", ";
-        }
-        if (diceValues.size() >= 2) {
-            output += diceValues.get(diceValues.size() - 2) + " and " + diceValues.get(diceValues.size() - 1);
-        }
-
-        return output;
-    }
+//    private static final String[] ordinalNumbers = {"first", "second", "third", "fourth"};
+//
+//    private String getPrettyNumbersList(List<Integer> diceValues) {
+//        String output = "";
+//        if (diceValues.size() == 1) {
+//            return "" + diceValues.get(0);
+//        }
+//        for (int i = 0; i < diceValues.size() - 2; i++) {
+//            output += diceValues.get(i) + ", ";
+//        }
+//        if (diceValues.size() >= 2) {
+//            output += diceValues.get(diceValues.size() - 2) + " and " + diceValues.get(diceValues.size() - 1);
+//        }
+//
+//        return output;
+//    }
 
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException {
-//        String c = colour.toString().toUpperCase();
+        String c = colour.toString().toUpperCase();
 //
-//        System.out.println(board);
-//        System.out.println("== PLAYER " + c + " ==");
-//        if (diceValues.size() == 4) {
-//            System.out.print("You're lucky - you rolled a double! ");
-//        } else {
-//            System.out.print("The dice have been rolled. ");
-//        }
+        System.out.println();
+        System.out.println(board);
+        System.out.println("== PLAYER " + c + " (COMPUTER) ==");
+        if (diceValues.size() == 4) {
+            System.out.print("Computer rolled a double.");
+        } else {
+            System.out.print("Computer rolled the dice.");
+        }
+        System.out.println(" Die values available to computer are: " + PrettyStrings.prettifyList(diceValues));
 //
 //        List<MoveInterface> chosenMoves = new ArrayList<MoveInterface>();
 //
@@ -154,15 +156,21 @@ public class ComputerPlayer implements PlayerInterface {
 
         while(diceValues.size() != 0) {
             ArrayList<Integer> wrappedFirstDieValue = new ArrayList<Integer>();
-            wrappedFirstDieValue.add(diceValues.get(0));
+            wrappedFirstDieValue.add(diceValues.get(0)); // Wrap it because possibleMoves() requires a List of die values
             Set<MoveInterface> possibleMoves = board.possibleMoves(colour, wrappedFirstDieValue);
             if(possibleMoves.size() == 0) {
+                if(turn.getMoves().size() == 0) {
+                    System.out.println("Computer had no possible moves.");
+                } else {
+                    System.out.println("Computer had no more possible moves.");
+                }
                 break;
             }
             MoveInterface chosenMove = possibleMoves.iterator().next(); // i.e. the 'first' element in possibleMoves
             try {
                 board.makeMove(colour, chosenMove);
                 turn.addMove(chosenMove); // i.e. the 'first' element in possibleMoves
+                System.out.println("Computer moved " + wrappedFirstDieValue.get(0) + " space" + (wrappedFirstDieValue.get(0) > 1 ? "s" : "") + " from location " + chosenMove.getSourceLocation());
             } catch (IllegalTurnException | IllegalMoveException e) {
                 // Should never happen
                 e.printStackTrace();
