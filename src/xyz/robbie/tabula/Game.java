@@ -24,11 +24,9 @@ import java.util.HashMap;
 public class Game implements GameInterface {
 
     private HashMap<Colour, PlayerInterface> players;
-
-    /* Stores the colour for whose turn it is in the current game. Null if no game is active. */
     private Colour currentColour;
-
     private BoardInterface board;
+    private boolean playing;
 
     public Game() {
         this.players = new HashMap<Colour, PlayerInterface>();
@@ -45,7 +43,7 @@ public class Game implements GameInterface {
 
     public Colour play() throws PlayerNotDefinedException {
 
-        if(currentColour == null) { // If no game is active
+        if(!playing) {
             currentColour = Colour.values()[0];
         }
 
@@ -100,11 +98,16 @@ public class Game implements GameInterface {
     }
 
     public void loadGame(String filename) throws IOException {
+        BoardInterface loadedBoard = new Board();
 
     }
 
     private BoardInterface getBoard() {
         return board;
+    }
+
+    private void setBoard(BoardInterface board) {
+        this.board = board;
     }
 
     /**
@@ -208,37 +211,41 @@ public class Game implements GameInterface {
                     }
 
                     /* Set second player */
-                    System.out.println("Would you like " + colours[1] + " to be a human or computer player?");
-                    do {
-                        System.out.println(" 1) Human player");
-                        System.out.println(" 2) Computer player");
-                        System.out.println(" 3) Return to main menu");
-                        input = scanner.nextLine();
+//                    System.out.println("Would you like " + colours[1] + " to be a human or computer player?");
+//                    do {
+//                        System.out.println(" 1) Human player");
+//                        System.out.println(" 2) Computer player");
+//                        System.out.println(" 3) Return to main menu");
+//                        input = scanner.nextLine();
+//
+//                        switch (input) {
+//                            case "1": {
+//                                /* Make second colour a human */
+//                                PlayerInterface hcp = new HumanConsolePlayer();
+//                                g.setPlayer(Colour.values()[1], hcp);
+//                                System.out.println("You have set " + colours[1] + " to be a human player.");
+//                                break;
+//                            }
+//                            case "2": {
+//                                /* Make second colour computer */
+//                                PlayerInterface cp = new ComputerPlayer();
+//                                g.setPlayer(Colour.values()[1], cp);
+//                                System.out.println("You have set " + colours[1] + " to be a computer player.");
+//                                break;
+//                            }
+//                            case "3": {
+//                                returnToMainMenu = true;
+//                                break;
+//                            }
+//                        }
 
-                        switch (input) {
-                            case "1": {
-                                /* Make second colour a human */
-                                PlayerInterface hcp = new HumanConsolePlayer();
-                                g.setPlayer(Colour.values()[1], hcp);
-                                System.out.println("You have set " + colours[1] + " to be a human player.");
-                                break;
-                            }
-                            case "2": {
-                                /* Make second colour computer */
-                                PlayerInterface cp = new ComputerPlayer();
-                                g.setPlayer(Colour.values()[1], cp);
-                                System.out.println("You have set " + colours[1] + " to be a computer player.");
-                                break;
-                            }
-                            case "3": {
-                                returnToMainMenu = true;
-                                break;
-                            }
-                        }
-                    } while (!input.equals("1") && !input.equals("2") && !input.equals("3"));
+//                    } while (!input.equals("1") && !input.equals("2") && !input.equals("3"));
                     if (returnToMainMenu) {
                         continue;
                     }
+
+                    NasirComputerPlayer ncp = new NasirComputerPlayer();
+                    g.setPlayer(Colour.values()[1], ncp);
 
                     System.out.println("You have finished setting the players.");
                     break;
@@ -257,8 +264,6 @@ public class Game implements GameInterface {
                             continue;
                         } else {
                             /* A player won the game */
-//                            System.out.println(g.getBoard());
-//                            System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
                             handleGameFinish(g, winner);
                             continue;
                         }

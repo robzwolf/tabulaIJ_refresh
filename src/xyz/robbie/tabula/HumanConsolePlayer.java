@@ -28,11 +28,11 @@ public class HumanConsolePlayer implements PlayerInterface {
         System.out.println();
         System.out.println(board);
         System.out.println("== PLAYER " + colour.toString().toUpperCase() + " ==");
-        System.out.println("Would you like to pause? Y/N");
-        input = scanner.nextLine().toLowerCase();
-        if(input.equals("y") || input.equals(".")) { // use . for pause (useful for dev)
-            throw new PauseException(colour.toString());
-        }
+//        System.out.println("Would you like to pause? Y/N");
+//        input = scanner.nextLine().toLowerCase();
+//        if(input.equals("y") || input.equals(".")) { // use . for pause (useful for dev)
+//            throw new PauseException(colour.toString());
+//        }
         if (diceValues.size() == 4) {
             System.out.println("You're lucky - you rolled a double! You rolled: " + PrettyStrings.prettifyList(diceValues));
         } else {
@@ -47,14 +47,13 @@ public class HumanConsolePlayer implements PlayerInterface {
 
 
         /* Loop through until diceValues() is empty */
-        int i = 0; // Counter
         while (diceValues.size() > 0 && board.possibleMoves(colour, diceValues).size() > 0) {
 
             /* Ask user for their preferred dice value */
-            if(i != 0) { // Don't re-print die values if we've just done it above
+            if(chosenMoves.size() != 0) { // Don't re-print die values if we've just done it above
                 System.out.println("\nThe remaining die values available to you are: " + PrettyStrings.prettifyList(diceValues));
             }
-            System.out.println("Enter which die value you wish to use " + PrettyStrings.ordinalNumber(chosenMoves.size() + 1) + ":"); // when chosenMoves is empty, get ordinalNumbers[0] and so on
+            System.out.println("Enter which die value you wish to use " + PrettyStrings.ordinalNumber(chosenMoves.size() + 1) + (chosenMoves.size() == 0 ? ", or press P to pause" : "") + ":"); // when chosenMoves is empty, get ordinalNumbers[0] and so on
             int chosenDie = askUserForNum(diceValues, "%s is not one of the values you rolled. Try again:");
 
             /* Ask user for move source location
@@ -77,7 +76,7 @@ public class HumanConsolePlayer implements PlayerInterface {
                         }
                     } catch (NoSuchLocationException e) {
                         /* Should never be called */
-                        System.out.println("Something went wrong.");
+                        System.out.println("Something went terribly wrong.");
                         e.printStackTrace();
                     }
                 }
@@ -113,7 +112,6 @@ public class HumanConsolePlayer implements PlayerInterface {
                 e.printStackTrace();
             }
 
-            i++;
         }
 
         TurnInterface turn = new Turn();
@@ -136,11 +134,15 @@ public class HumanConsolePlayer implements PlayerInterface {
      * @param errMessage      Message to print if the user does not enter an acceptable value. Use %s to refer to user's input.
      * @return The (valid) number which was chosen by the user.
      */
-    private int askUserForNum(List<Integer> allowableValues, String errMessage) {
+    private int askUserForNum(List<Integer> allowableValues, String errMessage) throws PauseException {
         Integer chosenNum = null;
         do {
 
             input = scanner.nextLine().toLowerCase();
+
+            if(input.equals("p")) {
+                throw new PauseException("Game paused");
+            }
 
             // Check if the user entered a number or something else
             try {
