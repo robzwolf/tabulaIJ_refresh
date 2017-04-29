@@ -24,28 +24,13 @@ public class HumanConsolePlayer implements PlayerInterface {
         input = "";
     }
 
-//    private String getPrettyNumbersList(List<Integer> diceValues) {
-//        String output = "";
-//        if (diceValues.size() == 1) {
-//            return "" + diceValues.get(0);
-//        }
-//        for (int i = 0; i < diceValues.size() - 2; i++) {
-//            output += diceValues.get(i) + ", ";
-//        }
-//        if (diceValues.size() >= 2) {
-//            output += diceValues.get(diceValues.size() - 2) + " and " + diceValues.get(diceValues.size() - 1);
-//        }
-//
-//        return output;
-//    }
-
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException {
         System.out.println();
         System.out.println(board);
         System.out.println("== PLAYER " + colour.toString().toUpperCase() + " ==");
         System.out.println("Would you like to pause? Y/N");
         input = scanner.nextLine().toLowerCase();
-        if(input.equals("p")) {
+        if(input.equals("y") || input.equals(".")) { // use . for pause (useful for dev)
             throw new PauseException(colour.toString());
         }
         if (diceValues.size() == 4) {

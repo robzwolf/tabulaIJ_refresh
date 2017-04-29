@@ -6,9 +6,9 @@ import java.util.HashMap;
 
 /**
  * Game represents the game state including the board, the dice and the players
- * <p>
+ *
  * Requires a constructor with no parameters.
- * <p>
+ *
  * Also requires a main method which allows the user to choose the player types and start the game.
  * The main method menu should allow users to:
  * set the players (human or computer);
@@ -17,19 +17,22 @@ import java.util.HashMap;
  * save the game;
  * start a new game;
  * exit the program.
- * <p>
+ *
  * If providing a GUI then the same options need to be available through the GUI.
  **/
 
 public class Game implements GameInterface {
 
     private HashMap<Colour, PlayerInterface> players;
+
+    /* Stores the colour for whose turn it is in the current game. Null if no game is active. */
     private Colour currentColour;
-    private Board board;
+
+    private BoardInterface board;
 
     public Game() {
         this.players = new HashMap<Colour, PlayerInterface>();
-        board = new Board();
+        resetGame();
     }
 
     public void setPlayer(Colour colour, PlayerInterface player) {
@@ -40,13 +43,11 @@ public class Game implements GameInterface {
         return currentColour;
     }
 
-    private void initialiseNewGame() {
-
-        /* Green starts */
-        currentColour = Colour.values()[0];
-    }
-
     public Colour play() throws PlayerNotDefinedException {
+
+        if(currentColour == null) { // If no game is active
+            currentColour = Colour.values()[0];
+        }
 
         if (players.size() == 0) {
             throw new PlayerNotDefinedException("No players have been defined.", 2);
@@ -78,7 +79,7 @@ public class Game implements GameInterface {
                     }
                 }
             } catch (PauseException e) {
-                System.out.println(e);
+//                System.out.println(e);
                 return null;
             } catch (NotRolledYetException e) {
                 /* Should never happen */
@@ -90,6 +91,7 @@ public class Game implements GameInterface {
             }
         }
 
+        currentColour = null;
         return board.winner(); // Should return the colour of the winner if there is one, or null if not (the game has been paused by a player)
     }
 
@@ -101,7 +103,7 @@ public class Game implements GameInterface {
 
     }
 
-    private Board getBoard() {
+    private BoardInterface getBoard() {
         return board;
     }
 
@@ -142,7 +144,24 @@ public class Game implements GameInterface {
                 }
                 case "2": // Continue a paused game
                 {
-                    g.play();
+                    if(g.getCurrentPlayer() == null) {
+                        System.out.println("No game is currently being played.");
+                        continue;
+                    }
+                    try {
+                        Colour winner = g.play();
+                        if(winner == null) {
+                            /* Player paused the game */
+                            System.out.println("The game has been paused. Returning to main menu.");
+                            continue;
+                        } else {
+                            /* A player won the game */
+                            handleGameFinish(g, winner);
+                            continue;
+                        }
+                    } catch (PlayerNotDefinedException e) {
+                        complainAboutNotDefinedPlayers(e);
+                    }
                     break;
                 }
                 case "3": // Save the current game
@@ -226,28 +245,25 @@ public class Game implements GameInterface {
                 }
                 case "5": // Start a new game
                 {
-                    g.initialiseNewGame();
-                    try {
-                        Colour winner = g.play();
-                        if(winner == null) {
+                    g.resetGame();
 
+                    try {
+
+                        Colour winner = g.play();
+
+                        if(winner == null) {
                             /* Player paused the game */
                             System.out.println("The game has been paused. Returning to main menu.");
                             continue;
                         } else {
-
                             /* A player won the game */
-                            System.out.println(g.getBoard());
-                            System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
+//                            System.out.println(g.getBoard());
+//                            System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
+                            handleGameFinish(g, winner);
+                            continue;
                         }
                     } catch (PlayerNotDefinedException e) {
-                        if (e.getNumUndefined() == 2) {
-                            System.out.println("You have not defined any players. Return to the main menu and try again.");
-                        } else if (e.getNumUndefined() == 1) {
-                            System.out.println("You have only defined one player. Return to the main menu to define the other player.");
-                        } else {
-                            System.out.println("Some players are undefined. Return to the main menu and try again.");
-                        }
+                        complainAboutNotDefinedPlayers(e);
                     }
                     break;
                 }
@@ -288,5 +304,25 @@ public class Game implements GameInterface {
         } while (!input.equals("6"));
 
     } // end main()
+
+    private static void complainAboutNotDefinedPlayers(PlayerNotDefinedException e) {
+        if (e.getNumUndefined() == 2) {
+            System.out.println("You have not defined any players. Return to the main menu and try again.");
+        } else if (e.getNumUndefined() == 1) {
+            System.out.println("You have only defined one player. Return to the main menu to define the other player.");
+        } else {
+            System.out.println("Some players are undefined. Return to the main menu and try again.");
+        }
+    }
+
+    private void resetGame() {
+        currentColour = null;
+        board = new Board();
+    }
+
+    private static void handleGameFinish(Game game, Colour winner) {
+        System.out.println(game.getBoard());
+        System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
+    }
 
 } // end class
