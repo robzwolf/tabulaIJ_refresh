@@ -78,8 +78,8 @@ public class Location implements LocationInterface {
         if(this.isMixed()) {                                        // If the space is mixed
             return true;
         } else {
-            System.out.println("numberOfPieces(" + colour + ") = " + numberOfPieces(colour));
-            System.out.println("numberOfPieces(" + colour.otherColour() + ") = " + numberOfPieces(colour.otherColour()));
+//            System.out.println("numberOfPieces(" + colour + ") = " + numberOfPieces(colour));
+//            System.out.println("numberOfPieces(" + colour.otherColour() + ") = " + numberOfPieces(colour.otherColour()));
             if(numberOfPieces(colour.otherColour()) > 1) {          // If the space has more than one counter of the other colour
                 return false;
             } else {                                                // If the space only has one or zero counters of the other colour
