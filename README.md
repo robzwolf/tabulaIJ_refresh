@@ -7,12 +7,12 @@ This project is my end-of-year assignment for one of my first year modules, Intr
 
 # Instructions
 ## How to Compile
-1) Navigate to the `submit` directory containing the `.java` files using `cd`.
+1) Navigate to the `submit/` directory containing the `.java` files using `cd`.
 2) Run `javac -cp ".;gson-2.8.0.jar" Game.java` if using a Windows host, otherwise `javac -cp ".:gson-2.8.0.jar" Game.java` for Unix-based operating systems.
 
 ## How to Run
 1) Make sure you have compiled (see above).
-2) Navigate to the `submit` directory containing the `.java` files using `cd`.
+2) Navigate to the `submit/` directory containing the `.java` files using `cd`.
 3) Run `java -cp ".;gson-2.8.0.jar" Game` if using a Windows host, otherwise `java -cp ".:gson-2.8.0.jar" Game` for Unix-based operating systems.
 
 ## Modification
