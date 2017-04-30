@@ -135,6 +135,10 @@ public class Board implements BoardInterface {
         this.name = (name != null) ? name : "";
     }
 
+    public String getName() {
+        return name;
+    }
+
     /**
      * @return the Location off the board where all pieces start the game. This will be a mixed location.
      **/
