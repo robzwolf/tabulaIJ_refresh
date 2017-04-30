@@ -199,4 +199,28 @@ public class Location implements LocationInterface {
         return output + "\n";
     }
 
+    public Location clone() {
+
+        /* Create cloneLocation and transfer over the Location name */
+        Location cl = new Location(this.getName());
+
+        /* Transfer over whether Location is mixed (probably not necessary by default, unless this property has been manually changed for any Location) */
+        cl.setMixed(this.isMixed());
+
+        /* Transfer number of pieces of each colour */
+        for (Colour c : Colour.values()) {
+
+            /* Add the piece c to cl the correct number of times */
+            for (int j = 1; j <= this.numberOfPieces(c); j++) {
+                try {
+                    cl.addPieceGetKnocked(c);
+                } catch (IllegalMoveException e) {  // Should never happen as tl will be valid
+//                    System.out.println("Error adding " + c + " on j-iteration #" + j + " to location #" + i);
+                }
+            }
+        }
+
+        return cl;
+    }
+
 }

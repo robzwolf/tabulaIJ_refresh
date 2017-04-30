@@ -58,9 +58,9 @@ public class Board implements BoardInterface {
     private static final String START_NAME    = "START";
     private static final String FINISH_NAME   = "FINISH";
     private static final String KNOCKED_NAME  = "KNOCKED";
-    private static final int    START_INDEX   = 0;
-    private static final int    FINISH_INDEX  = NUMBER_OF_LOCATIONS + 1;
-    private static final int    KNOCKED_INDEX = NUMBER_OF_LOCATIONS + 2;
+    public static final int    START_INDEX   = 0;                           // Public because we may need to access this from Game
+    public static final int    FINISH_INDEX  = NUMBER_OF_LOCATIONS + 1;     // Public because we may need to access this from Game
+    public static final int    KNOCKED_INDEX = NUMBER_OF_LOCATIONS + 2;     // Public because we may need to access this from Game
 
     public Board() {
         initialiseBoard();
@@ -396,52 +396,61 @@ public class Board implements BoardInterface {
      */
     public BoardInterface clone() {
 
-        BoardInterface cloneBoard = new Board(false);
+        Board cloneBoard = new Board(false);
 
         for (int i = 0; i <= KNOCKED_INDEX; i++) {
-            LocationInterface tl = null;
-            LocationInterface cl = null;
+            Location tl = null;
 
             if (i == START_INDEX) {                     // Start location
-                cl = cloneBoard.getStartLocation();
-                tl = this.getStartLocation();
+                tl = (Location) this.getStartLocation();
             } else if (i == FINISH_INDEX) {             // Finish location
-                cl = cloneBoard.getEndLocation();
-                tl = this.getEndLocation();
+                tl = (Location) this.getEndLocation();
             } else if (i == KNOCKED_INDEX) {            // Knocked location
-                cl = cloneBoard.getKnockedLocation();
-                tl = this.getKnockedLocation();
+                tl = (Location) this.getKnockedLocation();
             } else {
                 try {
-                    cl = cloneBoard.getBoardLocation(i);
-                    tl = this.getBoardLocation(i);
+                    tl = (Location) this.getBoardLocation(i);
                 } catch (NoSuchLocationException e) {   // Something went wrong, but we this should never happen
                     e.printStackTrace();
                     continue;
                 }
             }
+//
+//            /* Transfer over the Location name */
+//            cl.setName(tl.getName());
+//
+//            /* Transfer over whether Location is mixed (probably not necessary by default, unless this property has been manually changed for any Location) */
+//            cl.setMixed(tl.isMixed());
+//
+//            /* Transfer number of pieces of each colour */
+//            for (Colour c : Colour.values()) {
+//
+//                /* Add the piece c to cl the correct number of times */
+//                for (int j = 1; j <= tl.numberOfPieces(c); j++) {
+//                    try {
+//                        cl.addPieceGetKnocked(c);
+//                    } catch (IllegalMoveException e) {  // Should never happen as tl will be valid
+//                        System.out.println("Error adding " + c + " on j-iteration #" + j + " to location #" + i);
+//                    }
+//                }
+//            }
 
-            /* Transfer over the Location name */
-            cl.setName(tl.getName());
+            Location cl = tl.clone();
 
-            /* Transfer over whether Location is mixed (probably not necessary by default, unless this property has been manually changed for any Location) */
-            cl.setMixed(tl.isMixed());
+            cloneBoard.replaceLocation(i, cl);
 
-            /* Transfer number of pieces of each colour */
-            for (Colour c : Colour.values()) {
+        } // end for each location index
 
-                /* Add the piece c to cl the correct number of times */
-                for (int j = 1; j <= tl.numberOfPieces(c); j++) {
-                    try {
-                        cl.addPieceGetKnocked(c);
-                    } catch (IllegalMoveException e) {  // Should never happen as tl will be valid
-                        System.out.println("Error adding " + c + " on j-iteration #" + j + " to location #" + i);
-                    }
-                }
-            }
-
-        }
         return cloneBoard;
+    }
+
+    /**
+     * Replaces a specific element in the locations ArrayList
+     * @param locationIndex The index of the location to replace
+     * @param newLocation The new location instance to replace the old one
+     */
+    public void replaceLocation(int locationIndex, LocationInterface newLocation) {
+        this.locations.set(locationIndex, newLocation);
     }
 
     private int getLengthOfNumber(int num) {
