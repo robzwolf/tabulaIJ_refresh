@@ -7,7 +7,7 @@ import java.util.ArrayList;
 
 /**
  * Board represents the board state in the game of tabula (not including dice and players).
- * <p>
+ *
  * Requires a constructor with no parameters which creates and initialises all of the locations for the start of the game.
  **/
 
@@ -131,18 +131,34 @@ public class Board implements BoardInterface {
         this.name = (name != null) ? name : "";
     }
 
+    /**
+     * @return the Location off the board where all pieces start the game. This will be a mixed location.
+     **/
     public LocationInterface getStartLocation() {
         return locations.get(0);
     }
 
+    /**
+     * @return the Location off the board where pieces get to when they have gone all the way round the board. This will be a mixed location.
+     **/
     public LocationInterface getEndLocation() {
         return locations.get(NUMBER_OF_LOCATIONS + 1);
     }
 
+    /**
+     * @return the Location where pieces go to when they are knocked off the board by an opposing piece. This will be a mixed location.
+     **/
     public LocationInterface getKnockedLocation() {
         return locations.get(NUMBER_OF_LOCATIONS + 2);
     }
 
+    /**
+     * @return the Location corresponding to a numbered position on the board. This will not be a mixed location.
+     *
+     * @param locationNumber the number of the location going from 1-24
+     *
+     * @throws NoSuchLocationException when position is not in the range 1-24
+     **/
     public LocationInterface getBoardLocation(int locationNumber) throws NoSuchLocationException {
         if (locationNumber < 1 || locationNumber > BoardInterface.NUMBER_OF_LOCATIONS) {
             throw new NoSuchLocationException("Requested location number was out of the given range (1 to " + NUMBER_OF_LOCATIONS + ").");
@@ -151,6 +167,13 @@ public class Board implements BoardInterface {
         }
     }
 
+    /**
+     * @param colour the colour to move
+     *
+     * @param move the move to make
+     *
+     * @return true if and only if, from the current board state it would be legal for the given colour to make the given move.
+     **/
     public boolean canMakeMove(Colour colour, MoveInterface move) {
 
         /* Move can be made if:
@@ -191,6 +214,15 @@ public class Board implements BoardInterface {
         return targetLocation.canAddPiece(colour);
     }
 
+    /**
+     * Update the Board state by making the given move for the given colour, including any knocking off.
+     *
+     * @param colour the colour to move
+     *
+     * @param move the move to make
+     *
+     * @throws IllegalMoveException if and only if the move is not legal.
+     **/
     public void makeMove(Colour colour, MoveInterface move) throws IllegalMoveException {
 
         /* Move a knocked piece to the start location, if we have to */
@@ -237,12 +269,23 @@ public class Board implements BoardInterface {
         }
     }
 
+    /**
+     * Update the Board state by making the all of the moves in the given turn in order, including any knocking off, based on the given diceValues.
+     *
+     * @param colour the colour to move
+     *
+     * @param turn the turn to take
+     *
+     * @param diceValues the values of the dice available in no particular order. There will be repeated values in the list if a double is thrown
+     *
+     * @throws IllegalTurnException if and only if the turns in the move are not legal for the diceValues given. Each of the moves has to be legal, and the diceValues in the moves of the turn must match the diceValues parameter. The number of moves in the turn must be no less than the maximum possible number of legal moves: all available dice must be used. If IllegalTurnException is thrown then the board state remains unchanged.
+     **/
     public void takeTurn(Colour colour, TurnInterface turn, List<Integer> diceValues) throws IllegalTurnException {
 
         if (turn.getMoves().size() > diceValues.size()) {
             throw new IllegalTurnException("Player submitted wrong number of moves in one turn. You forfeit.");
         } else if(turn.getMoves().size() == 0) {
-            // There were no moves, so the player must've been unable to lose or they cheated
+            /* There were no moves, so the player must've been unable to move or they cheated */
         }
 
         int index = 0;
@@ -262,6 +305,11 @@ public class Board implements BoardInterface {
         }
     }
 
+    /**
+     * @param colour the colour to check
+     *
+     * @return true if and only if the given colour has won
+     **/
     public boolean isWinner(Colour colour) {
         /*
         Colour has won iff all their pieces are on the finish location AND not all the other colour's pieces are on the finish location
@@ -275,6 +323,9 @@ public class Board implements BoardInterface {
         return false;
     }
 
+    /**
+     * @return the colour of the winner if there is one, otherwise null
+     **/
     public Colour winner() {
         for(Colour c : Colour.values())
         {
@@ -286,10 +337,20 @@ public class Board implements BoardInterface {
     }
 
     // ??
+    /**
+     * @return true if and only if the Board is in a valid state (do not need to check whether or not it could be reached by a valid sequence of moves)
+     **/
     public boolean isValid() {
         return false;
     }
 
+    /**
+     * @param colour the colour to move next
+     *
+     * @param diceValues the dice values available to use
+     *
+     * @return a set of moves that the given colour can make from the current board state with (any one of) the given diceValues
+     **/
     public Set<MoveInterface> possibleMoves(Colour colour, List<Integer> diceValues) {
         Set<MoveInterface> moves = new HashSet<MoveInterface>();
         if(diceValues.size() == 4) {
@@ -321,7 +382,9 @@ public class Board implements BoardInterface {
         return output;
     }
 
-
+    /**
+     * @return a copy of the board that can be passed to players to work with
+     */
     public BoardInterface clone() {
 
         BoardInterface cloneBoard = new Board(false);
@@ -392,6 +455,9 @@ public class Board implements BoardInterface {
         }
     }
 
+    /**
+     * Overrides toString() from Object with a suitable String representation of the board state for displaying via the console to a human
+     **/
     public String toString() {
         List<String> lines = new ArrayList<String>();
         /*

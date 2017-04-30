@@ -19,15 +19,26 @@ public class Dice implements DiceInterface {
         d2 = new Die();
     }
 
+    /**
+     * @return true if and only if both of the dice have been rolled
+     **/
     public boolean haveRolled() {
         return d1.hasRolled() && d2.hasRolled();
     }
 
+    /**
+     * Roll both of the dice
+     */
     public void roll() {
         d1.roll();
         d2.roll();
     }
 
+    /**
+     * @return four numbers if there is a double, otherwise two
+     *
+     * @throws NotRolledYetException if either of the dice have not been rolled yet
+     **/
     public List<Integer> getValues() throws NotRolledYetException {
         List<Integer> values = new ArrayList<Integer>();
         if (d1.getValue() == d2.getValue()) // Rolled a double
@@ -44,11 +55,19 @@ public class Dice implements DiceInterface {
         return values;
     }
 
+    /**
+     * clear both of the dice so they have no value until they are rolled again
+     **/
     public void clear() {
         d1.clear();
         d2.clear();
     }
 
+    /**
+     * Get the individual dice in a list.
+     *
+     * @return the Die objects in a list, which will have length 2
+     */
     public List<DieInterface> getDice() {
         List<DieInterface> dice = new ArrayList<DieInterface>();
         dice.add(d1);

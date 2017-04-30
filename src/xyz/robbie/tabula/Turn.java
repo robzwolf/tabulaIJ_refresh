@@ -15,6 +15,11 @@ public class Turn implements TurnInterface {
         moves = new ArrayList<MoveInterface>();
     }
 
+    /**
+     * @param move to be added after the moves already defined in the current turn
+     *
+     * @throws IllegalTurnException if there are already four or more moves in the turn
+     */
     public void addMove(MoveInterface move) throws IllegalTurnException {
         if (moves.size() == 4) {
             throw new IllegalTurnException("Only four moves are allowed per turn.");

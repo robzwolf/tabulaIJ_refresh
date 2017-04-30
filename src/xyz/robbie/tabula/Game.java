@@ -33,14 +33,29 @@ public class Game implements GameInterface {
         resetGame();
     }
 
+    /**
+     * Assigns each colour to a player.
+     * @return the player who has the next turn. Green goes first.
+     **/
     public void setPlayer(Colour colour, PlayerInterface player) {
         players.put(colour, player);
     }
 
+    /**
+     * Gets the current player.
+     * @return the current player
+     */
     public Colour getCurrentPlayer() {
         return currentColour;
     }
 
+    /**
+     * Play the game until completion or pause. Should work either for a new game or the continuation of a paused game. This method should roll the dice and pass the dice values to the players. The players should be asked one after another for their choice of turn via their getTurn method. The board that is passed to the players should be a clone of the game board so that they can try out moves without affecting the state of the game.
+     *
+     * @return the colour of the winner if there is one, or null if not (the game has been paused by a player). If a player tries to take an illegal turn then they forfeit the game and the other player immediately wins.
+     *
+     * @throws PlayerNotDefinedException if one or both of the players is undefined
+     **/
     public Colour play() throws PlayerNotDefinedException {
 
         if(currentColour == null) {
@@ -57,25 +72,17 @@ public class Game implements GameInterface {
             throw new PlayerNotDefinedException("Two players need to be defined.");
         }
 
-        /* Variable initialisation */
-        board = getBoard();
-
         boolean stillPlaying = true;
         TurnInterface t;
 
         /* Do the game loop */
         while (stillPlaying) {
-            System.out.println("d.haveRolled() = " + d.haveRolled());
             if(!d.haveRolled()) {
                 d.roll();
-                System.out.println("rolled dice");
             }
             try {
-                System.out.println("players.get(currentColour) = " + players.get(currentColour));
-                System.out.println("d.getValues() = " + d.getValues());
                 t = players.get(currentColour).getTurn(currentColour, board.clone(), d.getValues());
                 d.clear();
-                System.out.println("cleared dice");
                 for (MoveInterface move : t.getMoves()) {
                     try {
                         board.makeMove(currentColour, move);
@@ -102,10 +109,24 @@ public class Game implements GameInterface {
         return board.winner(); // Returns the colour of the winner
     }
 
+    /**
+     * Save the current state of the game (including the board, dice and player types) into a file so it can be re-loaded and game play continued. You choose what the format of the file is.
+     *
+     * @param filename the name of the file in which to save the game state
+     *
+     * @throws IOException when an I/O problem occurs while saving
+     **/
     public void saveGame(String filename) throws IOException {
 
     }
 
+    /**
+     * Load the game state from the given file
+     *
+     * @param filename  the name of the file from which to load the game state
+     *
+     * @throws IOException when an I/O problem occurs or the file is not in the correct format (as used by saveGame())
+     **/
     public void loadGame(String filename) throws IOException {
         BoardInterface loadedBoard = new Board();
 

@@ -37,14 +37,23 @@ public class Location implements LocationInterface {
         this.name = (name != null) ? name : "";
     }
 
+    /**
+     * @return true if and only if the location allows pieces of both colours
+     */
     public boolean isMixed() {
         return mixed;
     }
 
+    /**
+     * @param isMixed true if and only if the location allows pieces of both colours
+     */
     public void setMixed(boolean isMixed) {
         mixed = isMixed;
     }
 
+    /**
+     * @return true if and only if the location has no pieces in it
+     */
     public boolean isEmpty() {
         for (int count : pieces.values()) {
             if (count != 0) {
@@ -55,10 +64,18 @@ public class Location implements LocationInterface {
         return true;
     }
 
+    /**
+     * @param colour the colour of pieces to count
+     * @return the number of pieces of that colour
+     **/
     public int numberOfPieces(Colour colour) {
         return pieces.get(colour);
     }
 
+    /**
+     * @param colour the colour of the piece to add
+     * @return true if and only if a piece of that colour can be added (i.e. no IllegalMoveException)
+     **/
     public boolean canAddPiece(Colour colour) {
         /* A piece can be added if:
            - The space is empty
@@ -87,6 +104,12 @@ public class Location implements LocationInterface {
 
     }
 
+    /**
+     * @param colour the colour of the piece to add
+     * @return null if nothing has been knocked off, otherwise the colour of the piece that has been knocked off
+     * @throws IllegalMoveException if the location is not mixed and already contains two or more pieces
+     *                              of the other colour
+     **/
     public Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException {
         if(colour == null) {
             throw new IllegalMoveException("Null colour");
@@ -112,12 +135,20 @@ public class Location implements LocationInterface {
         pieces.put(c, numberOfPieces(c) - 1);
     }
 
+    /**
+     * @param colour the colour of the piece to remove
+     * @return true if and only if a piece of that colour can be removed (i.e. no IllegalMoveException)
+     **/
     public boolean canRemovePiece(Colour colour) {
 
         /* Can only remove a piece if there are >0 pieces of that colour in this Location */
         return numberOfPieces(colour) > 0;
     }
 
+    /**
+     * @param colour the colour of the piece to remove
+     * @throws IllegalMoveException if there are no pieces of that colour in the location
+     **/
     public void removePiece(Colour colour) throws IllegalMoveException {
         if (canRemovePiece(colour)) {
             decrementColour(colour);
@@ -126,6 +157,10 @@ public class Location implements LocationInterface {
         }
     }
 
+    /**
+     * @return true if and only if the Location is in a valid state depending on
+     * the number of each colour and whether or not it is a mixed location
+     */
     public boolean isValid() {
 
         if (isEmpty()) {
