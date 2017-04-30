@@ -111,7 +111,8 @@ public class Game implements GameInterface {
                         System.out.println("Computer had no possible moves.");
                     }
                 } catch (NotRolledYetException e) {
-                    // Should never happen
+
+                    /* Should never happen */
                     e.printStackTrace();
                 }
 
@@ -185,8 +186,8 @@ public class Game implements GameInterface {
         JsonObject jsonBoard = jsonObject.get("board").getAsJsonObject();
         JsonArray jsonLocations = jsonBoard.get("locations").getAsJsonArray();
 
-        /* Transfer player/colour assignment */
-        /* Adapted from http://stackoverflow.com/a/27964552/2176546, retrieved 30/04/2017 */
+        /* Transfer player/colour assignment
+         * Adapted from http://stackoverflow.com/a/27964552/2176546, retrieved 30/04/2017 */
         Set<Map.Entry<String, JsonElement>> entrySet = jsonObject.get("players").getAsJsonObject().entrySet();
         for(Map.Entry<String,JsonElement> entry : entrySet) {
             JsonObject jsonColour = entry.getValue().getAsJsonObject();
@@ -233,9 +234,7 @@ public class Game implements GameInterface {
                     }
                 }
             }
-
             newBoard.replaceLocation(i, newLocation);
-
         }
 
         /* Transfer current player */
@@ -251,7 +250,6 @@ public class Game implements GameInterface {
         d.getDice().get(1).setValue(jsonDice.get("d2").getAsJsonObject().get("value").getAsInt());
 
         setBoard(newBoard);
-
     }
 
     private BoardInterface getBoard() {
@@ -294,7 +292,6 @@ public class Game implements GameInterface {
 
             switch (input) {
                 case "1": { // Load a game
-                    // ??
                     System.out.println("Enter the name of the file to load, or press Enter to load from the default location:");
                     input = scanner.nextLine();
                     String filename = DEFAULT_SAVE_LOCATION;
@@ -310,7 +307,6 @@ public class Game implements GameInterface {
                     break;
                 }
                 case "2": { // Continue a paused game
-                    // ??
                     if(g.getCurrentPlayer() == null) {
                         System.out.println("No game is currently being played.");
                         continue;
@@ -384,6 +380,7 @@ public class Game implements GameInterface {
 
                         switch (input) {
                             case "1": {
+
                                 /* Make second colour a human */
                                 PlayerInterface hcp = new HumanConsolePlayer();
                                 g.setPlayer(Colour.values()[1], hcp);
@@ -391,6 +388,7 @@ public class Game implements GameInterface {
                                 break;
                             }
                             case "2": {
+
                                 /* Make second colour computer */
                                 PlayerInterface cp = new ComputerPlayer();
                                 g.setPlayer(Colour.values()[1], cp);
@@ -452,7 +450,7 @@ public class Game implements GameInterface {
 
     } // end main()
 
-    private static void complainAboutNotDefinedPlayers(PlayerNotDefinedException e) {
+    private static void warnNotDefinedPlayers(PlayerNotDefinedException e) {
         if (e.getNumUndefined() == 2) {
             System.out.println("You have not defined any players. Return to the main menu and try again.");
         } else if (e.getNumUndefined() == 1) {
@@ -492,7 +490,7 @@ public class Game implements GameInterface {
                 handleGameFinish(g, winner);
             }
         } catch (PlayerNotDefinedException e) {
-            complainAboutNotDefinedPlayers(e);
+            warnNotDefinedPlayers(e);
         }
     }
 

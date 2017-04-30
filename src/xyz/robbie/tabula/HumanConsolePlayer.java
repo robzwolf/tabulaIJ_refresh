@@ -13,7 +13,7 @@ import java.util.Scanner;
  **/
 
 public class HumanConsolePlayer implements PlayerInterface {
-    private final String typeOfPlayer = "human";
+    private final String typeOfPlayer = "human"; // This is used for Gson so that we have a string representation of what type of player this is
 
     private transient Scanner scanner;
     private transient String input;
@@ -105,7 +105,6 @@ public class HumanConsolePlayer implements PlayerInterface {
                 System.out.println("Something went catastrophically wrong!");
                 e.printStackTrace();
             }
-
         }
 
         TurnInterface turn = new Turn();

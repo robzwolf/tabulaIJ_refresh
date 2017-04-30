@@ -419,25 +419,6 @@ public class Board implements BoardInterface {
                     continue;
                 }
             }
-//
-//            /* Transfer over the Location name */
-//            cl.setName(tl.getName());
-//
-//            /* Transfer over whether Location is mixed (probably not necessary by default, unless this property has been manually changed for any Location) */
-//            cl.setMixed(tl.isMixed());
-//
-//            /* Transfer number of pieces of each colour */
-//            for (Colour c : Colour.values()) {
-//
-//                /* Add the piece c to cl the correct number of times */
-//                for (int j = 1; j <= tl.numberOfPieces(c); j++) {
-//                    try {
-//                        cl.addPieceGetKnocked(c);
-//                    } catch (IllegalMoveException e) {  // Should never happen as tl will be valid
-//                        System.out.println("Error adding " + c + " on j-iteration #" + j + " to location #" + i);
-//                    }
-//                }
-//            }
 
             Location cl = tl.clone();
 
@@ -509,7 +490,7 @@ public class Board implements BoardInterface {
          */
         int maxNumberLength = getLengthOfNumber(BoardInterface.PIECES_PER_PLAYER);
 
-        /* space + maxNumberLength + space + maxColourLength + space */
+        /* <space> + maxNumberLength + <space> + maxColourLength + <space> */
         int boxInnerWidth = maxNumberLength + maxColourLength + 3;
 
         String dashLine = getNOf("-", boxInnerWidth);   // Store this for use in dashLine (efficiency)
