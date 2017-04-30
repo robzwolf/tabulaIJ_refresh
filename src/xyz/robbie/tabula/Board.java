@@ -459,6 +459,7 @@ public class Board implements BoardInterface {
         for (String line : lines) {
             output += line + "\n";
         }
+
         return output;
 
     }

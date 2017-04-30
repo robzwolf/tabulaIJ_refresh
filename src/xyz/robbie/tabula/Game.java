@@ -26,7 +26,7 @@ public class Game implements GameInterface {
     private HashMap<Colour, PlayerInterface> players;
     private Colour currentColour;
     private BoardInterface board;
-    private boolean playing;
+    private DiceInterface d;
 
     public Game() {
         this.players = new HashMap<Colour, PlayerInterface>();
@@ -43,7 +43,7 @@ public class Game implements GameInterface {
 
     public Colour play() throws PlayerNotDefinedException {
 
-        if(!playing) {
+        if(currentColour == null) {
             currentColour = Colour.values()[0];
         }
 
@@ -59,16 +59,23 @@ public class Game implements GameInterface {
 
         /* Variable initialisation */
         board = getBoard();
-        Dice d = new Dice();
 
         boolean stillPlaying = true;
         TurnInterface t;
 
         /* Do the game loop */
         while (stillPlaying) {
-            d.roll();
+            System.out.println("d.haveRolled() = " + d.haveRolled());
+            if(!d.haveRolled()) {
+                d.roll();
+                System.out.println("rolled dice");
+            }
             try {
+                System.out.println("players.get(currentColour) = " + players.get(currentColour));
+                System.out.println("d.getValues() = " + d.getValues());
                 t = players.get(currentColour).getTurn(currentColour, board.clone(), d.getValues());
+                d.clear();
+                System.out.println("cleared dice");
                 for (MoveInterface move : t.getMoves()) {
                     try {
                         board.makeMove(currentColour, move);
@@ -83,6 +90,7 @@ public class Game implements GameInterface {
 
                 /* Should never happen */
                 e.printStackTrace();
+                stillPlaying = false;
             }
             currentColour = currentColour.otherColour();
             if(board.winner() != null) {
@@ -91,7 +99,7 @@ public class Game implements GameInterface {
         }
 
         currentColour = null;
-        return board.winner(); // Should return the colour of the winner if there is one, or null if not (the game has been paused by a player)
+        return board.winner(); // Returns the colour of the winner
     }
 
     public void saveGame(String filename) throws IOException {
@@ -142,13 +150,11 @@ public class Game implements GameInterface {
             input = scanner.nextLine();
 
             switch (input) {
-                case "1": // Load a game
-                {
+                case "1": { // Load a game
 
                     break;
                 }
-                case "2": // Continue a paused game
-                {
+                case "2": { // Continue a paused game
                     if(g.getCurrentPlayer() == null) {
                         System.out.println("No game is currently being played.");
                         continue;
@@ -169,12 +175,10 @@ public class Game implements GameInterface {
                     }
                     break;
                 }
-                case "3": // Save the current game
-                {
+                case "3": { // Save the current game
                     break;
                 }
-                case "4": // Set the players
-                {
+                case "4": { // Set the players
                     String[] colours = {Colour.values()[0].toString().toLowerCase(), Colour.values()[1].toString().toLowerCase()};
 
                     /* Set first player */
@@ -249,14 +253,11 @@ public class Game implements GameInterface {
                     System.out.println("You have finished setting the players.");
                     break;
                 }
-                case "5": // Start a new game
-                {
+                case "5": { // Start a new game
                     g.resetGame();
 
                     try {
-
                         Colour winner = g.play();
-
                         if(winner == null) {
                             /* Player paused the game */
                             System.out.println("The game has been paused. Returning to main menu.");
@@ -271,12 +272,10 @@ public class Game implements GameInterface {
                     }
                     break;
                 }
-                case "6": // Exit the program
-                {
+                case "6": { // Exit the program
                     break;
                 }
-                case "dev": // Dev options
-                {
+                case "dev": { // Dev options
                     System.out.println();
                     System.out.println("== DEVELOPER OPTIONS ==");
                     do {
@@ -322,8 +321,14 @@ public class Game implements GameInterface {
     private void resetGame() {
         currentColour = null;
         board = new Board();
+        d = new Dice();
     }
 
+    /**
+     * Handles the end of a game by printing the final board and congratulating the winner.
+     * @param game The game whose board to print
+     * @param winner The winner of the game
+     */
     private static void handleGameFinish(Game game, Colour winner) {
         System.out.println(game.getBoard());
         System.out.println("Congratulations, " + winner.toString().toLowerCase() + " is the winner!");
