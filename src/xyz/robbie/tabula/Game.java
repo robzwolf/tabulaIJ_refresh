@@ -347,6 +347,7 @@ public class Game implements GameInterface {
 
                         switch (input) {
                             case "1": {
+                            
                                 /* Make first colour a human */
                                 PlayerInterface hcp = new HumanConsolePlayer();
                                 g.setPlayer(Colour.values()[0], hcp);
@@ -354,6 +355,7 @@ public class Game implements GameInterface {
                                 break;
                             }
                             case "2": {
+                            
                                 /* Make second colour computer */
                                 PlayerInterface cp = new ComputerPlayer();
                                 g.setPlayer(Colour.values()[0], cp);
