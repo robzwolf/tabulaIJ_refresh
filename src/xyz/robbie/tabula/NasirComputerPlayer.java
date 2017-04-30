@@ -119,12 +119,12 @@ public class NasirComputerPlayer implements PlayerInterface{
             redo = board.clone();
             List<MoveInterface> moves = new ArrayList<>();
             redo.makeMove(colour, m);
-            int newknocked = redo.getKnockedLocation().numberOfPieces(colour.otherColour());
+            int newKnocked = redo.getKnockedLocation().numberOfPieces(colour.otherColour());
             int newPos = m.getSourceLocation() + m.getDiceValue();
             if (newPos > redo.NUMBER_OF_LOCATIONS) {
                 newPos = redo.NUMBER_OF_LOCATIONS + 1;
             }
-            if (knocked != newknocked) {
+            if (knocked != newKnocked) {
                 moves.add(m);
                 ranks.put(0, moves);
                 System.out.println("added to 0");
