@@ -1,6 +1,12 @@
 package xyz.robbie.tabula;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.annotations.Expose;
+
 import java.io.IOException;
+import java.util.Collection;
+import java.util.Map;
 import java.util.Scanner;
 import java.util.HashMap;
 
@@ -23,7 +29,7 @@ import java.util.HashMap;
 
 public class Game implements GameInterface {
 
-    private HashMap<Colour, PlayerInterface> players;
+    private transient HashMap<Colour, PlayerInterface> players;
     private Colour currentColour;
     private BoardInterface board;
     private DiceInterface d;
@@ -49,6 +55,10 @@ public class Game implements GameInterface {
         return currentColour;
     }
 
+    private void setCurrentPlayer(Colour c) {
+        this.currentColour = c;
+    }
+
     /**
      * Play the game until completion or pause. Should work either for a new game or the continuation of a paused game. This method should roll the dice and pass the dice values to the players. The players should be asked one after another for their choice of turn via their getTurn method. The board that is passed to the players should be a clone of the game board so that they can try out moves without affecting the state of the game.
      *
@@ -59,7 +69,7 @@ public class Game implements GameInterface {
     public Colour play() throws PlayerNotDefinedException {
 
         if(currentColour == null) {
-            currentColour = Colour.values()[0];
+            setCurrentPlayer(Colour.values()[0]);
         }
 
         if (players.size() == 0) {
@@ -99,13 +109,13 @@ public class Game implements GameInterface {
                 e.printStackTrace();
                 stillPlaying = false;
             }
-            currentColour = currentColour.otherColour();
+            setCurrentPlayer(currentColour.otherColour());
             if(board.winner() != null) {
                 stillPlaying = false;
             }
         }
 
-        currentColour = null;
+        setCurrentPlayer(null);
         return board.winner(); // Returns the colour of the winner
     }
 
@@ -117,6 +127,17 @@ public class Game implements GameInterface {
      * @throws IOException when an I/O problem occurs while saving
      **/
     public void saveGame(String filename) throws IOException {
+
+        GsonBuilder gsonBuilder = new GsonBuilder();
+        gsonBuilder.serializeNulls();
+        Gson gson = gsonBuilder.setPrettyPrinting().create();
+        System.out.println("gson.toJson(this) = " + gson.toJson(this));
+
+//        Map<Colour,PlayerInterface> hash = new HashMap<Colour,PlayerInterface>();
+//        hash.put(Colour.GREEN,new ComputerPlayer());
+//        hash.put(Colour.BLUE,new HumanConsolePlayer());
+//        System.out.println("gson.toJson(hash) = " + gson.toJson(hash));
+//        System.out.println("gson.toJson(players) = " + gson.toJson(players));
 
     }
 
@@ -197,6 +218,11 @@ public class Game implements GameInterface {
                     break;
                 }
                 case "3": { // Save the current game
+                    try {
+                        g.saveGame("");
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                     break;
                 }
                 case "4": { // Set the players
@@ -340,7 +366,7 @@ public class Game implements GameInterface {
     }
 
     private void resetGame() {
-        currentColour = null;
+        setCurrentPlayer(null);
         board = new Board();
         d = new Dice();
     }

@@ -13,6 +13,7 @@ import java.util.Set;
  **/
 
 public class ComputerPlayer implements PlayerInterface {
+    private final String typeOfPlayer = "computer";
 
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException {
         String c = colour.toString().toUpperCase();

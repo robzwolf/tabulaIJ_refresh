@@ -13,9 +13,10 @@ import java.util.Scanner;
  **/
 
 public class HumanConsolePlayer implements PlayerInterface {
+    private final String typeOfPlayer = "human";
 
-    private Scanner scanner;
-    private String input;
+    private transient Scanner scanner;
+    private transient String input;
 
     public HumanConsolePlayer() {
         scanner = new Scanner(System.in);
