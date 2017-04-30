@@ -58,9 +58,9 @@ public class Board implements BoardInterface {
     private static final String START_NAME    = "START";
     private static final String FINISH_NAME   = "FINISH";
     private static final String KNOCKED_NAME  = "KNOCKED";
-    public static final int    START_INDEX   = 0;                           // Public because we may need to access this from Game
-    public static final int    FINISH_INDEX  = NUMBER_OF_LOCATIONS + 1;     // Public because we may need to access this from Game
-    public static final int    KNOCKED_INDEX = NUMBER_OF_LOCATIONS + 2;     // Public because we may need to access this from Game
+    public static final int    START_INDEX   = 0;                           // Public because we may need to access this from Game for loadGame()
+    public static final int    FINISH_INDEX  = NUMBER_OF_LOCATIONS + 1;     // Public because we may need to access this from Game for loadGame()
+    public static final int    KNOCKED_INDEX = NUMBER_OF_LOCATIONS + 2;     // Public because we may need to access this from Game for loadGame()
 
     public Board() {
         initialiseBoard();
