@@ -11,9 +11,6 @@
   <component name="ChangeListManager">
     <list default="true" id="aef5ae51-d669-45da-a45f-035a169cf56f" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/DiceTestBasic.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/DiceTestBasic.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -146,14 +143,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ComputerPlayer.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="ComputerPlayer.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="413">
-              <caret line="37" column="76" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="76" />
+            <state relative-caret-position="736">
+              <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#1234#1243#0" expanded="true" />
+                <element signature="e#797#806#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -194,7 +191,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1344">
@@ -431,11 +428,11 @@
         <option value="$PROJECT_DIR$/lib/gson-2.8.0.jar!/com/google/gson/JsonElement.class" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" />
         <option value="$PROJECT_DIR$/save.json" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/NasirHumanConsolePlayer.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/DiceTestBasic.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" />
       </list>
     </option>
   </component>
@@ -1071,7 +1068,7 @@
       <workItem from="1493284885849" duration="356000" />
       <workItem from="1493479865589" duration="2000" />
       <workItem from="1493479888018" duration="12612000" />
-      <workItem from="1493553442079" duration="25017000" />
+      <workItem from="1493553442079" duration="25132000" />
     </task>
     <servers />
   </component>
@@ -1108,7 +1105,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84228000" />
+    <option name="totallyTimeSpent" value="84343000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1196,7 +1193,7 @@
           <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#1234#1243#0" expanded="true" />
+            <element signature="e#797#806#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1574,17 +1571,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="413">
-          <caret line="37" column="76" lean-forward="true" selection-start-line="37" selection-start-column="0" selection-end-line="37" selection-end-column="76" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1234#1243#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/save.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="128">
@@ -1601,6 +1587,17 @@
             <element signature="imports" expanded="true" />
             <element signature="e#1299#1300#0" expanded="true" />
             <element signature="e#1342#1343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="736">
+          <caret line="48" column="0" lean-forward="true" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#797#806#0" expanded="true" />
           </folding>
         </state>
       </provider>
