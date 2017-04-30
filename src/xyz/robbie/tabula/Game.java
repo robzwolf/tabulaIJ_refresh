@@ -38,7 +38,7 @@ public class Game implements GameInterface {
     private DiceInterface d;
 
     public Game() {
-        this.players = new HashMap<Colour, PlayerInterface>();
+        this.players = new HashMap<>();
         resetGame();
     }
 
@@ -85,6 +85,8 @@ public class Game implements GameInterface {
             throw new PlayerNotDefinedException("Two players need to be defined.");
         }
 
+        boolean bothComputerPlayers = players.get(Colour.values()[0]) instanceof ComputerPlayer && players.get(Colour.values()[1]) instanceof ComputerPlayer;
+
         boolean stillPlaying = true;
         TurnInterface t;
 
@@ -93,12 +95,36 @@ public class Game implements GameInterface {
             if(!d.haveRolled()) {
                 d.roll();
             }
+            boolean handleComputerPrint = players.get(currentColour) instanceof ComputerPlayer && !bothComputerPlayers;
+            if(handleComputerPrint) {
+                System.out.println();
+                System.out.println(board);
+                System.out.println("== PLAYER " + currentColour + " (COMPUTER) ==");
+                try {
+                    if (d.getValues().size() == 4) {
+                        System.out.print("Computer rolled a double.");
+                    } else {
+                        System.out.print("Computer rolled the dice.");
+                    }
+                    System.out.println(" Die values available to computer are: " + PrettyStrings.prettifyList(d.getValues()));
+                    if(board.possibleMoves(currentColour, d.getValues()).size() == 0) {
+                        System.out.println("Computer had no possible moves.");
+                    }
+                } catch (NotRolledYetException e) {
+                    // Should never happen
+                    e.printStackTrace();
+                }
+
+            }
             try {
                 t = players.get(currentColour).getTurn(currentColour, board.clone(), d.getValues());
                 d.clear();
                 for (MoveInterface move : t.getMoves()) {
                     try {
                         board.makeMove(currentColour, move);
+                        if(handleComputerPrint) {
+                            System.out.println("Computer moved a counter " + move.getDiceValue() + " space" + (move.getDiceValue() > 1 ? "s" : "") + " from location " + move.getSourceLocation() + ".");
+                        }
                     } catch (IllegalMoveException e) {
                         System.out.println(e);
                         stillPlaying = false;

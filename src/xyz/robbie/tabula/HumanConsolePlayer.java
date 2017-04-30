@@ -84,13 +84,13 @@ public class HumanConsolePlayer implements PlayerInterface {
                 if (board.canMakeMove(colour, calculatedMove)) {
                     try {
                         board.makeMove(colour, calculatedMove);
+                        diceValues.remove(Integer.valueOf(chosenDie));
+                        chosenMoves.add(calculatedMove);
+                        if(numKnocked == 0) { // Don't print this if we forced the player to move their knocked piece first
+                            System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
+                        }
                     } catch (IllegalMoveException e) {
-                        System.out.println("That move is not valid.");
-                    }
-                    diceValues.remove(Integer.valueOf(chosenDie));
-                    chosenMoves.add(calculatedMove);
-                    if(numKnocked == 0) { // Don't print this if we forced the player to move their knocked piece first
-                        System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
+                        System.out.println("That move is not valid. Try again.");
                     }
                 } else {
                     System.out.println("That move is not valid. Try again.");

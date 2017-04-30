@@ -17,15 +17,15 @@ public class ComputerPlayer implements PlayerInterface {
 
     public TurnInterface getTurn(Colour colour, BoardInterface board, List<Integer> diceValues) throws PauseException {
         String c = colour.toString().toUpperCase();
-        System.out.println();
-        System.out.println(board);
-        System.out.println("== PLAYER " + c + " (COMPUTER) ==");
+//        System.out.println();
+//        System.out.println(board);
+//        System.out.println("== PLAYER " + c + " (COMPUTER) ==");
         if (diceValues.size() == 4) {
-            System.out.print("Computer rolled a double.");
+//            System.out.print("Computer rolled a double.");
         } else {
-            System.out.print("Computer rolled the dice.");
+//            System.out.print("Computer rolled the dice.");
         }
-        System.out.println(" Die values available to computer are: " + PrettyStrings.prettifyList(diceValues));
+//        System.out.println(" Die values available to computer are: " + PrettyStrings.prettifyList(diceValues));
 
         TurnInterface turn = new Turn();
 
@@ -35,9 +35,9 @@ public class ComputerPlayer implements PlayerInterface {
             Set<MoveInterface> possibleMoves = board.possibleMoves(colour, wrappedFirstDieValue);
             if(possibleMoves.size() == 0) {
                 if(turn.getMoves().size() == 0) {
-                    System.out.println("Computer had no possible moves.");
+//                    System.out.println("Computer had no possible moves.");
                 } else {
-                    System.out.println("Computer had no more possible moves.");
+//                    System.out.println("Computer had no more possible moves.");
                 }
                 break;
             }
@@ -45,7 +45,7 @@ public class ComputerPlayer implements PlayerInterface {
             try {
                 board.makeMove(colour, chosenMove);
                 turn.addMove(chosenMove); // i.e. the 'first' element in possibleMoves
-                System.out.println("Computer moved " + wrappedFirstDieValue.get(0) + " space" + (wrappedFirstDieValue.get(0) > 1 ? "s" : "") + " from location " + chosenMove.getSourceLocation());
+//                System.out.println("Computer moved " + wrappedFirstDieValue.get(0) + " space" + (wrappedFirstDieValue.get(0) > 1 ? "s" : "") + " from location " + chosenMove.getSourceLocation());
             } catch (IllegalTurnException | IllegalMoveException e) {
                 // Should never happen
                 e.printStackTrace();
