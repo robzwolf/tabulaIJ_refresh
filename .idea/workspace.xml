@@ -9,9 +9,7 @@
     <bookmark url="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" line="28" mnemonic="L" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aef5ae51-d669-45da-a45f-035a169cf56f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="aef5ae51-d669-45da-a45f-035a169cf56f" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -35,7 +33,7 @@
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/BoardInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="240">
-                    <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+                    <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
                     <folding />
                   </state>
                 </provider>
@@ -95,7 +93,7 @@
               <entry file="file://$PROJECT_DIR$/save.json">
                 <provider selected="true" editor-type-id="text-editor">
                   <state relative-caret-position="3824">
-                    <caret line="239" column="1" lean-forward="true" selection-start-line="239" selection-start-column="1" selection-end-line="239" selection-end-column="1" />
+                    <caret line="239" column="1" lean-forward="false" selection-start-line="239" selection-start-column="1" selection-end-line="239" selection-end-column="1" />
                     <folding />
                   </state>
                 </provider>
@@ -122,8 +120,8 @@
       <file leaf-file-name="Board.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="159">
-              <caret line="489" column="11" lean-forward="true" selection-start-line="489" selection-start-column="11" selection-end-line="489" selection-end-column="11" />
+            <state relative-caret-position="95">
+              <caret line="485" column="0" lean-forward="true" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#4992#4993#0" expanded="true" />
@@ -149,7 +147,7 @@
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="704">
-              <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#893#902#0" expanded="true" />
@@ -162,7 +160,7 @@
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Dice.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-371">
-              <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+              <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -182,7 +180,7 @@
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="463">
-              <caret line="477" column="0" lean-forward="true" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
+              <caret line="477" column="0" lean-forward="false" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1299#1300#0" expanded="true" />
@@ -196,7 +194,7 @@
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
-              <caret line="118" column="9" lean-forward="true" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
+              <caret line="118" column="9" lean-forward="false" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,7 +206,7 @@
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanGUIPlayer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="272">
-              <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+              <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -218,7 +216,7 @@
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/IllegalMoveException.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="112">
-              <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding>
                 <element signature="e#130#131#0" expanded="true" />
                 <element signature="e#160#161#0" expanded="true" />
@@ -1058,7 +1056,7 @@
       <workItem from="1493284885849" duration="356000" />
       <workItem from="1493479865589" duration="2000" />
       <workItem from="1493479888018" duration="12612000" />
-      <workItem from="1493553442079" duration="28665000" />
+      <workItem from="1493553442079" duration="29288000" />
     </task>
     <servers />
   </component>
@@ -1095,7 +1093,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87876000" />
+    <option name="totallyTimeSpent" value="88499000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -1448,7 +1446,7 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="704">
-          <caret line="46" column="0" lean-forward="true" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
+          <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#893#902#0" expanded="true" />
@@ -1459,7 +1457,7 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Dice.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-371">
-          <caret line="2" column="19" lean-forward="true" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+          <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
           <folding />
         </state>
       </provider>
@@ -1475,7 +1473,7 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="463">
-          <caret line="477" column="0" lean-forward="true" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
+          <caret line="477" column="0" lean-forward="false" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1299#1300#0" expanded="true" />
@@ -1487,7 +1485,7 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="118" column="9" lean-forward="true" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
+          <caret line="118" column="9" lean-forward="false" selection-start-line="118" selection-start-column="9" selection-end-line="118" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1497,7 +1495,7 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/HumanGUIPlayer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
-          <caret line="17" column="0" lean-forward="true" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1505,7 +1503,7 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/IllegalMoveException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
-          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding>
             <element signature="e#130#131#0" expanded="true" />
             <element signature="e#160#161#0" expanded="true" />
@@ -1516,7 +1514,7 @@
     <entry file="file://$PROJECT_DIR$/save.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3824">
-          <caret line="239" column="1" lean-forward="true" selection-start-line="239" selection-start-column="1" selection-end-line="239" selection-end-column="1" />
+          <caret line="239" column="1" lean-forward="false" selection-start-line="239" selection-start-column="1" selection-end-line="239" selection-end-column="1" />
           <folding />
         </state>
       </provider>
@@ -1524,7 +1522,7 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/BoardInterface.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="240">
-          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
           <folding />
         </state>
       </provider>
@@ -1579,8 +1577,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="489" column="11" lean-forward="true" selection-start-line="489" selection-start-column="11" selection-end-line="489" selection-end-column="11" />
+        <state relative-caret-position="95">
+          <caret line="485" column="0" lean-forward="true" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#4992#4993#0" expanded="true" />
