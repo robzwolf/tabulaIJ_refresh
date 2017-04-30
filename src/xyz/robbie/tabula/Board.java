@@ -52,11 +52,15 @@ public class Board implements BoardInterface {
             "Newton Aycliffe",  // 22
             "Spennymoor",       // 23
             "Durham"            // 24
+            /* initialiseBoard() accounts for location names higher than 24 */
     };
 
-    private static final String START_NAME = "START";
-    private static final String FINISH_NAME = "FINISH";
-    private static final String KNOCKED_NAME = "KNOCKED";
+    private static final String START_NAME    = "START";
+    private static final String FINISH_NAME   = "FINISH";
+    private static final String KNOCKED_NAME  = "KNOCKED";
+    private static final int    START_INDEX   = 0;
+    private static final int    FINISH_INDEX  = NUMBER_OF_LOCATIONS + 1;
+    private static final int    KNOCKED_INDEX = NUMBER_OF_LOCATIONS + 2;
 
     public Board() {
         initialiseBoard();
@@ -83,13 +87,13 @@ public class Board implements BoardInterface {
         Hence locations list should look like:
         START (0, OFF), 1 (ON), 2 (ON), ..., NUMBER_OF_LOCATIONS-1 (23, ON), NUMBER_OF_LOCATIONS (24, ON), END (25, OFF), KNOCKED (26, OFF)
         */
-        for (int i = 0; i < NUMBER_OF_LOCATIONS + 3; i++) {
+        for (int i = 0; i <= KNOCKED_INDEX; i++) {
             String locName;
-            if (i == 0) {
+            if (i == START_INDEX) {
                 locName = START_NAME;
-            } else if (i == NUMBER_OF_LOCATIONS + 1) {
+            } else if (i == FINISH_INDEX) {
                 locName = FINISH_NAME;
-            } else if (i == NUMBER_OF_LOCATIONS + 2) {
+            } else if (i == KNOCKED_INDEX) {
                 locName = KNOCKED_NAME;
             } else if (1 <= i && i <= locationNames.length) {
                 locName = locationNames[i - 1];
@@ -99,7 +103,7 @@ public class Board implements BoardInterface {
 
             Location l = new Location(locName);
 
-            if (i == 0 || i == NUMBER_OF_LOCATIONS+1 || i == NUMBER_OF_LOCATIONS+2) // if start, end or 'knocked' location (all off the board), make location mixed
+            if (i == START_INDEX || i == FINISH_INDEX || i == KNOCKED_INDEX) // if start, end or 'knocked' location (all off the board), make location mixed
             {
                 l.setMixed(true);
             }
@@ -142,14 +146,14 @@ public class Board implements BoardInterface {
      * @return the Location off the board where pieces get to when they have gone all the way round the board. This will be a mixed location.
      **/
     public LocationInterface getEndLocation() {
-        return locations.get(NUMBER_OF_LOCATIONS + 1);
+        return locations.get(FINISH_INDEX);
     }
 
     /**
      * @return the Location where pieces go to when they are knocked off the board by an opposing piece. This will be a mixed location.
      **/
     public LocationInterface getKnockedLocation() {
-        return locations.get(NUMBER_OF_LOCATIONS + 2);
+        return locations.get(KNOCKED_INDEX);
     }
 
     /**
@@ -208,7 +212,7 @@ public class Board implements BoardInterface {
         LocationInterface targetLocation;
         int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
         if (targetLocIndex > NUMBER_OF_LOCATIONS) {     // if the move would take us off the board
-            targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
+            targetLocIndex = FINISH_INDEX;   // set the target location index to the finish location
         }
         targetLocation = locations.get(targetLocIndex);
         return targetLocation.canAddPiece(colour);
@@ -245,7 +249,7 @@ public class Board implements BoardInterface {
                 int targetLocIndex = move.getSourceLocation() + move.getDiceValue();
                 if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
                 {
-                    targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
+                    targetLocIndex = FINISH_INDEX; // set the target location index to the finish location
                 }
                 targetLocation = locations.get(targetLocIndex);
 
@@ -341,6 +345,11 @@ public class Board implements BoardInterface {
      * @return true if and only if the Board is in a valid state (do not need to check whether or not it could be reached by a valid sequence of moves)
      **/
     public boolean isValid() {
+        for(int i=0; i<=KNOCKED_INDEX; i++) {
+            if(!locations.get(i).isValid()) {
+                return false;
+            }
+        }
         return false;
     }
 
@@ -389,17 +398,17 @@ public class Board implements BoardInterface {
 
         BoardInterface cloneBoard = new Board(false);
 
-        for (int i = 0; i <= NUMBER_OF_LOCATIONS + 2; i++) {
+        for (int i = 0; i <= KNOCKED_INDEX; i++) {
             LocationInterface tl = null;
             LocationInterface cl = null;
 
-            if (i == 0) {                               // Start location
+            if (i == START_INDEX) {                     // Start location
                 cl = cloneBoard.getStartLocation();
                 tl = this.getStartLocation();
-            } else if (i == NUMBER_OF_LOCATIONS + 1) {  // Finish location
+            } else if (i == FINISH_INDEX) {             // Finish location
                 cl = cloneBoard.getEndLocation();
                 tl = this.getEndLocation();
-            } else if (i == NUMBER_OF_LOCATIONS + 2) {  // Knocked location
+            } else if (i == KNOCKED_INDEX) {            // Knocked location
                 cl = cloneBoard.getKnockedLocation();
                 tl = this.getKnockedLocation();
             } else {
@@ -407,21 +416,21 @@ public class Board implements BoardInterface {
                     cl = cloneBoard.getBoardLocation(i);
                     tl = this.getBoardLocation(i);
                 } catch (NoSuchLocationException e) {   // Something went wrong, but we this should never happen
-                    System.out.println(e);
+                    e.printStackTrace();
                     continue;
                 }
             }
 
-            // Transfer over the Location name
+            /* Transfer over the Location name */
             cl.setName(tl.getName());
 
-            // Transfer over whether Location is mixed (probably not necessary by default, unless this property has been manually changed for any Location)
+            /* Transfer over whether Location is mixed (probably not necessary by default, unless this property has been manually changed for any Location) */
             cl.setMixed(tl.isMixed());
 
-            // Transfer number of pieces of each colour
+            /* Transfer number of pieces of each colour */
             for (Colour c : Colour.values()) {
 
-                // Add the piece c to cl the correct number of times
+                /* Add the piece c to cl the correct number of times */
                 for (int j = 1; j <= tl.numberOfPieces(c); j++) {
                     try {
                         cl.addPieceGetKnocked(c);
@@ -440,7 +449,7 @@ public class Board implements BoardInterface {
             return 1;
         }
         return (int) Math.floor(Math.log10(num)) + 1;
-        // Note also that num.toString().length() would also work
+        /* Note also that num.toString().length() would also work */
     }
 
     private String getNOf(String str, int n) {
@@ -473,7 +482,7 @@ public class Board implements BoardInterface {
         [ K]
         */
 
-        // Calculate the maximum length of colour string
+        /* Calculate the maximum length of colour string */
         int maxColourLength = 0;
         for (Colour c : Colour.values()) {
             if (c.toString().length() > maxColourLength) {
@@ -496,11 +505,10 @@ public class Board implements BoardInterface {
         String thisLine = "";
 
         /* Print start + main (1, ..., NUMBER_OF_LOCATIONS) + finish + knocked locations */
-        for (int i = 0; i <= NUMBER_OF_LOCATIONS + 2; i++) {
+        for (int i = 0; i <= KNOCKED_INDEX; i++) {
 
-            /* Special locations are START (index 0), FINISH (index NUMBER_OF_LOCATIONS+1), KNOCKED (NUMBER_OF_LOCATIONS+2) */
-            boolean isSpecialLocation = i == 0 || i == NUMBER_OF_LOCATIONS + 1 || i == NUMBER_OF_LOCATIONS + 2;
-
+            /* Special locations are START (index 0), FINISH (index FINISH_INDEX), KNOCKED (KNOCKED_INDEX) */
+            boolean isSpecialLocation = (i == START_INDEX || i == FINISH_INDEX || i == KNOCKED_INDEX);
 
             /* Top line */
             lines.add(paddedDashLine);
