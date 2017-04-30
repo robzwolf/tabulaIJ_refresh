@@ -5,10 +5,10 @@ import java.util.*;
 /**
  * Location represents a single location on the board, but not its position
  * Locations on the main part of the board may only contain a single colour of piece.
- * <p>
+ *
  * Off-board locations, i.e. the starting location, the finishing location and the knocked-off location
  * can contain pieces of both colours and are referred to as mixed.
- * <p>
+ *
  * Requires a constructor with one parameter (the name of the location), which creates a non-mixed location with no pieces.
  */
 
@@ -23,7 +23,7 @@ public class Location implements LocationInterface {
         setMixed(false);
         pieces = new HashMap<Colour, Integer>();
 
-        // Initialise the pieces HashMap
+        /* Initialise the pieces HashMap */
         for (Colour colour : Colour.values()) {
             pieces.put(colour, 0);
         }
@@ -78,22 +78,13 @@ public class Location implements LocationInterface {
         if(this.isMixed()) {                                        // If the space is mixed
             return true;
         } else {
-//            System.out.println("numberOfPieces(" + colour + ") = " + numberOfPieces(colour));
-//            System.out.println("numberOfPieces(" + colour.otherColour() + ") = " + numberOfPieces(colour.otherColour()));
             if(numberOfPieces(colour.otherColour()) > 1) {          // If the space has more than one counter of the other colour
                 return false;
             } else {                                                // If the space only has one or zero counters of the other colour
                 return true;
             }
-//            if(this.numberOfPieces(colour) != 0) {                  // If the space has only counters of the same colour
-//                return true;
-//            } else if(numberOfPieces(colour.otherColour()) == 1) {  // If the space is not mixed and has exactly one counter of the opposite colour
-//                return true;
-//            }
         }
 
-        /* If none of the above conditions are satisfied */
-//        return false;
     }
 
     public Colour addPieceGetKnocked(Colour colour) throws IllegalMoveException {
@@ -122,6 +113,7 @@ public class Location implements LocationInterface {
     }
 
     public boolean canRemovePiece(Colour colour) {
+
         /* Can only remove a piece if there are >0 pieces of that colour in this Location */
         return numberOfPieces(colour) > 0;
     }
@@ -140,7 +132,7 @@ public class Location implements LocationInterface {
             return true;
         }
 
-        // invalid if not mixed AND >0 of EACH colour
+        /* invalid if not mixed AND >0 of EACH colour */
         boolean moreThanOneColour = false;
         Colour firstColourWithSomePieces = null;
         for (Colour c : pieces.keySet()) {
@@ -158,7 +150,7 @@ public class Location implements LocationInterface {
         return !isMixed() && !moreThanOneColour;
     }
 
-    // For debugging
+    /* For debugging */
     public String toString() {
         String output = "getName(): " + getName();
         output += "\nisValid(): " + isValid();

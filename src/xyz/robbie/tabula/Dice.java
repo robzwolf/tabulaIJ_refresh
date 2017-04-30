@@ -4,9 +4,9 @@ import java.util.*;
 
 /**
  * Dice represents a pair of dice as used in tabula.
- * <p>
+ *
  * It should use the Die class so that all randomness comes from there
- * <p>
+ *
  * Requires a constructor with no parameters. Initially the dice have no value until they are rolled
  **/
 
@@ -32,7 +32,7 @@ public class Dice implements DiceInterface {
         List<Integer> values = new ArrayList<Integer>();
         if (d1.getValue() == d2.getValue()) // Rolled a double
         {
-            // The same value four times
+            /* The same value four times */
             values.add(d1.getValue());
             values.add(d1.getValue());
             values.add(d1.getValue());

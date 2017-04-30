@@ -52,6 +52,7 @@ public class Game implements GameInterface {
         } else if (players.size() == 1) {
             throw new PlayerNotDefinedException("One player has not yet been defined.", 1);
         } else if (players.size() != 2) {
+
             /* Shouldn't be able to get this far though */
             throw new PlayerNotDefinedException("Two players need to be defined.");
         }
@@ -77,9 +78,9 @@ public class Game implements GameInterface {
                     }
                 }
             } catch (PauseException e) {
-//                System.out.println(e);
                 return null;
             } catch (NotRolledYetException e) {
+
                 /* Should never happen */
                 e.printStackTrace();
             }
@@ -120,6 +121,7 @@ public class Game implements GameInterface {
      * exit the program.
      */
     public static void main(String[] args) {
+
         /* Initialise variables for scope */
         Scanner scanner = new Scanner(System.in);
         String input = "";
@@ -211,41 +213,38 @@ public class Game implements GameInterface {
                     }
 
                     /* Set second player */
-//                    System.out.println("Would you like " + colours[1] + " to be a human or computer player?");
-//                    do {
-//                        System.out.println(" 1) Human player");
-//                        System.out.println(" 2) Computer player");
-//                        System.out.println(" 3) Return to main menu");
-//                        input = scanner.nextLine();
-//
-//                        switch (input) {
-//                            case "1": {
-//                                /* Make second colour a human */
-//                                PlayerInterface hcp = new HumanConsolePlayer();
-//                                g.setPlayer(Colour.values()[1], hcp);
-//                                System.out.println("You have set " + colours[1] + " to be a human player.");
-//                                break;
-//                            }
-//                            case "2": {
-//                                /* Make second colour computer */
-//                                PlayerInterface cp = new ComputerPlayer();
-//                                g.setPlayer(Colour.values()[1], cp);
-//                                System.out.println("You have set " + colours[1] + " to be a computer player.");
-//                                break;
-//                            }
-//                            case "3": {
-//                                returnToMainMenu = true;
-//                                break;
-//                            }
-//                        }
+                    System.out.println("Would you like " + colours[1] + " to be a human or computer player?");
+                    do {
+                        System.out.println(" 1) Human player");
+                        System.out.println(" 2) Computer player");
+                        System.out.println(" 3) Return to main menu");
+                        input = scanner.nextLine();
 
-//                    } while (!input.equals("1") && !input.equals("2") && !input.equals("3"));
+                        switch (input) {
+                            case "1": {
+                                /* Make second colour a human */
+                                PlayerInterface hcp = new HumanConsolePlayer();
+                                g.setPlayer(Colour.values()[1], hcp);
+                                System.out.println("You have set " + colours[1] + " to be a human player.");
+                                break;
+                            }
+                            case "2": {
+                                /* Make second colour computer */
+                                PlayerInterface cp = new ComputerPlayer();
+                                g.setPlayer(Colour.values()[1], cp);
+                                System.out.println("You have set " + colours[1] + " to be a computer player.");
+                                break;
+                            }
+                            case "3": {
+                                returnToMainMenu = true;
+                                break;
+                            }
+                        }
+
+                    } while (!input.equals("1") && !input.equals("2") && !input.equals("3"));
                     if (returnToMainMenu) {
                         continue;
                     }
-
-                    NasirComputerPlayer ncp = new NasirComputerPlayer();
-                    g.setPlayer(Colour.values()[1], ncp);
 
                     System.out.println("You have finished setting the players.");
                     break;

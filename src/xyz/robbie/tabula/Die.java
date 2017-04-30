@@ -4,11 +4,11 @@ import java.util.Random;
 
 /**
  * Die represents a single die.
- * <p>
+ *
  * Implements DieInterface.
- * <p>
+ *
  * Requires a constructor with no parameters. Initially the die has no value until it is rolled.
- * <p>
+ *
  * A single static java.util.Random object should be the source of all randomisation.
  **/
 
@@ -19,7 +19,7 @@ public class Die implements DieInterface {
     public Die() {
         value = null;
         // Only bother initialising randomiser if it's not already been initialised!
-        if (!(randomiser instanceof Random)) {
+        if (randomiser == null) {
             randomiser = new Random();
         }
     }

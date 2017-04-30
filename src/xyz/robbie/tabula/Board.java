@@ -15,14 +15,16 @@ public class Board implements BoardInterface {
 
     private String name;
 
-    // List of all the locations in game
-    // Location 0 ("Start") is the start location, off the board
-    // Location 1 ("Newcastle") is the first location on the board
-    // Location 24 ("Durham") is the last location on the board
-    // Location 25 ("Finish") is the finish location, off the board
-    // Location 26 ("Stockton") is the 'knocked' location
-    // Hence locations list should look like:
-    //     START (0, OFF), 1 (ON), 2 (ON), ..., NUMBER_OF_LOCATIONS-1 (23, ON), NUMBER_OF_LOCATIONS (24, ON), END (25, OFF), KNOCKED (26, OFF)
+    /*
+    List of all the locations in game
+    Location 0 ("Start") is the start location, off the board
+    Location 1 ("Newcastle") is the first location on the board
+    Location 24 ("Durham") is the last location on the board
+    Location 25 ("Finish") is the finish location, off the board
+    Location 26 ("Stockton") is the 'knocked' location
+    Hence locations list should look like:
+    START (0, OFF), 1 (ON), 2 (ON), ..., NUMBER_OF_LOCATIONS-1 (23, ON), NUMBER_OF_LOCATIONS (24, ON), END (25, OFF), KNOCKED (26, OFF)
+    */
     private List<LocationInterface> locations;
 
     private static final String[] locationNames = {
@@ -65,21 +67,22 @@ public class Board implements BoardInterface {
         if (prePopulateStart) {
             prePopulateStart();
         }
-
         initialiseBoard();
     }
 
     private void initialiseBoard() {
         locations = new ArrayList<LocationInterface>();
 
-        // Create the list of Locations
-        // Location 0 ("START") is the start location, off the board
-        // Location 1 ("Newcastle") is the first location on the board
-        // Location 24 ("Durham") is the last location on the board
-        // Location 25 ("FINISH") is the finish location, off the board
-        // Location 26 ("KNOCKED") is the 'knocked' location
-        // Hence locations list should look like:
-        //     START (0, OFF), 1 (ON), 2 (ON), ..., NUMBER_OF_LOCATIONS-1 (23, ON), NUMBER_OF_LOCATIONS (24, ON), END (25, OFF), KNOCKED (26, OFF)
+        /*
+        Create the list of Locations
+        Location 0 ("START") is the start location, off the board
+        Location 1 ("Newcastle") is the first location on the board
+        Location 24 ("Durham") is the last location on the board
+        Location 25 ("FINISH") is the finish location, off the board
+        Location 26 ("KNOCKED") is the 'knocked' location
+        Hence locations list should look like:
+        START (0, OFF), 1 (ON), 2 (ON), ..., NUMBER_OF_LOCATIONS-1 (23, ON), NUMBER_OF_LOCATIONS (24, ON), END (25, OFF), KNOCKED (26, OFF)
+        */
         for (int i = 0; i < NUMBER_OF_LOCATIONS + 3; i++) {
             String locName;
             if (i == 0) {
@@ -93,12 +96,10 @@ public class Board implements BoardInterface {
             } else {
                 locName = "Town #" + i;
             }
-            //String locName = i>=locationNames.length ? "Town "+i : locationNames[i];
-//            System.out.println("Location #" + i + ": " + locName);
 
             Location l = new Location(locName);
 
-            if (i == 0 || i == 25 || i == 26) // if start, end or 'knocked' location (all off the board), make location mixed
+            if (i == 0 || i == NUMBER_OF_LOCATIONS+1 || i == NUMBER_OF_LOCATIONS+2) // if start, end or 'knocked' location (all off the board), make location mixed
             {
                 l.setMixed(true);
             }
@@ -107,12 +108,13 @@ public class Board implements BoardInterface {
 
         }
 
-        // Set the board name
+        /* Set the board name */
         setName("North-East Board");
     }
 
     private void prePopulateStart() {
-        // Pre-populate the START location
+
+        /* Pre-populate the START location */
         for (Colour c : Colour.values()) {
             for (int i = 1; i <= BoardInterface.PIECES_PER_PLAYER; i++) {
                 try {
@@ -186,11 +188,9 @@ public class Board implements BoardInterface {
             targetLocIndex = NUMBER_OF_LOCATIONS + 1;   // set the target location index to the finish location
         }
         targetLocation = locations.get(targetLocIndex);
-//        System.out.println("locations.get(" + targetLocIndex + ").canAddPiece(" + colour + ") = " + targetLocation.canAddPiece(colour));
         return targetLocation.canAddPiece(colour);
     }
 
-    // ??
     public void makeMove(Colour colour, MoveInterface move) throws IllegalMoveException {
 
         /* Move a knocked piece to the start location, if we have to */
@@ -237,7 +237,6 @@ public class Board implements BoardInterface {
         }
     }
 
-    // ??
     public void takeTurn(Colour colour, TurnInterface turn, List<Integer> diceValues) throws IllegalTurnException {
 
         if (turn.getMoves().size() > diceValues.size()) {
@@ -248,14 +247,13 @@ public class Board implements BoardInterface {
 
         int index = 0;
         for (MoveInterface move : turn.getMoves()) {
-            //if (move.getDiceValue() != diceValues.get(index)) {
             if (!diceValues.contains(move.getDiceValue())) {
                 throw new IllegalTurnException("Die value (" + move.getDiceValue() + ") of move #" + (index + 1) + " does not match the given dice value (" + diceValues.get(index) + "). Player forfeits.");
             } else {
                 try {
                     makeMove(colour, move);
                 } catch (IllegalMoveException e) {
-                    // Player submitted an illegal move
+                    /* Player submitted an illegal move */
                     e.printStackTrace();
                     throw new IllegalTurnException("One of your moves was invalid. You forfeit.");
                 }
@@ -264,7 +262,6 @@ public class Board implements BoardInterface {
         }
     }
 
-    // ??
     public boolean isWinner(Colour colour) {
         /*
         Colour has won iff all their pieces are on the finish location AND not all the other colour's pieces are on the finish location
@@ -276,7 +273,6 @@ public class Board implements BoardInterface {
 
         /* If none of the above conditions are satisfied */
         return false;
-//        return getEndLocation().numberOfPieces(colour) == PIECES_PER_PLAYER && getEndLocation().numberOfPieces(colour.otherColour()) != PIECES_PER_PLAYER;
     }
 
     public Colour winner() {
@@ -294,7 +290,6 @@ public class Board implements BoardInterface {
         return false;
     }
 
-    // ??
     public Set<MoveInterface> possibleMoves(Colour colour, List<Integer> diceValues) {
         Set<MoveInterface> moves = new HashSet<MoveInterface>();
         if(diceValues.size() == 4) {
@@ -307,35 +302,6 @@ public class Board implements BoardInterface {
         return moves;
     }
 
-//    private Set<MoveInterface> calculatePossibleMoves(Colour colour, int dieValue) {
-//        Set<MoveInterface> moves = new HashSet<MoveInterface>();
-//        for(int sourceLocationIndex=0; sourceLocationIndex<=NUMBER_OF_LOCATIONS; sourceLocationIndex++) {
-//            LocationInterface sourceLocation = locations.get(sourceLocationIndex);
-//            if(sourceLocation.canRemovePiece(colour)) {
-//                // Find the new space
-//                LocationInterface targetLocation;
-//                int targetLocIndex = sourceLocationIndex + dieValue;
-//                if (targetLocIndex > NUMBER_OF_LOCATIONS) // if the move would take us off the end of board
-//                {
-//                    targetLocIndex = NUMBER_OF_LOCATIONS + 1; // set the target location index to the finish location
-//                }
-//                targetLocation = locations.get(targetLocIndex);
-//                if(targetLocation.canAddPiece(colour)) {
-//                    MoveInterface move = new Move();
-//                    try {
-//                        move.setSourceLocation(sourceLocationIndex);
-//                        move.setDiceValue(dieValue);
-//                    } catch (NoSuchLocationException | IllegalMoveException e) {
-//                        // Should never be called
-//                        e.printStackTrace();
-//                    }
-//                    moves.add(move);
-//                } // end if canAddPiece()
-//            } // end if canRemovePiece()
-//        } // end for each location
-//        return moves;
-//    }
-
     private Set<MoveInterface> calculatePossibleMoves(Colour colour, int dieValue) {
         Set<MoveInterface> output = new HashSet<MoveInterface>();
         for(int sourceLocationIndex=0; sourceLocationIndex<=NUMBER_OF_LOCATIONS; sourceLocationIndex++) {
@@ -344,7 +310,7 @@ public class Board implements BoardInterface {
                 testMove.setSourceLocation(sourceLocationIndex);
                 testMove.setDiceValue(dieValue);
             } catch (NoSuchLocationException | IllegalMoveException e) {
-                // Should never be called
+                /* Should never be called */
                 e.printStackTrace();
             }
             if(canMakeMove(colour, testMove)) {
@@ -455,7 +421,7 @@ public class Board implements BoardInterface {
          */
         int maxNumberLength = getLengthOfNumber(BoardInterface.PIECES_PER_PLAYER);
 
-        // space + maxNumberLength + space + maxColourLength + space
+        /* space + maxNumberLength + space + maxColourLength + space */
         int boxInnerWidth = maxNumberLength + maxColourLength + 3;
 
         String dashLine = getNOf("-", boxInnerWidth);   // Store this for use in dashLine (efficiency)
@@ -463,17 +429,17 @@ public class Board implements BoardInterface {
 
         String thisLine = "";
 
-        // Print start + main (1, ..., NUMBER_OF_LOCATIONS) + finish + knocked locations
+        /* Print start + main (1, ..., NUMBER_OF_LOCATIONS) + finish + knocked locations */
         for (int i = 0; i <= NUMBER_OF_LOCATIONS + 2; i++) {
 
-            // Special locations are START (index 0), FINISH (index NUMBER_OF_LOCATIONS+1), KNOCKED (NUMBER_OF_LOCATIONS+2)
+            /* Special locations are START (index 0), FINISH (index NUMBER_OF_LOCATIONS+1), KNOCKED (NUMBER_OF_LOCATIONS+2) */
             boolean isSpecialLocation = i == 0 || i == NUMBER_OF_LOCATIONS + 1 || i == NUMBER_OF_LOCATIONS + 2;
 
 
-            // Top line
+            /* Top line */
             lines.add(paddedDashLine);
 
-            // For each colour, loop through and print the number of each piece
+            /* For each colour, loop through and print the number of each piece */
             boolean firstColour = true;
             for (Colour c : Colour.values()) {
                 int numPieces = this.locations.get(i).numberOfPieces(c); // use locations.get() rather than getBoardLocation() because need to access off-board locations

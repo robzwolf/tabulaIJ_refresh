@@ -1,7 +1,6 @@
 package xyz.robbie.tabula;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -14,7 +13,6 @@ import java.util.Scanner;
  **/
 
 public class HumanConsolePlayer implements PlayerInterface {
-//    private static final String[] ordinalNumbers = {"first", "second", "third", "fourth"};
 
     private Scanner scanner;
     private String input;
@@ -28,11 +26,6 @@ public class HumanConsolePlayer implements PlayerInterface {
         System.out.println();
         System.out.println(board);
         System.out.println("== PLAYER " + colour.toString().toUpperCase() + " ==");
-//        System.out.println("Would you like to pause? Y/N");
-//        input = scanner.nextLine().toLowerCase();
-//        if(input.equals("y") || input.equals(".")) { // use . for pause (useful for dev)
-//            throw new PauseException(colour.toString());
-//        }
         if (diceValues.size() == 4) {
             System.out.println("You're lucky - you rolled a double! You rolled: " + PrettyStrings.prettifyList(diceValues));
         } else {
@@ -44,7 +37,6 @@ public class HumanConsolePlayer implements PlayerInterface {
         }
 
         List<MoveInterface> chosenMoves = new ArrayList<MoveInterface>();
-
 
         /* Loop through until diceValues() is empty */
         while (diceValues.size() > 0 && board.possibleMoves(colour, diceValues).size() > 0) {
@@ -75,6 +67,7 @@ public class HumanConsolePlayer implements PlayerInterface {
                             availableLocationNums.add(j);
                         }
                     } catch (NoSuchLocationException e) {
+
                         /* Should never be called */
                         System.out.println("Something went terribly wrong.");
                         e.printStackTrace();
@@ -95,7 +88,7 @@ public class HumanConsolePlayer implements PlayerInterface {
                     }
                     diceValues.remove(Integer.valueOf(chosenDie));
                     chosenMoves.add(calculatedMove);
-                    if(numKnocked == 0) { // Don't print this if we forced the player to move his knocked piece first
+                    if(numKnocked == 0) { // Don't print this if we forced the player to move their knocked piece first
                         System.out.println("You chose to move a piece " + chosenDie + " space" + (chosenDie == 1 ? "" : "s") + " from location " + chosenSourceLocation + ".");
                     }
                 } else {
@@ -119,6 +112,7 @@ public class HumanConsolePlayer implements PlayerInterface {
             try {
                 turn.addMove(move);
             } catch (IllegalTurnException e) {
+
                 // Will never be called
                 e.printStackTrace();
             }
@@ -144,10 +138,11 @@ public class HumanConsolePlayer implements PlayerInterface {
                 throw new PauseException("Game paused");
             }
 
-            // Check if the user entered a number or something else
+            /* Check if the user entered a number or something else */
             try {
                 chosenNum = Integer.parseInt(input);
-                // Check user entered a value that is contained in allowableValue
+
+                /* Check user entered a value that is contained in allowableValue */
                 if (!allowableValues.contains(Integer.parseInt(input))) // user hasn't entered a valid value
                 {
                     System.out.println(String.format(errMessage, input));

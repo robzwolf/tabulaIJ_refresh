@@ -1,7 +1,7 @@
 package xyz.robbie.tabula;
 
 public enum Colour {
-    // First colour here is the one that will start first in the game, as Colour.values()[0] is used to determine who goes first
+    /* First colour here is the one that will start first in the game, as Colour.values()[0] is used to determine who goes first */
     GREEN, BLUE;
 
     /**
@@ -16,7 +16,7 @@ public enum Colour {
                 return GREEN;
 
             default:
-                // will not happen
+                // should not happen
                 return null;
         }
     }

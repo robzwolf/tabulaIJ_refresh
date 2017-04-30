@@ -4,12 +4,12 @@ import java.util.*;
 
 /**
  * A Turn represents a series of moves which constitute a turn by a player.
- * <p>
+ *
  * Requires a constructor with no parameters.
  **/
 
 public class Turn implements TurnInterface {
-    List<MoveInterface> moves;
+    private List<MoveInterface> moves;
 
     public Turn() {
         moves = new ArrayList<MoveInterface>();
