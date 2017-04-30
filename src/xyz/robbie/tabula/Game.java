@@ -2,13 +2,12 @@ package xyz.robbie.tabula;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
-
 import java.io.IOException;
-import java.util.Collection;
-import java.util.Map;
-import java.util.Scanner;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
+import java.util.Scanner;
 
 /**
  * Game represents the game state including the board, the dice and the players
@@ -29,7 +28,9 @@ import java.util.HashMap;
 
 public class Game implements GameInterface {
 
-    private transient HashMap<Colour, PlayerInterface> players;
+    private static final String DEFAULT_SAVE_LOCATION = "save.json";
+
+    private HashMap<Colour, PlayerInterface> players;
     private Colour currentColour;
     private BoardInterface board;
     private DiceInterface d;
@@ -40,17 +41,17 @@ public class Game implements GameInterface {
     }
 
     /**
-     * Assigns each colour to a player.
-     * @return the player who has the next turn. Green goes first.
+     * @param colour of the player to set
+     *
+     * @param player the player to use
      **/
     public void setPlayer(Colour colour, PlayerInterface player) {
         players.put(colour, player);
     }
 
     /**
-     * Gets the current player.
-     * @return the current player
-     */
+     * @return the player who has the next turn. Green goes first.
+     **/
     public Colour getCurrentPlayer() {
         return currentColour;
     }
@@ -131,13 +132,10 @@ public class Game implements GameInterface {
         GsonBuilder gsonBuilder = new GsonBuilder();
         gsonBuilder.serializeNulls();
         Gson gson = gsonBuilder.setPrettyPrinting().create();
-        System.out.println("gson.toJson(this) = " + gson.toJson(this));
 
-//        Map<Colour,PlayerInterface> hash = new HashMap<Colour,PlayerInterface>();
-//        hash.put(Colour.GREEN,new ComputerPlayer());
-//        hash.put(Colour.BLUE,new HumanConsolePlayer());
-//        System.out.println("gson.toJson(hash) = " + gson.toJson(hash));
-//        System.out.println("gson.toJson(players) = " + gson.toJson(players));
+        Files.write(Paths.get(DEFAULT_SAVE_LOCATION), gson.toJson(this).getBytes());
+
+        System.out.println("Saved game state to " + Paths.get(DEFAULT_SAVE_LOCATION).toAbsolutePath().toString());
 
     }
 
@@ -219,9 +217,19 @@ public class Game implements GameInterface {
                 }
                 case "3": { // Save the current game
                     try {
-                        g.saveGame("");
+                        if(g.getCurrentPlayer() == null) { // No game is currently being played
+                            System.out.println("No game is being played.");
+                        } else {
+                            System.out.println("Enter name of save file, or press Enter to use default");
+                            input = scanner.nextLine();
+                            String filename = DEFAULT_SAVE_LOCATION;
+                            if(!input.equals("")) {
+                                filename = input;
+                            }
+                            g.saveGame(filename);
+                        }
                     } catch (IOException e) {
-                        e.printStackTrace();
+                        System.out.println("Something went wrong saving the file: " + e);
                     }
                     break;
                 }
