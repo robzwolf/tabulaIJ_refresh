@@ -85,7 +85,7 @@ public class Game implements GameInterface {
             throw new PlayerNotDefinedException("Two players need to be defined.");
         }
 
-        boolean bothComputerPlayers = players.get(Colour.values()[0]) instanceof ComputerPlayer && players.get(Colour.values()[1]) instanceof ComputerPlayer;
+        boolean handleComputerPrint = !(players.get(Colour.values()[0]) instanceof HumanConsolePlayer) && !(players.get(Colour.values()[1]) instanceof HumanConsolePlayer);
 
         boolean stillPlaying = true;
         TurnInterface t;
@@ -95,7 +95,6 @@ public class Game implements GameInterface {
             if(!d.haveRolled()) {
                 d.roll();
             }
-            boolean handleComputerPrint = players.get(currentColour) instanceof ComputerPlayer && !bothComputerPlayers;
             if(handleComputerPrint) {
                 System.out.println();
                 System.out.println(board);
@@ -248,6 +247,10 @@ public class Game implements GameInterface {
         JsonObject jsonDice = jsonObject.get("d").getAsJsonObject();
         d.getDice().get(0).setValue(jsonDice.get("d1").getAsJsonObject().get("value").getAsInt());
         d.getDice().get(1).setValue(jsonDice.get("d2").getAsJsonObject().get("value").getAsInt());
+
+        if(!newBoard.isValid()) {
+            throw new IOException("The loaded board state is not valid.");
+        }
 
         setBoard(newBoard);
     }

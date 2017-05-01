@@ -9,7 +9,15 @@
     <bookmark url="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" line="28" mnemonic="L" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aef5ae51-d669-45da-a45f-035a169cf56f" name="Default" comment="" />
+    <list default="true" id="aef5ae51-d669-45da-a45f-035a169cf56f" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Board.class" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Game.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Game.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Location.class" afterPath="$PROJECT_DIR$/out/production/tabulaIJ_refresh/xyz/robbie/tabula/Location.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" afterPath="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -32,7 +40,7 @@
             <file leaf-file-name="BoardInterface.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/BoardInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="270">
+                  <state relative-caret-position="240">
                     <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
                     <folding />
                   </state>
@@ -42,7 +50,7 @@
             <file leaf-file-name="DiceInterface.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/DiceInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="216">
+                  <state relative-caret-position="192">
                     <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
                     <folding />
                   </state>
@@ -52,7 +60,7 @@
             <file leaf-file-name="DieInterface.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/DieInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="234">
+                  <state relative-caret-position="208">
                     <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
                     <folding />
                   </state>
@@ -62,7 +70,7 @@
             <file leaf-file-name="GameInterface.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/GameInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="414">
+                  <state relative-caret-position="368">
                     <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="25" selection-end-column="8" />
                     <folding />
                   </state>
@@ -72,7 +80,7 @@
             <file leaf-file-name="LocationInterface.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/LocationInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1278">
+                  <state relative-caret-position="1136">
                     <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
                     <folding />
                   </state>
@@ -82,7 +90,7 @@
             <file leaf-file-name="MoveInterface.java" pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/MoveInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="198">
+                  <state relative-caret-position="176">
                     <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
                     <folding />
                   </state>
@@ -92,7 +100,7 @@
             <file leaf-file-name="TurnInterface.java" pinned="false" current-in-tab="true">
               <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/TurnInterface.java">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="234">
+                  <state relative-caret-position="190">
                     <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="17" selection-end-column="7" />
                     <folding />
                   </state>
@@ -107,24 +115,46 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="Board.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="66">
+              <caret line="363" column="25" lean-forward="true" selection-start-line="363" selection-start-column="25" selection-end-line="363" selection-end-column="25" />
+              <folding>
+                <element signature="e#13955#13971#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Game.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="41">
+              <caret line="229" column="58" lean-forward="true" selection-start-line="229" selection-start-column="58" selection-end-line="229" selection-end-column="58" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="IllegalTurnException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/IllegalTurnException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="80">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Location.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Location.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3654">
-              <caret line="217" column="27" lean-forward="false" selection-start-line="217" selection-start-column="27" selection-end-line="217" selection-end-column="27" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="253">
+              <caret line="169" column="0" lean-forward="true" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -132,21 +162,9 @@
       <file leaf-file-name="NoSuchLocationException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/NoSuchLocationException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="32">
               <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Game.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="177" column="62" lean-forward="true" selection-start-line="177" selection-start-column="62" selection-end-line="177" selection-end-column="62" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -154,7 +172,7 @@
       <file leaf-file-name="NotRolledYetException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/NotRolledYetException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
+            <state relative-caret-position="80">
               <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
               <folding />
             </state>
@@ -164,7 +182,7 @@
       <file leaf-file-name="PauseException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PauseException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="32">
               <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
@@ -174,7 +192,7 @@
       <file leaf-file-name="PlayerInterface.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PlayerInterface.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
+            <state relative-caret-position="192">
               <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
               <folding />
             </state>
@@ -184,7 +202,7 @@
       <file leaf-file-name="PlayerNotDefinedException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PlayerNotDefinedException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
+            <state relative-caret-position="32">
               <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
               <folding />
             </state>
@@ -194,8 +212,18 @@
       <file leaf-file-name="PrettyStrings.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PrettyStrings.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="144">
               <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="save.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/save.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="384">
+              <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
               <folding />
             </state>
           </provider>
@@ -204,7 +232,7 @@
       <file leaf-file-name="Turn.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Turn.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
+            <state relative-caret-position="480">
               <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
               <folding />
             </state>
@@ -284,15 +312,15 @@
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Turn.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/LocationSerializer.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Colour.java" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" />
         <option value="$PROJECT_DIR$/lib/gson-2.8.0.jar!/com/google/gson/JsonElement.class" />
         <option value="$PROJECT_DIR$/save.json" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/NasirHumanConsolePlayer.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/DiceTestBasic.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/ComputerPlayer.java" />
-        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/HumanConsolePlayer.java" />
         <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java" />
+        <option value="$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java" />
       </list>
     </option>
   </component>
@@ -303,10 +331,10 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="61" />
-    <option name="y" value="23" />
-    <option name="width" value="1379" />
-    <option name="height" value="877" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
   </component>
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="1" id="Add" />
@@ -326,54 +354,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope">
-        <subPane subId="Project Files">
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="tabulaIJ_refresh">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="tabulaIJ_refresh">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="src">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="xyz/robbie/tabula">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT USER_OBJECT="Root">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT="tabulaIJ_refresh">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT USER_OBJECT=".idea">
-              <option name="myItemId" value="" />
-              <option name="myItemType" value="" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -406,6 +386,40 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tabulaIJ_refresh">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT USER_OBJECT="Root">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="tabulaIJ_refresh">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="src">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT USER_OBJECT="xyz/robbie/tabula">
+              <option name="myItemId" value="" />
+              <option name="myItemType" value="" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -771,6 +785,13 @@
       <envs />
       <method />
     </configuration>
+    <configuration default="true" type="JavaScriptTestRunnerJest" factoryName="Jest">
+      <node-interpreter value="project" />
+      <working-dir value="" />
+      <envs />
+      <scope-kind value="ALL" />
+      <method />
+    </configuration>
     <configuration default="true" type="JavaScriptTestRunnerProtractor" factoryName="Protractor">
       <config-file value="" />
       <node-interpreter value="project" />
@@ -923,6 +944,7 @@
       <workItem from="1493479888018" duration="12612000" />
       <workItem from="1493553442079" duration="29307000" />
       <workItem from="1493627403200" duration="645000" />
+      <workItem from="1493634980725" duration="1487000" />
     </task>
     <servers />
   </component>
@@ -959,27 +981,28 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89163000" />
+    <option name="totallyTimeSpent" value="90650000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="61" y="23" width="1379" height="877" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Nl-Palette" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="false" show_stripe_button="true" weight="0.2826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1920" y="75" width="1280" height="961" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="WINDOWED" visible="true" show_stripe_button="true" weight="0.2826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" x="1920" y="75" width="1280" height="961" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Properties" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2670157" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26666668" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -991,7 +1014,6 @@
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32769555" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980973" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
@@ -1047,7 +1069,7 @@
           <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#893#902#0" expanded="true" />
+            <element signature="e#893#902#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1070,9 +1092,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1008">
           <caret line="67" column="27" lean-forward="true" selection-start-line="67" selection-start-column="27" selection-end-line="67" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1149,13 +1169,12 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="9" column="35" lean-forward="false" selection-start-line="9" selection-start-column="35" selection-end-line="9" selection-end-column="35" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/NoSuchLocationException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="32">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
@@ -1163,7 +1182,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/NotRolledYetException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
+        <state relative-caret-position="80">
           <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
@@ -1171,7 +1190,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PauseException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="32">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
@@ -1179,7 +1198,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PlayerInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="192">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding />
         </state>
@@ -1187,7 +1206,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PlayerNotDefinedException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
+        <state relative-caret-position="32">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
           <folding />
         </state>
@@ -1195,7 +1214,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Turn.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
+        <state relative-caret-position="480">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
           <folding />
         </state>
@@ -1204,19 +1223,9 @@
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/LocationSerializer.java" />
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/PrettyStrings.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
+        <state relative-caret-position="144">
           <caret line="9" column="0" lean-forward="false" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3654">
-          <caret line="217" column="27" lean-forward="false" selection-start-line="217" selection-start-column="27" selection-end-line="217" selection-end-column="27" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1240,7 +1249,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="17" column="11" lean-forward="true" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1258,7 +1266,7 @@
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#893#902#0" expanded="true" />
+            <element signature="e#893#902#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1267,7 +1275,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-371">
           <caret line="2" column="19" lean-forward="false" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1275,7 +1282,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-449">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1293,7 +1299,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="17" column="0" lean-forward="false" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1308,32 +1313,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/save.json" />
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java">
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/IllegalTurnException.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="95">
-          <caret line="485" column="0" lean-forward="true" selection-start-line="485" selection-start-column="0" selection-end-line="485" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4992#4993#0" expanded="true" />
-            <element signature="e#5046#5047#0" expanded="true" />
-            <element signature="e#5077#5078#0" expanded="true" />
-            <element signature="e#5104#5105#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/BoardInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="270">
-          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+        <state relative-caret-position="80">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/DiceInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
+        <state relative-caret-position="192">
           <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
           <folding />
         </state>
@@ -1341,7 +1331,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/DieInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="208">
           <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding />
         </state>
@@ -1349,7 +1339,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/GameInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
+        <state relative-caret-position="368">
           <caret line="23" column="4" lean-forward="false" selection-start-line="23" selection-start-column="4" selection-end-line="25" selection-end-column="8" />
           <folding />
         </state>
@@ -1357,7 +1347,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/LocationInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1278">
+        <state relative-caret-position="1136">
           <caret line="71" column="12" lean-forward="false" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
           <folding />
         </state>
@@ -1365,35 +1355,61 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/MoveInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
+        <state relative-caret-position="176">
           <caret line="11" column="7" lean-forward="false" selection-start-line="11" selection-start-column="7" selection-end-line="11" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/BoardInterface.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="7" lean-forward="false" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/TurnInterface.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="234">
+        <state relative-caret-position="190">
           <caret line="13" column="4" lean-forward="false" selection-start-line="13" selection-start-column="4" selection-end-line="17" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/IllegalTurnException.java">
+    <entry file="file://$PROJECT_DIR$/save.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        <state relative-caret-position="384">
+          <caret line="24" column="19" lean-forward="true" selection-start-line="24" selection-start-column="19" selection-end-line="24" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Board.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="363" column="25" lean-forward="true" selection-start-line="363" selection-start-column="25" selection-end-line="363" selection-end-column="25" />
+          <folding>
+            <element signature="e#13955#13971#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Game.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="177" column="62" lean-forward="true" selection-start-line="177" selection-start-column="62" selection-end-line="177" selection-end-column="62" />
+        <state relative-caret-position="41">
+          <caret line="229" column="58" lean-forward="true" selection-start-line="229" selection-start-column="58" selection-end-line="229" selection-end-column="58" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/xyz/robbie/tabula/Location.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="253">
+          <caret line="169" column="0" lean-forward="true" selection-start-line="169" selection-start-column="0" selection-end-line="169" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

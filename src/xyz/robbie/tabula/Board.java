@@ -1,9 +1,6 @@
 package xyz.robbie.tabula;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
-import java.util.ArrayList;
+import java.util.*;
 
 /**
  * Board represents the board state in the game of tabula (not including dice and players).
@@ -349,12 +346,30 @@ public class Board implements BoardInterface {
      * @return true if and only if the Board is in a valid state (do not need to check whether or not it could be reached by a valid sequence of moves)
      **/
     public boolean isValid() {
+        HashMap<Colour,Integer> totalPiecesCount = new HashMap<Colour,Integer>();
+        totalPiecesCount.put(Colour.values()[0],0);
+        totalPiecesCount.put(Colour.values()[1],0);
+
         for(int i=0; i<=KNOCKED_INDEX; i++) {
-            if(!locations.get(i).isValid()) {
+            boolean locValid = locations.get(i).isValid();
+            if(!locValid) {
                 return false;
             }
+            for(Colour c : Colour.values()){
+                totalPiecesCount.put(c,locations.get(i).numberOfPieces(c));
+            }
         }
-        return false;
+
+        if((totalPiecesCount.get(Colour.values()[0]) > PIECES_PER_PLAYER) || totalPiecesCount.get(Colour.values()[1]) > PIECES_PER_PLAYER) {
+            return false;
+        }
+
+        if((totalPiecesCount.get(Colour.values()[0]) + totalPiecesCount.get(Colour.values()[1])) > (2 * PIECES_PER_PLAYER)) {
+            return false;
+        }
+
+        /* If none of the above fail conditions were met */
+        return true;
     }
 
     /**

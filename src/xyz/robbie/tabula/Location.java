@@ -1,8 +1,6 @@
 package xyz.robbie.tabula;
 
-import com.google.gson.JsonElement;
-
-import java.util.*;
+import java.util.HashMap;
 
 /**
  * Location represents a single location on the board, but not its position
@@ -169,22 +167,14 @@ public class Location implements LocationInterface {
             return true;
         }
 
-        /* invalid if not mixed AND >0 of EACH colour */
-        boolean moreThanOneColour = false;
-        Colour firstColourWithSomePieces = null;
-        for (Colour c : pieces.keySet()) {
-            if (numberOfPieces(c) > 0) {
-                if (firstColourWithSomePieces != null) {
-                    moreThanOneColour = true;
-                } else {
-                    firstColourWithSomePieces = c;
-                }
-            } else if (numberOfPieces(c) < 0) // No negative values allowed
-            {
-                return false;
-            }
+
+        if(!isMixed() && (numberOfPieces(Colour.values()[0]) > 0) && (numberOfPieces(Colour.values()[1]) > 0)) {
+            return false;
         }
-        return !isMixed() && !moreThanOneColour;
+        else {
+            return true;
+        }
+
     }
 
     /* For debugging */
