@@ -85,8 +85,6 @@ public class Game implements GameInterface {
             throw new PlayerNotDefinedException("Two players need to be defined.");
         }
 
-        boolean handleComputerPrint = !(players.get(Colour.values()[0]) instanceof HumanConsolePlayer) && !(players.get(Colour.values()[1]) instanceof HumanConsolePlayer);
-
         boolean stillPlaying = true;
         TurnInterface t;
 
@@ -94,6 +92,12 @@ public class Game implements GameInterface {
         while (stillPlaying) {
             if(!d.haveRolled()) {
                 d.roll();
+            }
+            boolean handleComputerPrint = false;// = !(players.get(Colour.values()[0]) instanceof HumanConsolePlayer) && !(players.get(Colour.values()[1]) instanceof HumanConsolePlayer);
+            if(!(players.get(currentColour) instanceof HumanConsolePlayer)) {
+                if(players.get(currentColour.otherColour()) instanceof HumanConsolePlayer) {
+                    handleComputerPrint = true;
+                }
             }
             if(handleComputerPrint) {
                 System.out.println();
@@ -114,7 +118,6 @@ public class Game implements GameInterface {
                     /* Should never happen */
                     e.printStackTrace();
                 }
-
             }
             try {
                 t = players.get(currentColour).getTurn(currentColour, board.clone(), d.getValues());
