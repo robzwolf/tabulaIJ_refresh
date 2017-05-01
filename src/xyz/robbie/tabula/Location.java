@@ -146,7 +146,7 @@ public class Location implements LocationInterface {
     }
 
     /**
-     * @param colour the colour of the piece to remove
+     * @param colour                the colour of the piece to remove
      * @throws IllegalMoveException if there are no pieces of that colour in the location
      **/
     public void removePiece(Colour colour) throws IllegalMoveException {
@@ -166,7 +166,6 @@ public class Location implements LocationInterface {
         if (isEmpty()) {
             return true;
         }
-
 
         if(!isMixed() && (numberOfPieces(Colour.values()[0]) > 0) && (numberOfPieces(Colour.values()[1]) > 0)) {
             return false;
