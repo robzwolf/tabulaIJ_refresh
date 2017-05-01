@@ -1,6 +1,8 @@
 package xyz.robbie.tabula;
 
 import com.google.gson.*;
+
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -179,7 +181,14 @@ public class Game implements GameInterface {
      **/
     public void loadGame(String filename) throws IOException {
 
-        String wholeFile = new String(Files.readAllBytes(Paths.get(filename)));
+        String wholeFile = null;
+        try {
+            wholeFile = new String(Files.readAllBytes(Paths.get(filename)));
+        } catch (FileNotFoundException e) {
+            throw new IOException("The file '" + filename + "' was not found.");
+        } catch (IOException e) {
+            throw e;
+        }
         JsonObject jsonObject = new JsonParser().parse(wholeFile).getAsJsonObject();
 
         resetGame();

@@ -356,7 +356,7 @@ public class Board implements BoardInterface {
                 return false;
             }
             for(Colour c : Colour.values()){
-                totalPiecesCount.put(c,locations.get(i).numberOfPieces(c));
+                totalPiecesCount.put(c,totalPiecesCount.get(c) + locations.get(i).numberOfPieces(c));
             }
         }
 
@@ -364,7 +364,7 @@ public class Board implements BoardInterface {
             return false;
         }
 
-        if((totalPiecesCount.get(Colour.values()[0]) + totalPiecesCount.get(Colour.values()[1])) > (2 * PIECES_PER_PLAYER)) {
+        if((totalPiecesCount.get(Colour.values()[0]) + totalPiecesCount.get(Colour.values()[1])) != (2 * PIECES_PER_PLAYER)) {
             return false;
         }
 
